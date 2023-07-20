@@ -7,7 +7,7 @@
 #  email           :string           not null
 #  password_digest :string           not null
 #  session_token   :string           not null
-#  user_name       :string           not null
+#  username        :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
@@ -15,11 +15,11 @@
 #
 #  index_users_on_email          (email) UNIQUE
 #  index_users_on_session_token  (session_token) UNIQUE
-#  index_users_on_user_name      (user_name) UNIQUE
+#  index_users_on_username       (username) UNIQUE
 #
 class User < ApplicationRecord
   has_secure_password
-  validates :user_name, 
+  validates :username, 
     uniqueness: true, 
     length: { in: 3..30 }, 
     format: { without: URI::MailTo::EMAIL_REGEXP, message:  "can't be an email" }
@@ -49,7 +49,7 @@ end
 
 
 def self.find_by_credentials(credential, password)
-    field = credential =~ URI::MailTo::EMAIL_REGEXP ? :email : :user_name
+    field = credential =~ URI::MailTo::EMAIL_REGEXP ? :email : :username
     user = User.find_by(field => credential)
     user&.authenticate(password)
   end
