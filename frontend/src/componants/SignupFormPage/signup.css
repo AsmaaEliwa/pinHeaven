@@ -1,0 +1,117 @@
+
+.logosignup{
+    width: 25%;
+    height: 25%;
+    /* margin-top: 100px; */
+    position: absolute;
+    top:-3%;
+    left: 35%;
+}
+
+h1 {
+    padding-top: 5rem;
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+.email{
+    width: 50%;
+    margin: auto;
+    display: block;
+    padding: 1rem;
+    border-radius: 15px;
+    background-color: white;
+    margin-bottom: 1rem;
+    font-family: var(--font-family-default-latin);
+    border-color: var(--color-border-container);
+    font-size: var(--font-size-300);
+    -webkit-font-smoothing: antialiased;
+    -webkit-appearance: none;
+    border-radius: 16px;
+    border-style: solid;
+    border-color: #CDCDCD;
+    background-color: var(--g-colorGray0);
+}
+.password{
+    width: 50%;
+    margin: auto;
+    display: block;
+    padding: 1rem;
+    border-radius: 15px;
+    background-color: white;
+    margin-bottom: 1rem;
+    font-family: var(--font-family-default-latin);
+    border-color: var(--color-border-container);
+    font-size: var(--font-size-300);
+    -webkit-font-smoothing: antialiased;
+    -webkit-appearance: none;
+    border-radius: 16px;
+    border-style: solid;
+    border-color: #CDCDCD;
+    background-color: var(--g-colorGray0);
+}
+
+.password:hover{
+    border-color:#92C2FF ;
+}
+.loginbtn{
+    width: 55%;
+    margin: auto;
+    display: block;
+    padding: .7rem;
+    border-radius: 20px;
+    background-color: #E60022;
+    color: white;
+    margin-top: 1rem;
+    border-color: white;
+
+
+
+}
+.loginbtn:hover{
+  background-color: #a21d28; 
+
+}
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    
+}
+.facbtn{
+    background-color: #1976F2;
+    margin-top: 1rem;
+    border-color: white;
+    width: 55%;
+    margin: auto;
+    display: block;
+    padding: .7rem;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+}
+.gmailbtn{
+    margin-top: 1rem;
+    border-color: white;
+    width: 55%;
+    margin: auto;
+    display: block;
+    padding: .7rem;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+
+
+}
+.forget_pass{
+    color: black;
+}
+.more{
+    width: 55%;
+    align-content: center;
+    text-align: center;
+}
