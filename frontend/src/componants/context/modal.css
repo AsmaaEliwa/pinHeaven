@@ -32,6 +32,9 @@
     box-sizing: border-box;
 
 }
+.display_none{
+    display: none;
+}
 
 
 /* h1 {

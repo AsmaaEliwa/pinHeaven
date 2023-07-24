@@ -6,6 +6,7 @@ const ModalContext = React.createContext();
 export function ModalProvider({ children }) {
   const modalRef = useRef();
   const [value, setValue] = useState();
+
   useEffect(() => {
     setValue(modalRef.current);
   }, [])
@@ -27,6 +28,7 @@ export default function Modal({ onClose, children }) {
       {/* <div className='nice'> */}
       <div id="modal-content">
         {children}
+
       </div>
       {/* </div> */}
     </div>,

@@ -1,5 +1,7 @@
 class Api::UsersController < ApplicationController
-  # before_action :require_logged_out, only: [:create]
+  before_action :require_logged_out, only: [:create]
+  # before_action :require_logged_in, only: [:show]
+
   wrap_parameters include: User.attribute_names + ['password']
   def show 
     @user=User.find_by() 
