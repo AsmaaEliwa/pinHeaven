@@ -1,0 +1,15 @@
+.sign_up{
+    margin-right: 15px;
+    text-decoration: none;
+    color: black;
+    background-color: #EFEFEF;
+    border-radius: 33px;
+    padding: 11px;
+    word-wrap: break-word;
+    font-size: var(--font-size-300);
+    border: none;
+
+  }
+  .sign_up:hover {
+    background-color: rgb(227, 220, 220);
+}

@@ -1,0 +1,17 @@
+.profile{
+    background-color: bisque;
+    height: 100vh;
+}
+.dropdown{
+    border: none;
+    padding: 10px;
+    border-radius: 30px;
+    margin-right:0px ;
+    /* background-color: aquamarine; */
+    
+}
+/* .profile-dropdown{
+    width: 20%;
+    height: 90vh;
+    background-color: blanchedalmond;
+} */
