@@ -3,27 +3,30 @@ import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 import "./profile.css"
 import ProfileNavBAr from "../profileNavBar";
-
+import { NavLink, useHistory } from "react-router-dom";
 function Profile({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef(null);
+  const history =useHistory();
   useEffect(() => {
     const handleOutsideClick = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
-          // console.log(event.target)
         setShowMenu(false);
       }
     };
     document.addEventListener("click", handleOutsideClick);
     return () => document.removeEventListener("click", handleOutsideClick);
   }, []);
-  const toggleMenu = () => {
+    const toggleMenu = () => {
     setShowMenu((prevShowMenu) => !prevShowMenu);
   };
   const logout = (e) => {
     e.preventDefault();
-    dispatch(sessionActions.logout());
+     dispatch(sessionActions.logout()).then(()=>{
+      history.push("/home")
+
+     })
   };
   return (
     <>
@@ -39,6 +42,7 @@ function Profile({ user }) {
           <li>{user.email}</li>
           <li>
             <button onClick={logout}>Log Out</button>
+            <NavLink to="/update">Settings</NavLink>
           </li>
         </ul>
       )}

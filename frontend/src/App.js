@@ -1,24 +1,31 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import LoginFormPage from './componants/LoginFormPage/index.js';
-import SignupFormPage from './componants/SignupFormPage/index.js';
 import { useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import Navigation from './componants/Navigation/index.js';
+import UserPrpfile from './componants/profileNavBar/userPrpfile.js';
+import UpdateProfileForm from './componants/updateProfile/index.js';
+import Home from './componants/Home/index.js';
+
 function App() {
-  // const sessionUser = useSelector(state => state.session.user);
-  // if (!sessionUser) return <Redirect to="/login" />;
+  const sessionUser = useSelector(state => state.session.user);
+  // if (!sessionUser) return <Redirect to="/home" />;
   return (
     <>
    
     <Navigation/>
     <Switch>
-      {/* <Route path="/login">
-        <LoginFormPage />
-      </Route> */}
-      {/* <Route path="/signup">
-        <SignupFormPage />
-      </Route> */}
+    <Route path="/profile">
+     {/* <Profile  user={sessionUser} /> */}
+      </Route>
+      <Route path="/username">
+       <UserPrpfile user={sessionUser}/>
+      </Route>
+      <Route path="/update">
+        <UpdateProfileForm />
+      </Route>
+      <Route path="/home">
+      <Home/>
+      </Route>
     </Switch>
     </>
   );

@@ -1,13 +1,13 @@
 import logo from "./logo.png"
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import "./profileNav.css"
 import { useState } from 'react';
 import UserPrpfile from "./userPrpfile";
 function ProfileNavBAr({user}){
     const [showUser,setShowUser]=useState(false)
     function toggelUserProfile(){
-        // setShowUser( prevuse=> !prevuse)
-        setShowUser(true)
+        setShowUser( prevuse=> !prevuse)
+        // setShowUser(true)
 
     }
 
@@ -26,7 +26,12 @@ return(
     </form>
      <button className="user" onClick={toggelUserProfile}>{user.username[0]}</button>
     </div>
-    {showUser&& <UserPrpfile user={user}/>}
+    {showUser&& 
+    <>
+    <Redirect to="/username"/>
+    {/* <UserPrpfile user={user}/> */}
+    </>
+    }
     </>
 )
 

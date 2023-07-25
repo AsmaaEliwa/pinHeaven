@@ -20,7 +20,7 @@
     padding: 1rem;
     border-radius: 1.5rem;
     border-color: rgb(66, 183, 237);
-    margin-left: 4rem;
+    margin-left: 5rem;
     text-decoration: none;
     font-size:large;
     background-color: black;
@@ -53,7 +53,7 @@ option{
 }
 .user{
     padding: .8rem;
-    border-radius: 100%;
+    border-radius: 50%;
     margin-left: 7rem;
     border:none
 }
@@ -65,7 +65,7 @@ option{
     /* align-items: center; */
     /* background-color: antiquewhite; */
     padding-top: 7rem;
-
+ 
     /* margin: auto; */
 }
 h1{
@@ -75,13 +75,16 @@ h1{
     width: 4rem;
     height: 4rem;
     padding: 2rem;
-    border-radius: 100%;
+    border-radius: 50%;
     background-color: #E9E9E9;
     text-align: center;
     align-items: center;
     font-size: 7rem;
     position: absolute;
     left:46%;
-    top:13%
-    /* display: inline; */
+    top:13%;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+
 }
