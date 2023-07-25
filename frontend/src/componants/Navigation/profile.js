@@ -4,6 +4,7 @@ import * as sessionActions from "../../store/session";
 import "./profile.css"
 import ProfileNavBAr from "../profileNavBar";
 import { NavLink, useHistory } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 function Profile({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
@@ -28,23 +29,34 @@ function Profile({ user }) {
 
      })
   };
+  function redirectToProfile(){
+    // <Profile/>
+    return  history.push("/username")
+    // <Redirect to="/username"/>
+     
+    
+  }
   return (
     <>
         <ProfileNavBAr user={user}/>
 
     <div ref={menuRef} className="profile">
+      
       <button onClick={toggleMenu} className="dropdown">
       <i className="fa-solid fa-chevron-down "  ></i>    </button>
       {showMenu && (
         
-        <ul className="profile-dropdown">
+        <div className="profile-dropdown">
+          <p> Currently in</p>
+          <div className="username" onClick={redirectToProfile}>
           <li>{user.username}</li>
           <li>{user.email}</li>
+          </div>
           <li>
-            <button onClick={logout}>Log Out</button>
-            <NavLink to="/update">Settings</NavLink>
+          <NavLink to="/update" className="settings">Settings</NavLink>
+            <button onClick={logout} className="logout">Log Out</button>
           </li>
-        </ul>
+        </div>
       )}
     </div>
     </>

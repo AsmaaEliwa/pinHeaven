@@ -1,8 +1,8 @@
 import "./updateProfile.css"
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
+import Footer from "../Footer/index";
 function UpdateProfileForm({ user }) {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
@@ -37,16 +37,20 @@ function UpdateProfileForm({ user }) {
     };
 
     return (
-        <div className='signup_form'>
-
+        <div className="update">
+        <div className='update_form'>
+            <h2>Public profile</h2>
+             <p>People visiting your profile will see the following info</p>
             <form onSubmit={handleSubmit}>
                 <ul>
                     {errors.map(error => <li className='error' key={error}>{error}</li>)}
                 </ul>
 
 
-                <label>
+                <label className="updatelabel">
                     Username
+                    </label>
+
                     <input
                         className='password'
                         type="text"
@@ -54,9 +58,11 @@ function UpdateProfileForm({ user }) {
                         onChange={(e) => setUsername(e.target.value)}
                         required
                     />
-                </label>
-                <label>
+
+                <label className="updatelabel">
                     Password
+                    </label>
+
                     <input
                         className='password'
                         type="password"
@@ -64,9 +70,11 @@ function UpdateProfileForm({ user }) {
                         onChange={(e) => setPassword(e.target.value)}
                         required
                     />
-                </label>
-                <label>
+
+                <label className="updatelabel">
                     Birth date
+                </label>
+
                     <input
                         className='password'
                         type="date"
@@ -74,11 +82,13 @@ function UpdateProfileForm({ user }) {
                         onChange={(e) => setBirthDate(e.target.value)}
                         required
                     />
-                </label>
-                <button type="submit" className="loginbtn">confirm</button>
-                {loading && <i className="fa-solid fa-spinner fa-spin-pulse loading"></i>}
+                <footer>
+                <button type="submit" className="confirmUpdate">confirm</button>
+                </footer>
+                {/* {loading && <i className="fa-solid fa-spinner fa-spin-pulse loading"></i>} */}
 
             </form>
+        </div>
         </div>
 
     )
