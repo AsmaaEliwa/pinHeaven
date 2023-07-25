@@ -1,6 +1,9 @@
 .profile{
-    background-color: bisque;
-    height: 100vh;
+    /* background-color: bisque; */
+    /* height: 80vh; */
+    position: absolute;
+    top:3%;
+    right: 1.5%;
 }
 .dropdown{
     border: none;
@@ -10,8 +13,9 @@
     /* background-color: aquamarine; */
     
 }
-/* .profile-dropdown{
+.profile-dropdown{
+    /* margin-top: 4rem; */
     width: 20%;
-    height: 90vh;
+    height: 70vh;
     background-color: blanchedalmond;
-} */
+}

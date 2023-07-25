@@ -1,0 +1,87 @@
+.plogo{
+    width:9%;
+    height: 12%;
+    /* background-color: antiquewhite; */
+    position:absolute;
+    top:-.3rem;
+    left:-1rem
+}
+.active{
+ /* background-color: black; */
+ color:white
+}
+.profileNav{
+    margin-top: 1rem;
+    width: 100%;
+    height: 3rem;
+    /* background-color: darkgray; */
+}
+.home{
+    padding: 1rem;
+    border-radius: 1.5rem;
+    border-color: rgb(66, 183, 237);
+    margin-left: 4rem;
+    text-decoration: none;
+    font-size:large;
+    background-color: black;
+   
+}
+.create{
+    margin-left: 1rem;
+    padding: .5rem;
+    border-radius: 1.5rem;
+    border: none;
+    font-size: large;
+    background-color: white;
+}
+#searchForm{
+    display:inline;
+    margin-left: .3rem;
+    font-size: large;
+}
+#searchInput{
+    width: 50%;
+    padding: 1rem;
+    border-radius: 2rem;
+    background-color: #E9E9E9;
+    display:inline;
+    border:none;
+
+}
+option{
+    background-color: #ffcc99;
+}
+.user{
+    padding: .8rem;
+    border-radius: 100%;
+    margin-left: 7rem;
+    border:none
+}
+.user:hover{
+    background-color: darkgray;
+}
+.userProfile{
+    text-align: center;
+    /* align-items: center; */
+    /* background-color: antiquewhite; */
+    padding-top: 7rem;
+
+    /* margin: auto; */
+}
+h1{
+    padding-top: 3rem;
+}
+.firstlitter{
+    width: 4rem;
+    height: 4rem;
+    padding: 2rem;
+    border-radius: 100%;
+    background-color: #E9E9E9;
+    text-align: center;
+    align-items: center;
+    font-size: 7rem;
+    position: absolute;
+    left:46%;
+    top:13%
+    /* display: inline; */
+}

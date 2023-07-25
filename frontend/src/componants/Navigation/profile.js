@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 import "./profile.css"
+import ProfileNavBAr from "../profileNavBar";
 
 function Profile({ user }) {
   const dispatch = useDispatch();
@@ -25,10 +26,14 @@ function Profile({ user }) {
     dispatch(sessionActions.logout());
   };
   return (
+    <>
+        <ProfileNavBAr user={user}/>
+
     <div ref={menuRef} className="profile">
       <button onClick={toggleMenu} className="dropdown">
       <i className="fa-solid fa-chevron-down "  ></i>    </button>
       {showMenu && (
+        
         <ul className="profile-dropdown">
           <li>{user.username}</li>
           <li>{user.email}</li>
@@ -38,6 +43,8 @@ function Profile({ user }) {
         </ul>
       )}
     </div>
+    </>
+
   );
 }
 export default Profile;
