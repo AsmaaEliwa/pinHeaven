@@ -39,8 +39,8 @@ function UpdateProfileForm({ user }) {
     return (
         <div className="update">
         <div className='update_form'>
-            <h2>Public profile</h2>
-             <p>People visiting your profile will see the following info</p>
+            <h2 className="h2TAG">Public profile</h2>
+             <p className="pTAG">People visiting your profile will see the following info</p>
             <form onSubmit={handleSubmit}>
                 <ul>
                     {errors.map(error => <li className='error' key={error}>{error}</li>)}
@@ -52,7 +52,7 @@ function UpdateProfileForm({ user }) {
                     </label>
 
                     <input
-                        className='password'
+                        className='updateInput'
                         type="text"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
@@ -64,7 +64,7 @@ function UpdateProfileForm({ user }) {
                     </label>
 
                     <input
-                        className='password'
+                        className='updateInput'
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
@@ -76,7 +76,7 @@ function UpdateProfileForm({ user }) {
                 </label>
 
                     <input
-                        className='password'
+                        className='updateInput'
                         type="date"
                         value={birth_date}
                         onChange={(e) => setBirthDate(e.target.value)}
