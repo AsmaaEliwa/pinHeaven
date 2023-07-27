@@ -1,8 +1,16 @@
 import csrfFetch from "./csrf";
+import * as userActions from "./session"
+import { useSelector } from "react-redux";
 const SET_PIN = "pins/set_pin"
 const REMOVE_PIN = "pins/remove_pin"
-
+const GET_PIN ="pins/get_pin"
 const set_pin = (pin) => {
+  return {
+    type: SET_PIN,
+    pin
+  };
+};
+const get_pin = (pin) => {
   return {
     type: SET_PIN,
     pin
@@ -17,19 +25,35 @@ const remove_pin = (id) => {
   };
 };
 
-//   const sessionUser = useSelector(state=> state.session.user)
+export const get_Pin=(id)=>(state)=>{
+  return state.pins ? state.pins[id]: null
+  }
+  
+  export const get_Pinss=(state)=>{
+  return state.pins ? Object.values(state.pins) :[]
+  }
 
 
-export const createPin = (pin) => async (dispatch) => {
+export const createPin = (formData) => async (dispatch,getState) => {
   const response = await csrfFetch('/api/pins', {
     method: 'POST',
-    body: pin
+    body: formData
 
   });
   const data = await response.json();
-  debugger;
-  dispatch(set_pin(data.pin));
+  const sessionUser = getState().session.user
+  const updatedUser = { ...sessionUser, pinIds: [...sessionUser.pinIds, data.pin.id] };
+  dispatch(set_pin(data.pin)); // Store the new pin in the pinReducer
+  dispatch(userActions.setCurrentUser(updatedUser)); // Update the user object with the new pin ID
   return response;
+};
+
+export const fetchPin = (id) => async (dispatch) => {
+  const response = await csrfFetch(`/api/pins/${id}`);
+  const data = await response.json();
+  dispatch(get_pin(data.pin)); 
+  // console.log(data)
+  return data;
 };
 
 
@@ -60,15 +84,18 @@ export const removePin = (id) => async (dispatch) => {
 //     pins: JSON.parse(sessionStorage.getItem("currentPin"))
 //   };
 
+
 const pinReducer = (state = {}, action) => {
   const newState = { ...state }
   switch (action.type) {
     case SET_PIN:
-      debugger
+      // debugger
       return { ...state, [action.pin.id]: action.pin };
     case REMOVE_PIN:
       delete newState[action.id]
       return newState;
+      case GET_PIN:
+        return { ...state, [action.pin.id]: action.pin };
     default:
       return state;
   }

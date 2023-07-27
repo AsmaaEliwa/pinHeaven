@@ -10,23 +10,23 @@ import CreatePinFprm from './componants/pin/createPin/index.js';
 
 function App() {
   const sessionUser = useSelector(state => state.session.user);
-  // if (!sessionUser) return <Redirect to="/home" />;
+
   return (
     <>
 
       <Navigation />
       <Switch>
         <Route path="/pins/new">
-         <CreatePinFprm/>
+         <CreatePinFprm user={sessionUser}/>
         </Route>
-        <Route path="/profile">
+        {/* <Route path="/profile">
           {/* <Profile  user={sessionUser} /> */}
-        </Route>
+        {/* </Route>  */}
         <Route path="/username">
           <UserProfile user={sessionUser} />
         </Route>
         <Route path="/update">
-          <UpdateProfileForm />
+          <UpdateProfileForm user={sessionUser} />
         </Route>
         <Route path="/home">
           <Home />

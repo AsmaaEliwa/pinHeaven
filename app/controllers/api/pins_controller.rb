@@ -9,7 +9,7 @@ class Api::PinsController < ApplicationController
     end
 
     def create
-        debugger
+        # debugger
         @pin = Pin.new(pin_params)
         if @pin.save 
         render 'api/pins/show'

@@ -14,7 +14,7 @@ function Navigation() {
   if (sessionUser) {
     sessionLinks = (
     <>
-        <Redirect to="/profile" />
+        {/* <Redirect to="/profile" /> */}
 
       <Profile user={sessionUser} />
         </>
