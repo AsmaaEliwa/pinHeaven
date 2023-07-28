@@ -19,12 +19,11 @@ function App() {
         <Route path="/pins/new">
          <CreatePinFprm user={sessionUser}/>
         </Route>
-        {/* <Route path="/profile">
-          {/* <Profile  user={sessionUser} /> */}
-        {/* </Route>  */}
-        <Route path="/username">
-          <UserProfile user={sessionUser} />
+        {
+        <Route path={`/users/:userId`}>
+          <UserProfile/>
         </Route>
+        }
         <Route path="/update">
           <UpdateProfileForm user={sessionUser} />
         </Route>

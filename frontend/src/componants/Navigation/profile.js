@@ -29,8 +29,9 @@ function Profile({ user }) {
     });
   };
   function redirectToProfile() {
+    // debugger
     // <Profile/>
-    return history.push("/username")
+    return history.push(`/users/${user.id}`)
     // <Redirect to="/username"/>
 
 

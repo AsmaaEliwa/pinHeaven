@@ -4,6 +4,13 @@ import { useSelector } from "react-redux";
 const SET_PIN = "pins/set_pin"
 const REMOVE_PIN = "pins/remove_pin"
 const GET_PIN ="pins/get_pin"
+const GET_PINS = "pins/getPins";
+const getPins = (pins) => {
+  return {
+    type: GET_PINS,
+     pins
+  };
+};
 const set_pin = (pin) => {
   return {
     type: SET_PIN,
@@ -23,6 +30,12 @@ const remove_pin = (id) => {
     type: REMOVE_PIN,
     id
   };
+};
+export const fetchPins = (userId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/pins?user_id=${userId}`);
+  const data = await response.json();
+  // debugger;
+  dispatch(getPins(data.pins));
 };
 
 export const get_Pin=(id)=>(state)=>{
@@ -96,6 +109,8 @@ const pinReducer = (state = {}, action) => {
       return newState;
       case GET_PIN:
         return { ...state, [action.pin.id]: action.pin };
+        case GET_PINS:
+          return { ...state, ...action.pins };
     default:
       return state;
   }

@@ -1,34 +1,55 @@
-import * as pinActions from "../../../store/pin"
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import { useState } from "react";
-import { useSelector } from 'react-redux';
-import "./showPinstyle.css";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import * as pinActions from "../../../store/pin";
+import "./showPinstyle.css"
+function ShowPin({ user }) {
+  const dispatch = useDispatch();
+  const [showInfo, setShowInfo] = useState(false);
+  const pins = useSelector((state) => {
+    return user.pinIds.map((id) => {
+      return state.pin[id];
+    });
+  });
 
+  useEffect(() => {
+ 
+    dispatch(pinActions.fetchPins(user.id));
+  }, []);
+  function handelImage(){
+    setShowInfo(last=> !last);
+  }
 
-function ShowPin({user}){
-    const dispatch=useDispatch()
-    const  pinIds=user.pinIds
-    const [pinsData, setPinsData] = useState([]);
-    const pins = useSelector(state => state.pin)
+  if (!pins[0]) return null;
 
-    useEffect(()=>{
-        const fetchPins = async () => {
-            // debugger
-            const fetchedPins = await Promise.all(pinIds.map(id => dispatch(pinActions.fetchPin(id))))
-            setPinsData(fetchedPins);
-          };
-      
-          fetchPins(); 
-    },[pinIds])
-    // console.log(pinsData[0].pin.imgUrl)
-    return(
-         <div>
-             <h1>hello</h1>
-      {pinsData.map(pinObject => {
-       return   <img src={`${pinObject.pin.imgUrl}`} className="pinimg"/>
+  return (
+    <div>
+      {/* <h1>hello</h1> */}
+      {pins.map((pin) => {
+        return <img key={pin.id} src={`${pin.imgUrl}`} className="pinimg" onClick={handelImage}/>;
       })}
+      {showInfo && 
+              <div className="imageinfo">
+                hello im here
+              </div>}
     </div>
-    )
+  );
 }
-export default ShowPin
+export default ShowPin;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

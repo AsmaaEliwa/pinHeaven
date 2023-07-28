@@ -2,10 +2,12 @@ class Api::PinsController < ApplicationController
     wrap_parameters include: Pin.attribute_names + [:image]
     def show
         @pin=Pin.find_by(id: params[:id])
+        
     end
 
     def index
-        @pins=Pin.all.sort { |a,b| b.created_at <=> a.created_at }
+        @pins=Pin.where(user_id: params[:user_id]).order(created_at: :asc)
+        render 'api/pins/index'
     end
 
     def create

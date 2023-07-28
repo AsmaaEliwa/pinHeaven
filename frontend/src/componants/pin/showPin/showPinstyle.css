@@ -1,4 +1,15 @@
 .pinimg{
 width: 10%;
 height: 10%;
+margin: 1rem;
+box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2); 
+
+}
+.pinimg:hover{
+    background-color:rgba(0, 0, 0, 0.2) ;
+}
+.imageinfo{
+    width: 70%;
+    height: 70vh;
+    background-color: aqua;
 }

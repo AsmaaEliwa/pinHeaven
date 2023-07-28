@@ -33,7 +33,8 @@ function ProfileNavBAr({ user }) {
             </div>
               {showUser &&
                 <>
-                      {history.push("/username")}
+                         { history.push(`/users/${user.id}`)}
+
                 </>
               }
         </>
