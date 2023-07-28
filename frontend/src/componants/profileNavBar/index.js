@@ -7,6 +7,7 @@ import { useHistory } from "react-router-dom";
 function ProfileNavBAr({ user }) {
     const history = useHistory();
     const [showUser, setShowUser] = useState(false)
+
     function toggelUserProfile() {
         setShowUser(prevuse => !prevuse)
     }
@@ -21,11 +22,9 @@ function ProfileNavBAr({ user }) {
             <div className="profileNav">
                 <img src={logo} className="plogo" />
                 <NavLink to="/" className="home">Home</NavLink>
-                <select id="dropdown" className="create">
-                    <option value="default" disabled>Create</option>
-                    <option value="option2">Create Ideal Pin</option>
-                    <option value="option3" onChange={handelCreatePin}> Create Pin</option>
-                </select>
+                {/* <select id="dropdown" className="create"> */}
+                <NavLink to="/pins/new" className="create">Create Pin  <i className="fa-solid fa-chevron-down "  ></i> </NavLink>
+                {/* </select> */}
                 <form id="searchForm">
                     <input type="text" id="searchInput" placeholder="Search " />
                 </form>

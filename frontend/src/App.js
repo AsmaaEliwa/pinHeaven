@@ -7,7 +7,7 @@ import UpdateProfileForm from './componants/updateProfile/index.js';
 import Home from './componants/Home/index.js';
 import { Redirect } from 'react-router-dom';
 import CreatePinFprm from './componants/pin/createPin/index.js';
-
+import EditPinForm from './componants/pin/editPin/index.js';
 function App() {
   const sessionUser = useSelector(state => state.session.user);
 
@@ -16,6 +16,7 @@ function App() {
 
       <Navigation />
       <Switch>
+        
         <Route path="/pins/new">
          <CreatePinFprm user={sessionUser}/>
         </Route>
@@ -30,6 +31,11 @@ function App() {
         <Route path="/home">
           <Home />
         </Route>
+        {
+        <Route path={`/pins/edit/:pinId`}>
+         <EditPinForm user={sessionUser} />
+        </Route>
+        }
       </Switch>
     </>
   );

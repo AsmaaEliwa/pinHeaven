@@ -2,6 +2,11 @@ class Api::PinsController < ApplicationController
     wrap_parameters include: Pin.attribute_names + [:image]
     def show
         @pin=Pin.find_by(id: params[:id])
+         if @pin
+    render 'api/pins/show'
+  else
+    render json: { error: "Pin not found" }, status: :not_found
+  end
         
     end
 
@@ -22,7 +27,7 @@ class Api::PinsController < ApplicationController
 
     def update
         @pin=Pin.find_by(id: params[:id])
-        if @pin && update( @pin)
+        if @pin&.update(pin_params)
             render 'api/pins/show'
         else
             render json: { errors: @pin.errors.full_messages }
@@ -31,10 +36,10 @@ class Api::PinsController < ApplicationController
 
     def destroy
         @pin=Pin.find_by(id: params[:id])
-        if @pin&.delete
-            render 'api/users/show'
+        if @pin&.destroy
+            render json: {messages: "success"}
         else
-            render json: { errors: @pin.errors.full_messages }
+            render json: { errors: ["pin not found"] }
         end
     end
 
@@ -43,6 +48,6 @@ class Api::PinsController < ApplicationController
 
     private
     def pin_params
-        params.require(:pin).permit(:user_id,:title,:description, :image)
+        params.require(:pin).permit(:user_id,:title,:description,:image)
     end
 end

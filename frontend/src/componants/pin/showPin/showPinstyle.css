@@ -1,15 +1,67 @@
+.componant{
+    /* display:flex ; */
+}
+.pins{
+    position: relative;
+
+    display: inline-block;
+    /* background-color: aquamarine; */
+    font-size: small;
+    width: 10%;
+    margin: 1rem;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2); 
+    border-radius: 1rem;
+}
 .pinimg{
-width: 10%;
-height: 10%;
-margin: 1rem;
-box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2); 
+width: 100%;
+height: 100%;
+
 
 }
-.pinimg:hover{
+.edit{
+    font-size: small;
+}
+.editPin{
     background-color:rgba(0, 0, 0, 0.2) ;
+    border-radius: 50%;
+    padding: .5rem;
+}
+
+.pins:hover .editPin{
+    background-color:white;
+    /* border-radius: 1rem; */
+}
+.pins:hover {
+    background-color:rgba(0, 0, 0, 0.2) ;
+    border-radius: 1rem;
 }
 .imageinfo{
-    width: 70%;
-    height: 70vh;
+    padding : 5rem;
+    padding-left: 0;
+    padding-right: 0%;
+    display: flex;
+    border-radius: 3rem;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2); 
+      /* background-color: green; */
+}
+.pininfo{
+    width: 50%;
+    /* height: 100%; */
+    /* left:0; */
+    /* top:2rem; */
+    /* padding: 3rem; */
     background-color: aqua;
+    border-radius: 1rem;
+
+}
+.pintitle{
+    /* padding: 4rem; */
+    font-size: 3rem;
+    /* font-weight: bold; */
+    right: 0%;
+
+}
+.sidinfo{
+    width: 100%;
+    /* background-color: bisque; */
 }

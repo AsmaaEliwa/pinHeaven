@@ -66,7 +66,7 @@ export const fetchPin = (id) => async (dispatch) => {
   const data = await response.json();
   dispatch(get_pin(data.pin)); 
   // console.log(data)
-  return data;
+  return data.pin;
 };
 
 
@@ -80,15 +80,15 @@ export const updatePin = (pin) => async (dispatch) => {
   });
   const data = await response.json();
   dispatch(set_pin(data.pin));
-  return response;
+  // return response;
 };
 
 export const removePin = (id) => async (dispatch) => {
-  const response = await csrfFetch(`/api/pins${id}`, {
+  const response = await csrfFetch(`/api/pins/${id}`, {
     method: "DELETE"
   });
 
-  dispatch(remove_pin());
+  dispatch(remove_pin(id));
   return response;
 };
 

@@ -1,0 +1,105 @@
+.h1Title{
+    padding: 2rem;
+    /* background-color: aqua; */
+    text-align: center;
+
+}
+.imgedit{
+    height:6rem;
+    width: 11rem;
+    background-color: #EFEFEF;
+    border-radius: 5px;
+    margin-right: 2rem;
+    margin-top: -16rem;
+}
+.editform{
+    /* background-color: bisque; */
+    display: flex;
+    align-items:center;
+    align-content: center;
+    padding-left: 2rem;
+
+
+}
+.pinedit{
+    /* background-color: blue; */
+    display: flex;
+    /* height: rem; */
+    width: 45rem;
+    flex-direction: column;
+    margin-right: 1rem;
+}
+.editTitle{
+    width: 70%;
+    height: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    /* margin-bottom: 3rem; */
+    border-color: #EFEFEF;
+    margin: 1rem;
+
+
+}
+.editDescription{
+    width: 70%;
+    height: 3rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    bottom:0;
+    border-color: #EFEFEF;
+    margin: 1rem;
+    box-shadow: none;
+    border-bottom: 3px bold #EFEFEF;
+}
+.flex{
+    display: flex;
+}
+.editLabel{
+    padding-right: 1rem;
+    width: 5rem;
+    /* background-color: blueviolet; */
+    margin: auto;
+}
+.line{
+    width: 100%;
+}
+.editSelect{
+    width: 75%;
+    height: 1rem;
+    padding: 1.5rem;
+    border-radius: 3px;
+    bottom:0;
+    border-color: #EFEFEF;
+    background-color: #EFEFEF;
+    margin-bottom: 1rem;
+
+}
+.editpinnbtn{
+background-color: red;
+margin-left:75% ;
+padding: 1rem;
+width: 15%;
+top:0;
+border-radius: 3rem;
+color:white;
+border:none
+
+}
+.deletepinnbtn{
+background-color: #EFEFEF;
+margin-left:55% ;
+padding: 1rem;
+width: 10%;
+border-radius: 3rem;
+bottom: 0;
+border:none;
+margin-top: 3rem;
+}
+.editbtn{
+    /* background-color: blueviolet; */
+    position: absolute;
+    bottom: 0;
+    /* right: 0%; */
+    width:70%;
+    height:7rem;
+}
