@@ -35,7 +35,7 @@ class User < ApplicationRecord
   validate :birth_date_cannot_be_in_the_future
   has_one_attached :picture
   has_many :pins
-
+  has_many :boards
   def birth_date_cannot_be_in_the_future
     if birth_date.present? && birth_date> Date.today
       errors.add(:birth_date, "can't be in the future")

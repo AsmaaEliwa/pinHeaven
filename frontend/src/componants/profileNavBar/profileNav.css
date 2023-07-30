@@ -92,3 +92,25 @@ h1{
     /* z-index: 10; */
 
 }
+.addBoard{
+    /* background-color: aqua; */
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    font-size: xx-large;
+    /* padding: auto; */
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    margin-left:93% ;
+}
+.addBoard:hover{
+    background-color: #E9E9E9;
+}
+.pin_board{
+text-decoration: none;
+color: black;
+/* margin-right: 2rem; */
+padding: .5rem;
+}

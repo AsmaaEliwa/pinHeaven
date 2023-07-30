@@ -5,9 +5,9 @@ import Navigation from './componants/Navigation/index.js';
 import UserProfile from './componants/profileNavBar/userProfile.js';
 import UpdateProfileForm from './componants/updateProfile/index.js';
 import Home from './componants/Home/index.js';
-import { Redirect } from 'react-router-dom';
 import CreatePinFprm from './componants/pin/createPin/index.js';
 import EditPinForm from './componants/pin/editPin/index.js';
+import CreateBoardForm from './componants/board/creatBoard/index.js';
 function App() {
   const sessionUser = useSelector(state => state.session.user);
 
@@ -16,7 +16,9 @@ function App() {
 
       <Navigation />
       <Switch>
-        
+        <Route path="/boards/new">
+          <CreateBoardForm user={sessionUser}/>
+        </Route>
         <Route path="/pins/new">
          <CreatePinFprm user={sessionUser}/>
         </Route>

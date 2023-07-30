@@ -1,4 +1,3 @@
-
 json.pins do
     @pins.each do |pin|
         json.set! pin.id do

@@ -23,7 +23,9 @@ function Profile({ user }) {
   };
   const logout = (e) => {
     e.preventDefault();
+    // debugger
     dispatch(sessionActions.logout()).then(() => {
+      // debugger
       history.push("/home")
     });
   };
