@@ -40,21 +40,11 @@ function ShowBoard({ user }) {
 
   return (
     <div className="componant">
-      {/* <h1>hello</h1> */}
-      {/* {pins.map((pin) => {
-        if (!pin) return null; 
-        return <><div className="pins "> <img key={pin.id} src={`${pin.imgUrl}`} onClick={()=>handleOutsideClick(pin)} className="pinimg " /> <div className="edit"  > <FontAwesomeIcon icon={faPen} fade onClick={()=>handelEdite(pin)} /> </div> </div> </>
-      })} */}
-      {showBoardInfo && 
-      <Modal onClose={handleModalClose} >
-              <div className="imageinfo">
+      <h1>hello board</h1>
+   {boards.map(board=> <h2> {board.title}</h2>)}
+           
 
-                <div className="sidinfo">
-                <h2 className="pintitle"> {selectedBoard.title}</h2>
-              </div>
-              </div>
-              </Modal>
-              }
+              
               
     </div>
   );

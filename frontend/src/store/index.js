@@ -4,12 +4,13 @@ import sessionReducer from './session';
 import pinReducer from './pin';
 import userReducer from './users';
 import BoardReducer from './board';
-
+import boardPinReducer from './boardPins';
 const rootReducer = combineReducers({
   session:sessionReducer,
   pin:pinReducer,
   users:userReducer,
-  boards:BoardReducer
+  boards:BoardReducer,
+  boardPins:boardPinReducer
 });
 let enhancer;
 

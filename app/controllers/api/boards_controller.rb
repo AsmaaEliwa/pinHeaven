@@ -13,19 +13,7 @@ class Api::BoardsController < ApplicationController
         @boards = Board.where('user_id = ?', params[:user_id])   
     end
 
-    # def create
-    #       @board = Board.new(board_params)
-    #       if current_user
-    #         @board.user_id = current_user.id
-    #     else
-    #         return render json: ["u can not create a board "], status: 401
-    #     end
-    #       if @board.save 
-    #       render 'api/boards/show'
-    #       else
-    #         render json: ["Title can't be blank"], status: 422
-    #       end
-    # end 
+ 
     def create
         @board = Board.new(board_params)
         # if current_user

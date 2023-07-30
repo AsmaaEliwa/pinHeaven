@@ -72,7 +72,6 @@ export const logout = () => async (dispatch) => {
     method: "DELETE"
   });
   storeCurrentUser(null);
-  debugger
   dispatch(removeCurrentUser());
   return response;
 };
