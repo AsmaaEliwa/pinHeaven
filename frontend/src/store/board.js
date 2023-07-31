@@ -77,6 +77,7 @@ const get_boards = (boards) => {
     const data = await response.json();
     // debugger;
     dispatch(get_boards(data.boards));
+   return data.boards
   };
 
   export const fetchBoard = (id) => async (dispatch) => {

@@ -4,6 +4,9 @@ import * as pinActions from "../../../store/pin";
 import { useHistory } from "react-router-dom";
 import "./createPin.css"
 import { useRef } from "react";
+import BoardPinCreate from "../../boardPins/boardPinCreate";
+import { useEffect } from 'react';
+import * as boardActions from "../../../store/board"
 function CreatePinFprm({user}) {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
@@ -13,8 +16,25 @@ function CreatePinFprm({user}) {
     const [imageUrl, setImageUrl] = useState("");
     const history = useHistory();
     const fileInputRef = useRef(null);
-
-  
+    // const [boards, setBoards] = useState([]);
+    // const boardsData = useSelector((state) => {
+    //     return user?.boardIds.map((boardId) => Object.values(state.boards)[boardId]);
+    //   });
+    // useEffect(() => {
+    //     if (boardsData) {
+    //       setBoards(boardsData);
+    //     }
+    //   }, []);
+    
+    //   useEffect(() => {
+    //     if (boards.length === 0) {
+    //     //   debugger
+    //       dispatch(boardActions.fetchBoards(user.id)).then((res) => {
+    //     //    debugger
+    //         setBoards(Object.values(res));
+    //       });
+    //     }
+    //   }, [user.id,dispatch,boards]);
         const handleSubmit = async (e) => {
             e.preventDefault();
             const formData = new FormData();
@@ -43,11 +63,14 @@ function CreatePinFprm({user}) {
           };
           let preview = null;
   if (image) preview = <img src={imageUrl} alt="" className="image-pin" />;
-  
+//   if (boards.length === 0) {
+//     return <BoardPinCreate boards={boards}/>;
+//   }
     return (
         <div className='createpin'>
             {/* {preview} */}
             <div className='createpin_form'>
+                <BoardPinCreate user={user}/>
             <form className="form"  onSubmit={handleSubmit}>
                 <label className="imageinput">
                    {!imageUrl && <div className="imagestyle"><div className="uploadimage" > <i class="fa-solid fa-circle-arrow-up fa-bounce uploadimageicon"></i>
