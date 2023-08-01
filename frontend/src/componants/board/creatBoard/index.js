@@ -13,13 +13,12 @@ function CreateBoardForm({user}) {
     formData.append("board[title]",title );
     formData.append("board[user_id]", sessionUser.id);
    
-  
         const handleSubmit = async (e) => {
             e.preventDefault();
             const user_id = user?.id; 
             if (user_id) {
              dispatch(boardActions.createBoard(formData)).then(()=>{
-                history.push("/")
+                history.push(`/users/${user.id}`)
             })
         }
 

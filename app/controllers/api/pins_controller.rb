@@ -11,7 +11,11 @@ class Api::PinsController < ApplicationController
     end
 
     def index
-        @pins=Pin.where(user_id: params[:user_id]).order(created_at: :asc)
+        if params[:user_id].present?
+            @pins=Pin.where(user_id: params[:user_id]).order(created_at: :asc)
+        else
+            @pins=Pin.all
+        end
         render 'api/pins/index'
     end
 

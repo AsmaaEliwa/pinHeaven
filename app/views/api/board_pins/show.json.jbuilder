@@ -1,3 +1,3 @@
-json.set! @board_pin.id do
-  json.extract! @board_pin, :id, :board_id, :pin_id, :created_at, :updated_at
+json.board_pin do 
+  json.set! @board_pin.board_id, @board_pin.board.pin_ids
 end

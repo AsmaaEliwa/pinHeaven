@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as pinActions from "../../../store/pin";
-import { useHistory } from "react-router-dom";
 import "./createPin.css"
 import { useRef } from "react";
-import BoardPinCreate from "../../boardPins/boardPinCreate";
 import { useEffect } from 'react';
 import * as boardActions from "../../../store/board"
+import * as boardPinActions from "../../../store/boardPins"
+import "./boardPin.css"
+import { useHistory } from 'react-router-dom';
 function CreatePinFprm({user}) {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
@@ -16,25 +17,19 @@ function CreatePinFprm({user}) {
     const [imageUrl, setImageUrl] = useState("");
     const history = useHistory();
     const fileInputRef = useRef(null);
-    // const [boards, setBoards] = useState([]);
-    // const boardsData = useSelector((state) => {
-    //     return user?.boardIds.map((boardId) => Object.values(state.boards)[boardId]);
-    //   });
-    // useEffect(() => {
-    //     if (boardsData) {
-    //       setBoards(boardsData);
-    //     }
-    //   }, []);
-    
-    //   useEffect(() => {
-    //     if (boards.length === 0) {
-    //     //   debugger
-    //       dispatch(boardActions.fetchBoards(user.id)).then((res) => {
-    //     //    debugger
-    //         setBoards(Object.values(res));
-    //       });
-    //     }
-    //   }, [user.id,dispatch,boards]);
+    const [selectedBoard,setSelectedBoard]=useState({})
+  
+    const boardsData = useSelector((state) => {
+      return user?.boardIds.map((boardId) => state.boards[boardId]);
+    });
+
+    useEffect(() => {
+      if (!boardsData[0]) {
+        dispatch(boardActions.fetchBoards(user.id))
+      }
+    }, [user.id,dispatch]);
+
+
         const handleSubmit = async (e) => {
             e.preventDefault();
             const formData = new FormData();
@@ -46,10 +41,16 @@ function CreatePinFprm({user}) {
             if (image) {
               formData.append("pin[image]", image);
             }
+            
+        console.log(selectedBoard)
+        dispatch(pinActions.createPin(formData)).then((res)=>{
+         const pinId=Object.values(res)[0].id
+          dispatch(boardPinActions.createBoardPin({pinId,boardId:selectedBoard})).then(()=>{
+            history.push(`/users/${user.id}`)
+
+          })
           
-            dispatch(pinActions.createPin(formData)).then(()=>{
-                history.push("/")
-            });
+      });
 
           };
           const handleFile = ({ currentTarget }) => {
@@ -63,15 +64,21 @@ function CreatePinFprm({user}) {
           };
           let preview = null;
   if (image) preview = <img src={imageUrl} alt="" className="image-pin" />;
-//   if (boards.length === 0) {
-//     return <BoardPinCreate boards={boards}/>;
-//   }
+
+
+  
+function handelChange(e){
+    e.preventDefault()
+    setSelectedBoard( parseInt(e.target.value, 10));
+  }
+if (!boardsData[0])  return null
+
     return (
         <div className='createpin'>
-            {/* {preview} */}
             <div className='createpin_form'>
-                <BoardPinCreate user={user}/>
             <form className="form"  onSubmit={handleSubmit}>
+           
+              
                 <label className="imageinput">
                    {!imageUrl && <div className="imagestyle"><div className="uploadimage" > <i class="fa-solid fa-circle-arrow-up fa-bounce uploadimageicon"></i>
                    <p>Drag and drop or clike to upload</p></div>
@@ -114,7 +121,12 @@ function CreatePinFprm({user}) {
                     />
                 </label>
                 </div>
+            
                 <div className="btn">
+                <select className="selectBoard" onChange={handelChange}>
+                <option>All Pins</option>
+                { boardsData.map(board=>  <option  key={board.id} value={board.id}>{board.title}</option> )}
+            </select>
                 <button type="submit" className="createpinnbtn">Save </button>
                 </div>
             </form>

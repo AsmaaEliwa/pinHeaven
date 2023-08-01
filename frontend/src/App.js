@@ -8,6 +8,8 @@ import Home from './componants/Home/index.js';
 import CreatePinFprm from './componants/pin/createPin/index.js';
 import EditPinForm from './componants/pin/editPin/index.js';
 import CreateBoardForm from './componants/board/creatBoard/index.js';
+import ProfileHome from './componants/profileNavBar/profileHome.js';
+import SgowBoardPin from './componants/boardPins/boardPinShow/index.js';
 function App() {
   const sessionUser = useSelector(state => state.session.user);
 
@@ -16,6 +18,7 @@ function App() {
 
       <Navigation />
       <Switch>
+        
         <Route path="/boards/new">
           <CreateBoardForm user={sessionUser}/>
         </Route>
@@ -25,6 +28,11 @@ function App() {
         {
         <Route path={`/users/:userId`}>
           <UserProfile/>
+        </Route>
+        }
+          {
+        <Route path={`/boards/:boardId`}>
+          <SgowBoardPin/>
         </Route>
         }
         <Route path="/update">
@@ -38,6 +46,9 @@ function App() {
          <EditPinForm user={sessionUser} />
         </Route>
         }
+        <Route path="/">
+          <ProfileHome></ProfileHome>
+        </Route>
       </Switch>
     </>
   );

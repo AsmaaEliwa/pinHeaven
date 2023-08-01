@@ -51,8 +51,8 @@ const get_boards = (boards) => {
 
 
   export const updateBoard = (board) => async (dispatch) => {
-    const { title } = board;
-    const response = await csrfFetch(`/api/boards/${board.id}`, {
+    const { boardId ,title } = board;
+    const response = await csrfFetch(`/api/boards/${boardId}`, {
       method: 'PATCH',
       body: JSON.stringify({
         title
@@ -63,19 +63,20 @@ const get_boards = (boards) => {
     // return response;
   };
   
-  export const removeBoard = (id) => async (dispatch) => {
-    const response = await csrfFetch(`/api/boards/${id}`, {
+  export const removeBoard = (data) => async (dispatch) => {
+    const {boardId,userId}=data
+    const response = await csrfFetch(`/api/boards/${boardId}`, {
       method: "DELETE"
     });
+    dispatch(remove_board(boardId));
+
+     await dispatch(fetchBoards(userId));
   
-    dispatch(remove_board(id));
-    return response;
   };
   
   export const fetchBoards = (userId) => async (dispatch) => {
     const response = await csrfFetch(`/api/boards?user_id=${userId}`);
     const data = await response.json();
-    // debugger;
     dispatch(get_boards(data.boards));
    return data.boards
   };

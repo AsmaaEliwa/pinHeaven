@@ -1,0 +1,58 @@
+.boardContainer {
+    /* background-color: #e9e9e9; */
+    display: flex;
+  }
+  
+  .allBoards {
+    justify-content: space-around;
+    /* background-color: blue; */
+    display: flex;
+    /* height: auto; */
+    flex-wrap: wrap;
+  }
+  
+  .allBoard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f7f7f7;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    width: 15rem;
+    height: 15rem;
+    margin: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+ 
+.allBoard:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.imgBoard{
+    height: 90%;
+    width: 50%;
+    background-color: blue;
+}
+  
+  .img2Board{
+    height: 90%;
+    width: 50%;
+    background-color: rgb(255, 0, 238);
+  }
+  .boardEdit{
+      margin: auto;
+  }
+  .editboardnbtn{
+    margin-left: 70%;
+    padding: 1rem;
+    border-radius: 2rem;
+    width: 25%;
+    border: none;
+      background-color: red;
+      margin-bottom: 2rem;
+  }
+  .editBoard{
+      padding: 3rem;
+  }

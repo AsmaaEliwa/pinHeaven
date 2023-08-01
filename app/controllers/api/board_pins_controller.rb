@@ -1,11 +1,14 @@
 class Api::BoardPinsController < ApplicationController
+    wrap_parameters include: BoardPin.attribute_names + ["pinId","boardId"]
     def show
         @board_pin=BoardPin.find_by(id: params[:id])
         if @board_pin
-   render 'api/board_pins/show'
- else
-   render json: { error: "Pin not found" }, status: :not_found
+            render 'api/board_pins/show'
+        else
+            render json: { error: "Pin not found" }, status: :not_found
+        end
     end
+
     def index
         if params[:board_id].present?
             @board_pins = BoardPin.where(board_id: params[:board_id]).order(created_at: :desc)
@@ -14,11 +17,13 @@ class Api::BoardPinsController < ApplicationController
         end
         render :index
     end
+
     def create
-        @board_pins=BoardPin.new(board_pins_params)
-        if @board_pins.save
-        else render "api/board_pins/show"
-        else
+        @board_pin=BoardPin.new(board_pins_params)
+        if @board_pin.save
+            render :show
+        else 
+        
           render json: { error: "board_pins not found" }, status: :not_found
 
         end
@@ -28,7 +33,7 @@ class Api::BoardPinsController < ApplicationController
         @board_pins=BoardPin.find_by(id: params[:id])
         if @board_pins.update(board_pins_params)
         else render "api/board_pins/show"
-        else
+        
           render json: { error: "board_pins cant be updated" }, status: :not_found
 
         end
@@ -45,6 +50,6 @@ class Api::BoardPinsController < ApplicationController
 
     private
     def board_pins_params
-        params.require(:board_bins).permit(:pin_id,:board_id)
+        params.require(:board_pin).permit(:pin_id,:board_id)
     end
 end

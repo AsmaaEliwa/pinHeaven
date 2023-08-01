@@ -1,3 +1,8 @@
-json.array! @board_pins do |board_pin|
-  json.extract! board_pin, :id, :board_id, :pin_id, :created_at, :updated_at
-end
+  @board_pins.each do|board_pin| 
+    json.set! board_pin.board_id, board_pin.board.pin_ids
+  end
+
+
+
+
+

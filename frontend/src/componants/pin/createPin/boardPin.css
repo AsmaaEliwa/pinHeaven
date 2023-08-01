@@ -1,0 +1,21 @@
+.pickboard{
+    /* background-color: aqua; */
+    display: flex;
+    right: 0;
+    width: 30%;
+align-items: end;
+align-content: flex-end;
+/* height: 3rem; */
+/* padding-top: 2rem; */
+/* padding-left: 1rem; */
+margin-left: 80%;
+padding: 1rem;
+
+border-radius: 2rem;
+}
+.selectBoard{
+    padding: 1rem;
+    background-color: #E9E9E9;
+    border-radius: 2rem;
+    top:0;
+}

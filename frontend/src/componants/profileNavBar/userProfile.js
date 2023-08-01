@@ -9,6 +9,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons"; // Import the faPlus icon
 import ShowBoard from '../board/showBoard';
+import SgowBoardPin from '../boardPins/boardPinShow';
 function UserProfile() {
     const { userId } = useParams();
     const dispatch = useDispatch();
@@ -36,6 +37,7 @@ function UserProfile() {
             <div className='addBoard' onClick={handelCreateBoard}><FontAwesomeIcon icon={faPlus} beat /></div>
             <ShowPin user={user} />
             <ShowBoard user={user}/>
+            {/* <SgowBoardPin/> */}
         </div>
     )
 }

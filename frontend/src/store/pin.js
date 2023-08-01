@@ -38,13 +38,11 @@ export const fetchPins = (userId) => async (dispatch) => {
   dispatch(getPins(data.pins));
 };
 
-export const get_Pin=(id)=>(state)=>{
-  return state.pins ? state.pins[id]: null
-  }
-  
-  export const get_Pinss=(state)=>{
-  return state.pins ? Object.values(state.pins) :[]
-  }
+export const fetchAllPins=()=> async (dispatch)=>{
+  const res= await csrfFetch("/api/pins");
+  const data=await res.json();
+  dispatch(getPins(data.pins))
+}
 
 
 export const createPin = (formData) => async (dispatch,getState) => {
@@ -58,7 +56,7 @@ export const createPin = (formData) => async (dispatch,getState) => {
   const updatedUser = { ...sessionUser, pinIds: [...sessionUser.pinIds, data.pin.id] };
   dispatch(set_pin(data.pin)); // Store the new pin in the pinReducer
   dispatch(userActions.setCurrentUser(updatedUser)); // Update the user object with the new pin ID
-  return response;
+  return data;
 };
 
 export const fetchPin = (id) => async (dispatch) => {

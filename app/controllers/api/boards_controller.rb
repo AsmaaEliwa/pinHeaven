@@ -16,12 +16,6 @@ class Api::BoardsController < ApplicationController
  
     def create
         @board = Board.new(board_params)
-        # if current_user
-        #   @board.user_id = current_user.id
-        # else
-        #   return render json: { errors: ["You need to be authenticated to create a board"] }, status: 401
-        # end
-      
         if @board.save
           render 'api/boards/show'
         else

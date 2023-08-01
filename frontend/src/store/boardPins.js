@@ -37,22 +37,18 @@ export const fetchBoardPins = (userId) => async (dispatch) => {
     const response = await csrfFetch(`/api/board_pins?user_id=${userId}`);
     const data = await response.json();
     // debugger;
-    dispatch(get_board_pins(data.board_pins));
+    dispatch(get_board_pins(data));
   };
   
  
-  export const createPin = (formData) => async (dispatch,getState) => {
+  export const createBoardPin = (boardPin) => async (dispatch) => {
     const response = await csrfFetch('/api/board_pins', {
       method: 'POST',
-      body: formData
+      body: JSON.stringify(boardPin)
   
     });
     const data = await response.json();
-    const sessionUser = getState().session.user
-    const updatedUser = { ...sessionUser, boardpinIds: [...sessionUser.boardpinIds, data.boardpin.id] };
-    dispatch(set_board_pin(data.board_pin)); // Store the new pin in the pinReducer
-    dispatch(userActions.setCurrentUser(updatedUser)); // Update the user object with the new pin ID
-    return response;
+    dispatch(set_board_pin(data)); // Store the new pin in the pinReducer
   };
 
   export const fetchBoardPin = (id) => async (dispatch) => {
@@ -88,7 +84,7 @@ export const fetchBoardPins = (userId) => async (dispatch) => {
     const newState = { ...state }
     switch (action.type) {
       case SET_BOARD_PIN:
-        return { ...state, [action.board_pin.id]: action.board_pin };
+        return { ...state, ...action.board_pin };
       case REMOVE_BOARD_PIN:
         delete newState[action.id]
         return newState;
