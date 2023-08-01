@@ -3,7 +3,10 @@ import { NavLink, Redirect } from 'react-router-dom';
 import "./profileNav.css"
 import { useState } from 'react';
 import { useHistory } from "react-router-dom";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { Link } from "react-router-dom";
 function ProfileNavBAr({ user }) {
     const history = useHistory();
     const [showUser, setShowUser] = useState(false)
@@ -11,24 +14,24 @@ function ProfileNavBAr({ user }) {
     function toggelUserProfile() {
         setShowUser(prevuse => !prevuse)
     }
-    function handelCreatePin(){
-      console.log("cliked")
-      debugger
-      history.push("/pins/new")
-    }
 
+    
     return (
         <>
             <div className="profileNav">
                 <img src={logo} className="plogo" />
                 <NavLink to="/" className="home">Home</NavLink>
-                {/* <select id="dropdown" className="create"> */}
-                <NavLink to="/pins/new" className="create">Create Pin  <i className="fa-solid fa-chevron-down "  ></i> </NavLink>
-                {/* </select> */}
+                <NavLink to="/pins/new" className="create">Create Pin  <FontAwesomeIcon icon={faChevronDown} size="lg" /> </NavLink>
                 <form id="searchForm">
                     <input type="text" id="searchInput" placeholder="Search " />
                 </form>
-                <button className="user" onClick={toggelUserProfile}>{user.username[0]}</button>
+                <div className="contactgit">
+                <a href="https://github.com/AsmaaEliwa" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faGithub} style={{ color: 'darkgray' }} /></a> 
+                </div>
+                <div className="contactlink">
+                <a href="https://www.linkedin.com/in/asmaa-eliwa-38a38621a/" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faLinkedin} style={{ color: 'darkgray' }} /></a> 
+                </div>
+                <button className="user" onClick={toggelUserProfile}>{user.username[0].toUpperCase()}</button>
             </div>
               {showUser &&
                 <>

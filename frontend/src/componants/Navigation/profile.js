@@ -4,6 +4,8 @@ import * as sessionActions from "../../store/session";
 import "./profile.css"
 import ProfileNavBAr from "../profileNavBar";
 import { NavLink, useHistory } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 function Profile({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
@@ -40,7 +42,7 @@ function Profile({ user }) {
       <div ref={menuRef} className="profile">
 
         <button onClick={toggleMenu} className="dropdown">
-          <i className="fa-solid fa-chevron-down "  ></i>    </button>
+        <FontAwesomeIcon icon={faChevronDown} size="lg" />  </button>
         {showMenu && (
 
           <div className="profile-dropdown">

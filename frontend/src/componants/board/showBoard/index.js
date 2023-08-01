@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 import Modal from "../../context/model"
 import { useParams } from "react-router-dom";
+import *  as boardPinsActions from "../../../store/boardPins"
 function ShowBoard() {
   const { userId } = useParams();
   const user = useSelector((state) => state.users[userId]);
@@ -16,7 +17,7 @@ function ShowBoard() {
   const[title,setTitle]=useState("")
   const [selectedBoard, setSelectedBoard] = useState(null)
   const history=useHistory()
-  console.log(currentUser.id,Number(userId))
+  // console.log(currentUser.id,Number(userId))
   const boards = useSelector((state) => {
     return user.boardIds.map((id) => {
       return state.boards[id];
@@ -24,8 +25,16 @@ function ShowBoard() {
   });
   useEffect(() => {
     dispatch(boardActions.fetchBoards(userId)); 
+    dispatch(boardPinsActions.fetchBoardPins(userId))
   }, [userId]);
+const boardPins= useSelector(state=>{
+  return state.boardPins
+})
+const pins= useSelector(state=>{
+  return state.pin
+})
 
+console.log(pins)
 
 function handelBoardPin(e,board){
   e.preventDefault()
@@ -56,29 +65,34 @@ function handelDeleteBoard(){
 })}}
 
 if (!boards[0]) return null;
+if (!boardPins) return null;
 
  
   return (
     <div className="boardContainer">
     <div className="allBoards">
-      {boards.map((board) => (
-        <div className="allBoard" onClick={ (e)=>handelBoardPin(e,board)}>
-          {board?.title}
-          <div className="imgBoard"></div>
-          <div className="img2Board"></div>
+      {boards.map((board) => {
+        const [firstPinId, secondPinId] = boardPins[board?.id] || [];
+       return (
+        <div className="allBoard" onClick={(e) => handelBoardPin(e, board)}>
+          {firstPinId && <img className="imgBoard" src={`${pins[firstPinId]?.imgUrl}`} />}
+          {firstPinId&&<div className="btnimg"></div>}
+          {secondPinId && <img className="img2Board" src={`${pins[secondPinId]?.imgUrl}`} />}
+
           <div className="boardEdit">
             <FontAwesomeIcon
               icon={faPen}
               onClick={(e) => {
-                setSelectedBoard(board)
+                setSelectedBoard(board);
                 e.stopPropagation();
-                handelEdite(e,board);
+                handelEdite(e, board);
               }}
             />
           </div>
         </div>
-      ))}
-    </div>
+      );
+            })}
+  </div>
     {showBoardEdit&&
     <Modal onClose={handelModalClose} >
      <form onSubmit={handelEditSubmit} className="editBoard"> 

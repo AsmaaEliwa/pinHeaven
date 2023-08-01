@@ -28,15 +28,19 @@ function UserProfile() {
     }
     return (
         <div className="userProfile">
-            <div className="firstlitter"> {user.username[0]}</div>
+            <div className="firstlitter"> {user.username[0].toUpperCase()}</div>
+            <div className='nameEmail'>
             <h1>{user.username}</h1>
             <p>{user.email}</p>
+            </div>
             <NavLink className="pin_board" to=""> Created </NavLink>
             <NavLink className="pin_board"  to=""> saved </NavLink>
 
             <div className='addBoard' onClick={handelCreateBoard}><FontAwesomeIcon icon={faPlus} beat /></div>
-            <ShowPin user={user} />
             <ShowBoard user={user}/>
+            <hr/>
+            <h2 className='allpins'>Unorganized ideas</h2>
+            <ShowPin user={user} />
             {/* <SgowBoardPin/> */}
         </div>
     )

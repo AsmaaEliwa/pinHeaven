@@ -51,6 +51,7 @@ const get_boards = (boards) => {
 
 
   export const updateBoard = (board) => async (dispatch) => {
+    // debugger
     const { boardId ,title } = board;
     const response = await csrfFetch(`/api/boards/${boardId}`, {
       method: 'PATCH',
@@ -58,6 +59,7 @@ const get_boards = (boards) => {
         title
       })
     });
+    // debugger
     const data = await response.json();
     dispatch(set_board(data.board));
     // return response;

@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import * as pinActions from "../../store/pin"
+import * as userAction from "../../store/users"
 import { useSelector } from 'react-redux';
 import Modal from "../context/model";
 import { useState } from 'react';
@@ -11,16 +12,24 @@ function ProfileHome(){
     const [selectedPin,setSelectedPin]=useState(null)
     useEffect(()=>{
         dispatch(pinActions.fetchAllPins())
+        dispatch(userAction.fetchUsers())
     },[])
     function handelShowPinInfo(pin){
         setShowPinInfo(true)
         setSelectedPin(pin)
-        console.log(selectedPin)
+    // console.log(selectedPin.userId)
+
     }
     function handelModalClose(){
         setShowPinInfo(false);
     }
-    // if(!selectedPin) return null
+
+    const user=useSelector(state=>{
+        // return state.users[selectedPin.userId]
+        console.log(state.users)
+    })
+    // console.log(user)
+
     return (
         <>
         <div className='pinscontainer'>
