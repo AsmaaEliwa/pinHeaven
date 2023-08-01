@@ -63,14 +63,16 @@ const get_boards = (boards) => {
     // return response;
   };
   
-  export const removeBoard = (data) => async (dispatch) => {
+  export const removeBoard = (data) => async (dispatch,getState) => {
     const {boardId,userId}=data
     const response = await csrfFetch(`/api/boards/${boardId}`, {
       method: "DELETE"
     });
     dispatch(remove_board(boardId));
-
-     await dispatch(fetchBoards(userId));
+    const currentUser = getState().session.user;
+    const updatedBoardIds = currentUser.boardIds.filter((id) => id !== boardId);
+    const updatedUser = { ...currentUser, boardIds: updatedBoardIds };
+    dispatch(userActions.setCurrentUser(updatedUser));
   
   };
   

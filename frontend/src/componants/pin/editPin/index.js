@@ -30,7 +30,7 @@ function EditPinForm(){
                 e.preventDefault();
           
                 dispatch(pinActions.updatePin({...pin ,title,description})).then(()=>{
-                    history.push("/")
+                    history.push(`/users/${user.id}`)
                 });
     
               };

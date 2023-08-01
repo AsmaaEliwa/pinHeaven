@@ -118,7 +118,7 @@ padding: .5rem;
     background-color: #E9E9E9;
     flex-wrap: wrap;
     display: flex;
-  
+  padding: 3rem;
 
 }
 .allPins{
@@ -133,12 +133,13 @@ padding: .5rem;
     max-width: 100%;
     max-height: 100%;
     border: 15px  #ffcc99 solid;
+    display: flex;
 
 }
 .pinshow{
     width:40rem;
     height: 40rem;
-    background-color: #ffcc99;
+    /* background-color: #ffcc99; */
 }
 .pinInfo{
     width: 100%;
@@ -160,3 +161,40 @@ padding: .5rem;
     padding-top: 2rem;
     padding-bottom: 1rem;
 }
+.editpen{
+    background-color: aqua;
+    text-align: center;
+    /* position: relative; */
+    bottom: 0;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    /* display: inline; */
+}
+.imageContainer {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .allPinImg {
+    object-fit: cover;
+    max-width: 100%;
+    max-height: 100%;
+  }
+  
+  .editIcon {
+    position: absolute;
+    bottom: 5px; /* Adjust the distance from the bottom as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    /* background-color: rgba(0, 0, 0, 0.7); */
+    color: black;
+    padding: 1rem;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  .editIcon:hover {
+    background-color: #E9E9E9;
+  }

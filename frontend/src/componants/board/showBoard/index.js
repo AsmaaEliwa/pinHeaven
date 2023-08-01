@@ -2,7 +2,7 @@ import "./board.css"
 import React, { useState, useEffect ,useRef} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as boardActions from "../../../store/board";
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 import Modal from "../../context/model"
@@ -10,11 +10,13 @@ import { useParams } from "react-router-dom";
 function ShowBoard() {
   const { userId } = useParams();
   const user = useSelector((state) => state.users[userId]);
+  const currentUser =useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const [showBoardEdit, setShowBoardEdit] = useState(false);
   const[title,setTitle]=useState("")
   const [selectedBoard, setSelectedBoard] = useState(null)
   const history=useHistory()
+  console.log(currentUser.id,Number(userId))
   const boards = useSelector((state) => {
     return user.boardIds.map((id) => {
       return state.boards[id];
@@ -43,14 +45,16 @@ function handelModalClose(e){
 function handelEditSubmit(e){
   e.preventDefault()
   const boardId=selectedBoard.id
+  console.log(userId,currentUser)
+  if (Number(userId) === currentUser.id ){
   dispatch(boardActions.updateBoard({boardId,title})).then(()=>{setShowBoardEdit(false)})
-}
-function handelDeleteBoard(e){
-e.preventDefault()
-dispatch(boardActions.removeBoard({boardId:selectedBoard.id,userId})).then(()=> {
-  history.push(`/users/${user.id}`)})
-}
-// debugger
+}}
+function handelDeleteBoard(){
+  if (Number(userId) === currentUser.id ){
+ dispatch(boardActions.removeBoard({boardId:selectedBoard.id,userId})).then(()=>{
+  history.push(`/users/${currentUser.id}`)
+})}}
+
 if (!boards[0]) return null;
 
  
@@ -59,7 +63,7 @@ if (!boards[0]) return null;
     <div className="allBoards">
       {boards.map((board) => (
         <div className="allBoard" onClick={ (e)=>handelBoardPin(e,board)}>
-          {board.title}
+          {board?.title}
           <div className="imgBoard"></div>
           <div className="img2Board"></div>
           <div className="boardEdit">

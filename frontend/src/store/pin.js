@@ -81,12 +81,16 @@ export const updatePin = (pin) => async (dispatch) => {
   // return response;
 };
 
-export const removePin = (id) => async (dispatch) => {
+export const removePin = (id) => async (dispatch,getState) => {
   const response = await csrfFetch(`/api/pins/${id}`, {
     method: "DELETE"
   });
-
+  
   dispatch(remove_pin(id));
+  const currentUser = getState().session.user;
+  const updatedPinIds = currentUser.pinIds.filter((pinId) => pinId !== id);
+  const updatedUser = { ...currentUser, pinIds: updatedPinIds };
+  dispatch(userActions.setCurrentUser(updatedUser));
   return response;
 };
 

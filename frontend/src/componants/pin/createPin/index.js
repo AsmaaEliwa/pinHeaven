@@ -20,7 +20,8 @@ function CreatePinFprm({user}) {
     const [selectedBoard,setSelectedBoard]=useState({})
   
     const boardsData = useSelector((state) => {
-      return user?.boardIds.map((boardId) => state.boards[boardId]);
+      console.log(state.boards)
+      return Object.values(state.boards)
     });
 
     useEffect(() => {
@@ -71,6 +72,8 @@ function handelChange(e){
     e.preventDefault()
     setSelectedBoard( parseInt(e.target.value, 10));
   }
+  // debugger
+
 if (!boardsData[0])  return null
 
     return (
