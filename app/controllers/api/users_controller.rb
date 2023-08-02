@@ -7,7 +7,10 @@ class Api::UsersController < ApplicationController
     @user=User.find(params[:id]) 
     render :show
   end
-
+def index
+  @users=User.all
+  render :index
+end
 
   def create
 @user=User.new(user_params)

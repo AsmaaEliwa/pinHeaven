@@ -5,50 +5,62 @@ import * as userAction from "../../store/users"
 import { useSelector } from 'react-redux';
 import Modal from "../context/model";
 import { useState } from 'react';
-function ProfileHome(){
-    const dispatch=useDispatch()
-    const pins=useSelector(state=>Object.values(state.pin))
-    const [showPinInfo,setShowPinInfo]=useState(false)
-    const [selectedPin,setSelectedPin]=useState(null)
-    useEffect(()=>{
+import { NavLink } from 'react-router-dom';
+function ProfileHome() {
+    const dispatch = useDispatch()
+    const pins = useSelector(state => Object.values(state.pin))
+    const [showPinInfo, setShowPinInfo] = useState(false)
+    const [selectedPin, setSelectedPin] = useState(null)
+    useEffect(() => {
         dispatch(pinActions.fetchAllPins())
         dispatch(userAction.fetchUsers())
-    },[])
-    function handelShowPinInfo(pin){
+    }, [])
+    function handelShowPinInfo(pin) {
         setShowPinInfo(true)
         setSelectedPin(pin)
-    // console.log(selectedPin.userId)
+        // debugger
 
     }
-    function handelModalClose(){
+    function handelModalClose() {
         setShowPinInfo(false);
     }
 
-    const user=useSelector(state=>{
-        // return state.users[selectedPin.userId]
-        console.log(state.users)
+    const users = useSelector(state => {
+        return state.users || null
     })
-    // console.log(user)
+    const getUserById = (userId) => {
+
+        return users[userId] || null;
+    };
+
+    console.log(pins)
+
+    if (!pins[0]) return null
+    if (!users) {
+        return <p>Loading...</p>;
+    }
+    // debugger
 
     return (
         <>
-        <div className='pinscontainer'>
-        {pins.map(pin=> <div className='allPins'> <img className='allPinImg' src={pin.imgUrl} onClick={()=>handelShowPinInfo(pin)}/></div>)}
-        </div>
-        {showPinInfo&&
-        <Modal onClose={handelModalClose} className="pinshow">
-            <div className='pinInfo'>
-                <div>
-                <img className='allPinImg' src={selectedPin.imgUrl}/>
-                </div>
-                <div className='info'>
-                <h2 className='pinT'>{selectedPin.title}</h2>
-                <h2 className='pinT'>{selectedPin.description}</h2>
-
-                </div>
+            <div className='pinscontainer'>
+                {pins[0] && pins?.map(pin => <div className='allPins'> <img className='allPinImg' src={pin?.imgUrl} onClick={() => handelShowPinInfo(pin)} /></div>)}
             </div>
-        </Modal>
-        }
+            {showPinInfo &&
+                <Modal onClose={handelModalClose} className="pinshow">
+                    <div className='pinInfo'>
+                        <div>
+                            <img className='allPinImg' src={selectedPin.imgUrl} />
+                        </div>
+                        <div className='info'>
+                            <h2 className='pinT'>{selectedPin.title}</h2>
+                            <h2 className='pinT'>{selectedPin.description}</h2>
+                            <NavLink to={`/users/${selectedPin.userId}`}  className="visituser"> <div className='firstlitter'>{getUserById(selectedPin.userId).username[0].toUpperCase()} </div>      <div className='pinCreator'>{getUserById(selectedPin.userId).username}</div></NavLink>
+
+                        </div>
+                    </div>
+                </Modal>
+            }
         </>
     )
 }

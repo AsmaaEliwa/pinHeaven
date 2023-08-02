@@ -229,4 +229,33 @@ padding: .5rem;
   hr{
       margin-top: 3rem;
   }
- 
+ .pinCreator{
+     color: black;
+     background-color: darkgray ;
+     border-radius: 1rem;
+     display: flex;
+     flex-direction: column;
+     margin-top: 1rem;
+     width: 50%;
+     justify-content: center;
+ }
+ .pinCreator:hover{
+     background-color:#E9E9E9 ;
+
+ }
+ .visituser{
+     /* background-color: #ffcc99; */
+     text-decoration: none;
+     display:flex;
+
+ }
+ .firstlitter{
+/* padding: .5rem; */
+background-color:darkgray ;
+border-radius: 50%;
+color: black;
+ }
+ .firstlitter:hover{
+    background-color:#E9E9E9 ;
+     
+ }

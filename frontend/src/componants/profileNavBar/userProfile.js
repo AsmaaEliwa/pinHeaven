@@ -10,14 +10,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons"; // Import the faPlus icon
 import ShowBoard from '../board/showBoard';
 import SgowBoardPin from '../boardPins/boardPinShow';
+// import * as userAction from "../../store/users"
+
 function UserProfile() {
+    // debugger
     const { userId } = useParams();
     const dispatch = useDispatch();
     const user = useSelector((state) => state.users[userId]);
     const history=useHistory()
-    // debugger
     useEffect(() => {
       dispatch(userActions.fetchUser(userId));
+
     }, [userId]);
     if (!user) return null;
     function handelCreateBoard(){
@@ -26,12 +29,14 @@ function UserProfile() {
         history.push("/boards/new")
         }
     }
+    // debugger
+
     return (
         <div className="userProfile">
-            <div className="firstlitter"> {user.username[0].toUpperCase()}</div>
+            <div className="firstlitter"> {user?.username[0].toUpperCase()}</div>
             <div className='nameEmail'>
-            <h1>{user.username}</h1>
-            <p>{user.email}</p>
+            <h1>{user?.username}</h1>
+            <p>{user?.email}</p>
             </div>
             <NavLink className="pin_board" to=""> Created </NavLink>
             <NavLink className="pin_board"  to=""> saved </NavLink>
