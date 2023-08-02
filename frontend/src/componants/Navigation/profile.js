@@ -52,8 +52,15 @@ function Profile({ user }) {
               <li>{user.email}</li>
             </div>
             <li>
+              <button  className="logout">Add acount</button>
+              <button className="logout">convert to business</button>
               <NavLink to="/update" className="settings">Settings</NavLink>
+
+              <button className="logout">Turn your home feed </button>
+              <button  className="logout">your privacy rights</button>
+              <button  className="logout">Get help</button>
               <button onClick={logout} className="logout">Log Out</button>
+
             </li>
           </div>
         )}

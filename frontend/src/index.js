@@ -8,6 +8,7 @@ import configureStore from './store';
 import * as sessionActions from './store/session';
 import csrfFetch from './store/csrf';
 import {ModalProvider} from "./componants/context/model"
+import {PinModalProvider} from "./componants/pinModal/index"
 const store = configureStore();
 if (process.env.NODE_ENV !== 'production') {
   window.store = store;
@@ -15,14 +16,20 @@ if (process.env.NODE_ENV !== 'production') {
   window.sessionActions = sessionActions;
 }
 function Root() {
+  
   return (
     <ModalProvider>
+
+    <PinModalProvider>
     <ReduxProvider store={store}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
     </ReduxProvider>
+    
+    </PinModalProvider>
     </ModalProvider>
+
   );
 }
 const renderApplication = () => {

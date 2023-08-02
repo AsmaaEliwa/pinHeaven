@@ -93,7 +93,7 @@ option{
 .userProfile{
     align-items: center;
     text-align: center;
-    padding-top: 7rem;
+    padding-top: 4rem;
 }
 
 .firstlitter{
@@ -140,55 +140,75 @@ color: black;
 /* margin-right: 2rem; */
 padding: .5rem;
 }
+
+
+/*pins in home*/
 .pinscontainer{
-    background-color: #E9E9E9;
     flex-wrap: wrap;
     display: flex;
-  padding: 3rem;
+  padding-top: 3rem;
 
 }
 .allPins{
+    position: relative; 
     justify-content: space-around;
     display: inline-block;
-    width: 25%; /* Adjust the value to set the desired width */
-    height: 25%;
-    margin: 3rem;
+    width: 15%; 
+    height: 20%;
+    margin-left: 3.7rem;
+    border-radius:2rem ;
 }
 .allPinImg{
-    object-fit: cover;
-    max-width: 100%;
-    max-height: 100%;
-    border: 15px  #ffcc99 solid;
+    transition: background-color 0.3s ease;
     display: flex;
+    border-radius: 2rem;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
+    width: 100%;
+    height: 95%;
 
 }
+
+
+.image-overlay {
+    border-radius:2rem ;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0); 
+    transition: background-color 0.3s ease; 
+  }
+
+  .allPins:hover .image-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+/*  showing pin details */
 .pinshow{
     width:40rem;
     height: 40rem;
-    /* background-color: #ffcc99; */
 }
 .pinInfo{
-    width: 100%;
     height: 100%; 
-    /* background-color: #ffcc99; */
     padding: 2rem;
-    box-sizing: border-box;
     display:flex;
-    border-radius: 3rem;
+    border-radius: 5rem;
+    /* background-color: #ffcc99; */
+
 }
 .info{
-    background-color: #E9E9E9;
-    width: 60em;
-    /* padding: 3rem; */
-    border: 15px  #ffcc99 solid;
+    /* background-color: green; */
+    width: 50%;
     font-size: large;
 }
 .pinT{
-    padding-top: 2rem;
-    padding-bottom: 1rem;
+    /* background-color: aqua; */
+    margin-top: 9rem;
+    font-size: xx-large;
 }
 .editpen{
-    background-color: aqua;
+    /* background-color: aqua; */
     text-align: center;
     /* position: relative; */
     bottom: 0;
@@ -202,10 +222,9 @@ padding: .5rem;
     display: inline-block;
   }
   
-  .allPinImg {
-    object-fit: cover;
-    max-width: 100%;
-    max-height: 100%;
+
+  .allPinImg:hover{
+      background-color:rgba(0, 0, 0, 0.2) ;
   }
   
   .editIcon {
@@ -235,8 +254,11 @@ padding: .5rem;
      border-radius: 1rem;
      display: flex;
      flex-direction: column;
-     margin-top: 1rem;
-     /* width: 50%; */
+     /* margin-top: 1rem; */
+     width: 50%;
+     height: 40%;
+     margin-top: 2rem;
+
      justify-content: center;
  }
  .pinCreator:hover{
@@ -247,13 +269,16 @@ padding: .5rem;
      /* background-color: #ffcc99; */
      text-decoration: none;
      display:flex;
+     height: 20%;
 
  }
  .firstlitter{
-/* padding: .5rem; */
+padding: .5rem;
 background-color:darkgray ;
 border-radius: 50%;
 color: black;
+font-size: large;
+/* margin-right: -.1rem; */
  }
  .firstlitter:hover{
     background-color:#E9E9E9 ;
@@ -261,10 +286,12 @@ color: black;
  }
  .follow{
 margin: auto;
-padding: 1rem;
+height: 4rem;
 background-color: #E9E9E9;
-width: 2%;
+width: 4rem;
 display: flex;
+flex-direction: column; 
+justify-content: center;
 text-align: center;
 align-content: center;
 border-radius: 50%;

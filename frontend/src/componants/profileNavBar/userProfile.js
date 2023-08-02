@@ -40,7 +40,7 @@ function UserProfile() {
             </div>
             <NavLink className="pin_board" to=""> Created </NavLink>
             <NavLink className="pin_board"  to=""> saved </NavLink>
-            <div className='follow'> follow </div>
+            {/* <div className='follow'> follow </div> */}
 
             <div className='addBoard' onClick={handelCreateBoard}><FontAwesomeIcon icon={faPlus} beat /></div>
             <ShowBoard user={user}/>

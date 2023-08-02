@@ -17,10 +17,11 @@
     
 }
 .profile-dropdown{
+    z-index: 10;
     background-color:white;
     padding: 1rem;
-    width: 25%;
-    height: 80vh;
+    width: 20%;
+    height: 60vh;
     position: absolute;
     top: 3.8rem;
     right: .3rem;
@@ -36,7 +37,7 @@
     text-decoration: none;
     color: black;
     /* background-color: aqua; */
-    padding: .8rem;
+    padding: 1rem;
     border-radius: 15px;
 }
 .settings:hover{
@@ -45,7 +46,7 @@
 .logout{
     width: 100%;
     border: none;
-    padding: .8rem;
+    padding: 1rem;
     border-radius: 15px;
     background-color: white ;
     text-align: left;

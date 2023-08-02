@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as pinActions from "../../../store/pin";
-import Modal from "../../context/model";
+import PinModal from "../../pinModal/index";
 import "./showPinstyle.css"
 import EditPinForm from "../editPin";
 import { useHistory } from 'react-router-dom';
@@ -37,35 +37,34 @@ function ShowPin({ user }) {
   function handelEdite(pin) {
     const user_id = user?.id;
     if (user_id) {
+   
       history.push(`/pins/edit/${pin.id}`);
     }
   }
 
   return (
-    <div className="componant">
-      {/* <h1>hello</h1> */}
+    <div className="conainer" >
       {pins?.map((pin) => {
         if (!pin) return null;
-        return <><div className="pins "> <img key={pin?.id} src={`${pin?.imgUrl}`} onClick={() => handleOutsideClick(pin)} className="pinimg " /> <div className="edit"  > <FontAwesomeIcon icon={faPen} fade onClick={() => handelEdite(pin)} /> </div> </div> </>
+        return <><div className="pins "> <img key={pin?.id} src={`${pin?.imgUrl}`}className="pinimg " /><div className="image-overlay"  onClick={() => handleOutsideClick(pin)} ></div>  <FontAwesomeIcon icon={faPen} fade onClick={() => handelEdite(pin)} />  </div> </>
       })}
       {showPinInfo &&
-        <Modal onClose={handleModalClose} >
+        <PinModal onClose={handleModalClose} >
           <div className="imageinfo">
 
             {<img src={`${selectedPin?.imgUrl}`} className="pininfo" />
 
             }
             <div className="sidinfo">
-              <h2 className="pintitle"> {selectedPin?.title}</h2>
-
-              {selectedPin.description}
-              <div className="userinfo">
+              <h2 className="title"> {selectedPin?.title}</h2>
+              <p>{selectedPin.description}</p> 
+              <div className="pin-userinfo">
                 <div className="userpin" >{user?.username[0]}</div>
                 <p className="username">{user?.username}</p>
               </div>
             </div>
           </div>
-        </Modal>
+        </PinModal>
       }
 
     </div>

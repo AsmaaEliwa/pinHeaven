@@ -4,6 +4,7 @@ import SignUpFormModal from '../signUpFormModel/index.js';
 import { NavLink } from 'react-router-dom';
 import AnimationPage from '../animation';
 import "./navigation.css"
+import TryIt from '../tryIt';
 function Home(){
     return(
       <>
@@ -16,6 +17,7 @@ function Home(){
         <SignUpFormModal></SignUpFormModal>
       </div>
       <AnimationPage/>
+      <TryIt/>
       </>
     )
 }

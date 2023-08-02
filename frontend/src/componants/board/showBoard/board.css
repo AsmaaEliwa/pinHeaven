@@ -1,7 +1,7 @@
 .boardContainer {
     /* background-color: #e9e9e9; */
     display: flex;
-    padding: 7rem;
+    padding: 3rem;
   }
   
   .allBoards {
@@ -12,14 +12,12 @@
   }
   
   .allBoard {
-    /* background-color: black; */
     display: flex;
-    /* align-items: center; */
     justify-content: space-between;
     border: 1px solid #ccc;
     border-radius: 1rem;
-    width: 15rem;
-    height: 10rem;
+    width: 17rem;
+    height: 13rem;
     margin: 1rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }

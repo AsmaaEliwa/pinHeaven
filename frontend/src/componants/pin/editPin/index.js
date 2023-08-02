@@ -38,8 +38,6 @@ function EditPinForm(){
                 dispatch(pinActions.removePin(pinId)).then(()=>{
                     history.push(`/users/${user.id}`)
                 })
-                
-            //    return  <Redirect to={`/users/${user.id}`}/>
               }
    
         return (
