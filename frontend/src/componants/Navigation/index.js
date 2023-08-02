@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Profile from './profile.js';
-import "./navigation.css"
 import { Redirect } from 'react-router-dom';
 
 

@@ -236,7 +236,7 @@ padding: .5rem;
      display: flex;
      flex-direction: column;
      margin-top: 1rem;
-     width: 50%;
+     /* width: 50%; */
      justify-content: center;
  }
  .pinCreator:hover{
@@ -258,4 +258,17 @@ color: black;
  .firstlitter:hover{
     background-color:#E9E9E9 ;
      
+ }
+ .follow{
+margin: auto;
+padding: 1rem;
+background-color: #E9E9E9;
+width: 2%;
+display: flex;
+text-align: center;
+align-content: center;
+border-radius: 50%;
+ }
+ .follow:hover{
+     background-color:darkgray ;
  }
