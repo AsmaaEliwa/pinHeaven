@@ -19,6 +19,16 @@ function ShowPin({ user }) {
       return state.pin[id];
     });
   });
+  const pinsInBoard=useSelector(state=>{
+    const holder=[]
+      Object.values(state.boardPins).map(arr=>{
+       arr.map(ele=> holder.push(ele) )
+     })
+     return holder
+  })
+
+  console.log(pinsInBoard.includes(84))
+
   useEffect(() => {
 
     dispatch(pinActions.fetchPins(user.id));
@@ -41,13 +51,26 @@ function ShowPin({ user }) {
       history.push(`/pins/edit/${pin.id}`);
     }
   }
+ 
 
   return (
     <div className="conainer" >
       {pins?.map((pin) => {
         if (!pin) return null;
-        return <><div className="pins "> <img key={pin?.id} src={`${pin?.imgUrl}`}className="pinimg " /><div className="image-overlay"  onClick={() => handleOutsideClick(pin)} ></div>  <FontAwesomeIcon icon={faPen} fade onClick={() => handelEdite(pin)} />  </div> </>
-      })}
+        if (!pinsInBoard.includes(pin.id)){
+        return <><div className="allpins-prof "> 
+    <div className="imageContainer" onClick={() => handleOutsideClick(pin)}>
+
+        <img key={pin?.id} src={`${pin?.imgUrl}`}className="pinimg " />
+        <div className="image-overlay"></div>
+        <div className="editIcon-pin"></div>
+        <FontAwesomeIcon icon={faPen} fade onClick={() => handelEdite(pin)} /> 
+         </div> 
+        </div>
+         
+         </>
+
+}})}
       {showPinInfo &&
         <PinModal onClose={handleModalClose} >
           <div className="imageinfo">

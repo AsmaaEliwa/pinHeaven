@@ -113,17 +113,17 @@ function EditPinForm(){
                     
 
                     <div className="imgedit">
-                        <img src={pin?.imgUrl} className="imgedit" />
+                        <img src={pin?.imgUrl} className="img-edit" />
                     </div>
 
                     <div className="editbtn">
                     <button type="submit" className="editpinnbtn">Save </button>
                     </div>
-                  
-                </form>
-                <div className="btn">
+                    <div className="editbtn">
                     <button  className="deletepinnbtn" onClick={handelDelete} >Delete </button>
                     </div>
+                </form>
+
 
                 </div>
             </div>

@@ -38,8 +38,8 @@ function UserProfile() {
             <h1>{user?.username}</h1>
             <p>{user?.email}</p>
             </div>
-            <NavLink className="pin_board" to=""> Created </NavLink>
-            <NavLink className="pin_board"  to=""> saved </NavLink>
+            <h3 className="pin_board" > Created </h3>
+            <h3 className="pin_board"  > saved </h3>
             {/* <div className='follow'> follow </div> */}
 
             <div className='addBoard' onClick={handelCreateBoard}><FontAwesomeIcon icon={faPlus} beat /></div>

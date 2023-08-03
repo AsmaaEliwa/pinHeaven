@@ -1,5 +1,17 @@
 .conainer{
-    padding-bottom: 5rem;
+    padding: 5rem 3rem 5rem 3rem;
+    display: flex;
+    justify-content: center;
+    
+}
+.allpins-prof{
+    transition: background-color 0.3s ease;
+    margin: 1rem;
+    width: 18%;
+    height:20%;
+    border-radius:2rem;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+
 }
 .pins{
     position: relative;
@@ -10,16 +22,16 @@
     width: 13%;
     margin: 1rem;
     box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2); 
-    border-radius: 1rem;
+    border-radius: 2rem;
 }
 .pinimg{
 width: 100%;
 height: 100%;
 transition: background-color 0.3s ease;
-border-radius: 1rem;
+border-radius: 2rem;
 }
 .image-overlay {
-    border-radius: 1rem;
+    border-radius: 2rem;
     position: absolute;
     top: 0;
     left: 0;
@@ -29,31 +41,11 @@ border-radius: 1rem;
     transition: background-color 0.3s ease;
   }
 
-  .pins:hover .image-overlay {
+  .allpins-prof:hover .image-overlay {
     background-color: rgba(0, 0, 0, 0.5); /* Change background color on hover */
   }
-.edit{
-    font-size: small;
-    padding: .5rem;
-    width: 10%;
-    border-radius: 50%;
-    margin: auto;
 
-}
-.pins:hover .edit {
-    background-color:#EFEFEF ;
-  }
 
-.editPin{
-    background-color:rgba(0, 0, 0, 0.2) ;
-    border-radius: 50%;
-    padding: .5rem;
-}
-
-.pins:hover .editPin{
-    background-color:white;
-    /* border-radius: 1rem; */
-}
 .pins:hover {
     background-color:rgba(0, 0, 0, 0.2) ;
     border-radius: 1rem;
@@ -91,4 +83,7 @@ border-radius: 1rem;
 display: flex;
 margin: auto;
 width: 50%;
+}
+.editIcon-pin{
+    
 }

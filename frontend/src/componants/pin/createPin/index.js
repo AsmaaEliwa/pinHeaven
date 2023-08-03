@@ -127,9 +127,9 @@ if (!boardsData[0])  return null
             
                 <div className="btn">
                 <select className="selectBoard" onChange={handelChange}>
-                <option>All Pins</option>
-                { boardsData.map(board=>  <option  key={board.id} value={board.id}>{board.title}</option> )}
-            </select>
+                  <option disabled>All Pins</option>
+                  { boardsData.map(board=>  <option  key={board.id} value={board.id}>{board.title}</option> )}
+                </select>
                 <button type="submit" className="createpinnbtn">Save </button>
                 </div>
             </form>
