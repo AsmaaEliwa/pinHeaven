@@ -19,24 +19,17 @@ function ShowPin({ user }) {
       return state.pin[id];
     });
   });
-  const pinsInBoard=useSelector(state=>{
-    // console.log( Object.values(state.boardPins))
-
-    const holder=[]
-    // debugger
-      Object.values(state.boardPins)?.map(arr=>{
-        console.log(arr)
-        // debugger
-        if (arr==={}) {
-          // debugger
-         arr=[]
-        }
-        arr?.map(ele=> holder.push(ele) )
-
-     })
-     return holder
-  })
-
+  const pinsInBoard = useSelector((state) => {
+    const holder = [];
+  
+    Object.values(state.boardPins)?.forEach((arr) => {
+      if (Array.isArray(arr)) {
+        arr.forEach((ele) => holder.push(ele));
+      }
+    });
+  
+    return holder;
+  });
   // console.log(pinsInBoard)
 
   useEffect(() => {

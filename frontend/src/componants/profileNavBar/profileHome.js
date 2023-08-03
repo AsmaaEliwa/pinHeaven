@@ -11,6 +11,8 @@ function ProfileHome() {
     const pins = useSelector(state => Object.values(state.pin))
     const [showPinInfo, setShowPinInfo] = useState(false)
     const [selectedPin, setSelectedPin] = useState(null)
+    const size= ["small","medium","large"]
+    const randomIndex = Math.floor(Math.random() * size.length);
     useEffect(() => {
         dispatch(pinActions.fetchAllPins())
         dispatch(userAction.fetchUsers())
@@ -43,9 +45,15 @@ function ProfileHome() {
 
     return (
         <>
-            <div className='pinscontainer'>
-                {pins[0] && pins?.map(pin => <div className='allPins'> <img className='allPinImg' src={pin?.imgUrl}  /> <div className="image-overlay" onClick={() => handelShowPinInfo(pin)}></div></div>)}
-            </div>
+           <div className='pinscontainer'>
+      {pins[0] &&
+        pins?.map((pin, index) => (
+          <div key={pin.id} className={`allPins ${size[index % size.length]}`}>
+            <img className="allPinImg" src={pin?.imgUrl} alt="Pin" />
+            <div className="image-overlay" onClick={() => handelShowPinInfo(pin)}></div>
+          </div>
+        ))}
+    </div>
             {showPinInfo &&
                 <PinModal onClose={handelModalClose} className="pinshow">
                     <div className='pinInfo'>

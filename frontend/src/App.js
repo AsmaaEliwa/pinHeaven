@@ -10,6 +10,7 @@ import EditPinForm from './componants/pin/editPin/index';
 import CreateBoardForm from './componants/board/creatBoard/index.js';
 import ProfileHome from './componants/profileNavBar/profileHome.js';
 import SgowBoardPin from './componants/boardPins/boardPinShow/index.js';
+import SearchPage from './componants/searchShowPage/index.js';
 function App() {
   const sessionUser = useSelector(state => state.session.user);
 
@@ -24,6 +25,9 @@ function App() {
         </Route>
         <Route path="/pins/new">
          <CreatePinFprm user={sessionUser}/>
+        </Route>
+        <Route path="/search">
+          <SearchPage/>
         </Route>
         {
         <Route path={`/users/:userId`}>

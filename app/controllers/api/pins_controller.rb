@@ -1,5 +1,12 @@
 class Api::PinsController < ApplicationController
     wrap_parameters include: Pin.attribute_names + [:image]
+    
+    def search 
+        query= params[:query]
+        @pins=Pin.where("title ILIKE ? ","%#{query}%")
+        render :search
+    end
+    
     def show
         @pin=Pin.find_by(id: params[:id])
          if @pin

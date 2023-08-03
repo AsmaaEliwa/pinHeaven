@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   # root "articles#index"
   # post 'api/test', to: 'application#test'
   namespace :api, defaults: { format: :json } do
+    get 'pins/search', to: "pins#search"
+
     resources :users, only: [:create,:show,:update ,:index]
     resource :session, only: [:show, :create, :destroy]
     resources :pins 

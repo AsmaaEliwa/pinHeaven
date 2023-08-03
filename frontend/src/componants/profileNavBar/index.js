@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import SearchBar from "./searchBar";
 import { Link } from "react-router-dom";
 function ProfileNavBAr({ user }) {
     const history = useHistory();
@@ -22,9 +23,10 @@ function ProfileNavBAr({ user }) {
                 <img src={logo} className="plogo" />
                 <NavLink to="/" className="home">Home</NavLink>
                 <NavLink to="/pins/new" className="create">Create Pin  <FontAwesomeIcon icon={faChevronDown} size="lg" /> </NavLink>
-                <form id="searchForm">
-                    <input type="text" id="searchInput" placeholder="Search " />
-                </form>
+                <SearchBar/>
+                {/* <form id="searchForm"> */}
+                    {/* <input type="text" id="searchInput" placeholder="Search " /> */}
+                {/* </form> */}
                 <div className="contactgit">
                 <a href="https://github.com/AsmaaEliwa" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faGithub} style={{ color: 'darkgray' }} /></a> 
                 </div>
