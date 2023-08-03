@@ -1,7 +1,7 @@
 import csrfFetch from "./csrf";
 import * as userActions from "./session"
 const SET_BOARD = "boards/set_board";
-const REMOVE_BOARD = "boards/remove_board";
+export const REMOVE_BOARD = "boards/remove_board";
 const GET_BOARD ="boards/get_board";
 const GET_BOARDS= "boards/get_boards";
 
@@ -25,10 +25,11 @@ const get_boards = (boards) => {
   };
   
   
-  const remove_board = (id) => {
+  const remove_board = (boardId, userId) => {
     return {
       type: REMOVE_BOARD,
-      id
+      boardId,
+      userId
     };
   };
 
@@ -70,17 +71,17 @@ const get_boards = (boards) => {
     const response = await csrfFetch(`/api/boards/${boardId}`, {
       method: "DELETE"
     });
-    dispatch(remove_board(boardId));
-    const currentUser = getState().session.user;
-    const updatedBoardIds = currentUser.boardIds.filter((id) => id !== boardId);
-    const updatedUser = { ...currentUser, boardIds: updatedBoardIds };
-    dispatch(userActions.setCurrentUser(updatedUser));
+    dispatch(remove_board(boardId, userId));
+
+    // dispatch(userActions.setCurrentUser(updatedUser));
   
   };
   
   export const fetchBoards = (userId) => async (dispatch) => {
+    debugger
     const response = await csrfFetch(`/api/boards?user_id=${userId}`);
     const data = await response.json();
+    debugger
     dispatch(get_boards(data.boards));
    return data.boards
   };
@@ -101,7 +102,7 @@ const get_boards = (boards) => {
         // debugger
         return { ...state, [action.board.id]: action.board };
       case REMOVE_BOARD:
-        delete newState[action.id]
+        delete newState[action.boardId]
         return newState;
         case GET_BOARD:
           return { ...state, [action.board.id]: action.board };

@@ -1,6 +1,8 @@
 import csrfFetch from "./csrf";
+import { REMOVE_BOARD } from "./board";
+
 const RECEIVE_USER = "users/receiveUser";
-const RECEIVE_USERS="users/receiveUsers"
+const RECEIVE_USERS = "users/receiveUsers"
 export const receiveUser = (user) => {
   return {
     type: RECEIVE_USER,
@@ -13,15 +15,15 @@ export const receiveUsers = (users) => {
     users,
   };
 };
-export const fetchUser = (userId) =>async dispatch =>{
-    const res = await csrfFetch(`/api/users/${userId}`);
-    const data = await res.json();
-    dispatch(receiveUser(data.user));
+export const fetchUser = (userId) => async dispatch => {
+  const res = await csrfFetch(`/api/users/${userId}`);
+  const data = await res.json();
+  dispatch(receiveUser(data.user));
 }
 
 
 
-export const fetchUsers = () =>async dispatch =>{
+export const fetchUsers = () => async dispatch => {
   const res = await csrfFetch(`/api/users`);
   const data = await res.json();
   dispatch(receiveUsers(data));
@@ -34,8 +36,14 @@ export default function userReducer(state = {}, action) {
       newState[action.user.id] = action.user;
       return newState;
     case RECEIVE_USERS:
-      return {...newState, ...action.users}
-      default:
+      return { ...newState, ...action.users }
+    case REMOVE_BOARD:
+      const user = newState[action.userId];
+      const boardIdx = user.boardIds.findIndex(id => id === action.boardId);
+      user.boardIds.splice(boardIdx, 1);
+      newState[action.userId] = user;
+      return newState;
+    default:
       return state;
   }
 }

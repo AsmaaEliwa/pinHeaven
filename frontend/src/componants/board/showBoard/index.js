@@ -24,7 +24,10 @@ function ShowBoard() {
     return boardIds.map((id) => {
       return state.boards[id];
     });
+    // return state.session.user.boardIds
+
   });
+  console.log(boards)
   useEffect(() => {
     dispatch(boardActions.fetchBoards(userId));
     dispatch(boardPinsActions.fetchBoardPins(userId))
@@ -36,7 +39,7 @@ function ShowBoard() {
     return state.pin
   })
 
-  console.log(pins)
+  // console.log(pins)
 
   function handelBoardPin(e, board) {
     e.preventDefault()
@@ -61,7 +64,8 @@ function ShowBoard() {
       dispatch(boardActions.updateBoard({ boardId, title })).then(() => { setShowBoardEdit(false) })
     }
   }
-  function handelDeleteBoard() {
+  function handelDeleteBoard(e) {
+    e.preventDefault();
     if (Number(userId) === currentUser.id) {
       dispatch(boardActions.removeBoard({ boardId: selectedBoard.id, userId })).then(() => {
         history.push(`/users/${currentUser.id}`)

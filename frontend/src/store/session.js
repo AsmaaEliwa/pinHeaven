@@ -90,7 +90,9 @@ const initialState = {
   user: JSON.parse(sessionStorage.getItem("currentUser"))
 };
 
-
+// const currentUser = useSelctor(state=> state.session.user)
+// const updatedBoardIds = currentUser.boardIds.filter((id) => id !== boardId);
+// const updatedUser = { ...currentUser, boardIds: updatedBoardIds };
 
 const sessionReducer = (state = initialState, action) => {
   switch (action.type) {
