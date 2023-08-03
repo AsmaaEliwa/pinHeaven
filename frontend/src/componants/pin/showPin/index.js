@@ -20,14 +20,24 @@ function ShowPin({ user }) {
     });
   });
   const pinsInBoard=useSelector(state=>{
+    // console.log( Object.values(state.boardPins))
+
     const holder=[]
-      Object.values(state.boardPins).map(arr=>{
-       arr.map(ele=> holder.push(ele) )
+    // debugger
+      Object.values(state.boardPins)?.map(arr=>{
+        console.log(arr)
+        // debugger
+        if (arr==={}) {
+          // debugger
+         arr=[]
+        }
+        arr?.map(ele=> holder.push(ele) )
+
      })
      return holder
   })
 
-  console.log(pinsInBoard.includes(84))
+  // console.log(pinsInBoard)
 
   useEffect(() => {
 
@@ -52,7 +62,7 @@ function ShowPin({ user }) {
     }
   }
  
-
+if(pinsInBoard.length===0) return null
   return (
     <div className="conainer" >
       {pins?.map((pin) => {

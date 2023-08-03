@@ -43,7 +43,8 @@ function CreatePinFprm({user}) {
               formData.append("pin[image]", image);
             }
             
-        console.log(selectedBoard)
+        // console.log(selectedBoard)
+        // debugger
         dispatch(pinActions.createPin(formData)).then((res)=>{
          const pinId=Object.values(res)[0].id
           dispatch(boardPinActions.createBoardPin({pinId,boardId:selectedBoard})).then(()=>{
@@ -127,7 +128,7 @@ if (!boardsData[0])  return null
             
                 <div className="btn">
                 <select className="selectBoard" onChange={handelChange}>
-                  <option disabled>All Pins</option>
+                  <option>All Pins</option>
                   { boardsData.map(board=>  <option  key={board.id} value={board.id}>{board.title}</option> )}
                 </select>
                 <button type="submit" className="createpinnbtn">Save </button>
