@@ -22,7 +22,7 @@
 <img src="https://github.com/AsmaaEliwa/pinHeaven/assets/63536619/fef02b4d-9ba6-4fa2-9ef7-d119030b575a"/>
 
 <h2>Profile Home<h2>
-![ezgif com-video-to-gif (4)](https://github.com/AsmaaEliwa/pinHeaven/assets/63536619/68d03cbb-bba3-4a1f-b155-a990fa4f1dd8)
+<img src="https://github.com/AsmaaEliwa/pinHeaven/assets/63536619/68d03cbb-bba3-4a1f-b155-a990fa4f1dd8" />
 
 
 <h2>Code Snippets</h2>
