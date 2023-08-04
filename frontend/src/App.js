@@ -20,20 +20,24 @@ function App() {
 
       <Navigation />
       <Switch>
-        
+
+      <Route path={`/pins/edit/:pinId`}>
+         <EditPinForm user={sessionUser} />
+        </Route>
+
         <Route path="/boards/new">
           <CreateBoardForm user={sessionUser}/>
         </Route>
+
         <Route path="/pins/new">
          <CreatePinFprm user={sessionUser}/>
         </Route>
+        
         <Route path="/search">
           <SearchPage/>
         </Route>
         
-        <Route path={`/pins/edit/:pinId`}>
-         <EditPinForm user={sessionUser} />
-        </Route>
+      
 
         <Route path={`/pins/:pinId`}>
          <PinPage user={sessionUser} />

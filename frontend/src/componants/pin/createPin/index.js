@@ -18,9 +18,8 @@ function CreatePinFprm({user}) {
     const history = useHistory();
     const fileInputRef = useRef(null);
     const [selectedBoard,setSelectedBoard]=useState({})
-  
+  const [fetch,SetfetchBoardPin]=useState(false)
     const boardsData = useSelector((state) => {
-      console.log(state.boards)
       return Object.values(state.boards)
     });
 
@@ -37,24 +36,27 @@ function CreatePinFprm({user}) {
             formData.append("pin[description]", description);
             formData.append("pin[user_id]", sessionUser.id);
             formData.append("pin[title]", title);
-           
-
             if (image) {
               formData.append("pin[image]", image);
             }
-            
-        // console.log(selectedBoard)
-        // debugger
         dispatch(pinActions.createPin(formData)).then((res)=>{
          const pinId=Object.values(res)[0].id
-          dispatch(boardPinActions.createBoardPin({pinId,boardId:selectedBoard})).then(()=>{
+         if(fetch){
+          dispatch(boardPinActions.createBoardPin({pinId,boardId:selectedBoard}))
+
+         }
             history.push(`/users/${user.id}`)
 
-          })
+          
           
       });
 
           };
+
+
+
+
+
           const handleFile = ({ currentTarget }) => {
             const file = currentTarget.files[0];
             setImage(file);
@@ -70,10 +72,14 @@ function CreatePinFprm({user}) {
 
   
 function handelChange(e){
+  console.log(e.target.value)
+  debugger
+
     e.preventDefault()
+    SetfetchBoardPin(true)
+  
     setSelectedBoard( parseInt(e.target.value, 10));
   }
-  // debugger
 
 if (!boardsData[0])  return null
 
@@ -128,7 +134,7 @@ if (!boardsData[0])  return null
             
                 <div className="btn">
                 <select className="selectBoard" onChange={handelChange}>
-                  <option>All Pins</option>
+                  <option >All Pins</option>
                   { boardsData.map(board=>  <option  key={board.id} value={board.id}>{board.title}</option> )}
                 </select>
                 <button type="submit" className="createpinnbtn">Save </button>

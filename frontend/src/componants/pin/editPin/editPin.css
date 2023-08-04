@@ -88,11 +88,13 @@
 
 }
 .editpinnbtn{
+    position: absolute;
 background-color: red;
-margin-left:63% ;
+margin-left:42% ;
 padding: 1rem;
-width: 15%;
-top:0;
+width: 10%;
+/* top:0; */
+bottom: -10%;
 border-radius: 3rem;
 color:white;
 border:none

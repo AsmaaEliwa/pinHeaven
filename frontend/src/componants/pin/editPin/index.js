@@ -27,8 +27,10 @@ function EditPinForm(){
 
     
       
-            function  handleSubmit (){
-                // e.preventDefault();
+            function  handleSubmit(e){
+                e.preventDefault();
+              console.log("cliked")
+
                   debugger
                 dispatch(pinActions.updatePin({...pin ,title,description})).then(()=>{
                     history.push(`/users/${user.id}`)
@@ -48,7 +50,7 @@ function EditPinForm(){
                 <div className='createpin_form'>
                      <h1 className="h1Title">Edit this Pin</h1>
 
-                <form className="editform" >   
+                <form className="editform" onSubmit={handleSubmit} >   
                 <div className="pinedit">
 
                 <div className="flex">
@@ -119,14 +121,14 @@ function EditPinForm(){
                         <img src={pin?.imgUrl} className="img-edit" />
                     </div>
 
-                    <div className="editbtn">
-                    <button type="submit" className="editpinnbtn" onClick={handleSubmit}>Save </button>
-                    </div>
-                    <div className="editbtn">
+                    {/* <div className="editbtn"> */}
+                    <button type="submit" className="editpinnbtn">Save</button>
+                    {/* </div> */}
+                    
+                </form>
+                <div className="editbtn">
                     <button  className="deletepinnbtn" onClick={handelDelete} >Delete </button>
                     </div>
-                </form>
-
 
                 </div>
             </div>
