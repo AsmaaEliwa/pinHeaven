@@ -9,7 +9,6 @@ function SearchBar(){
     const history=useHistory()
     const [timer,setTimer]=useState(0)
     const searchResults=useSelector(state=>Object.values(state.search))
-    // console.log(searchResults)
     const dispatch= useDispatch()
     function handelSearch(e){
         const query=e.target.value

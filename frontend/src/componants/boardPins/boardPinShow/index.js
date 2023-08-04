@@ -69,11 +69,13 @@ history.push(`/users/${user.id}`)
 
 if (!pinIds) return  (
 <>
+
 <h1 className='board-titile'>{boards[boardId]?.title}</h1>
 <div className='middle margin-top'>
  <div className='firstlitter-board' onClick={redirectToProfile}>{user.username[0].toUpperCase()}</div>
  <div className='firstlitter-board left' onClick={addMorePins}>+</div>
- </div>
+</div>
+
 <div className='z-pins'> 0 pins </div>
 
 </>
@@ -83,16 +85,17 @@ if (!pins) return (<div className='n-pins'> 0 pins </div>)
 if (!boards) return null
 return (
     <>
- <h1 className='board-titile'>{boards[boardId]?.title}</h1>
- <div className='middle'>
+  <h1 className='board-titile'>{boards[boardId]?.title}</h1>
+<div className='middle'>
   <div className='firstlitter-board' onClick={redirectToProfile}>{user.username[0].toUpperCase()}</div>
-<div className='firstlitter-board left' onClick={addMorePins}>+</div>
+  <div className='firstlitter-board left' onClick={addMorePins}>+</div>
 </div>
     <h2 className='n-pins'>{pins.length} Pins</h2>
-    <div className='container'>
-    {pins?.map((pin,index) => (
-    <div className={`allPins ${size[index % size.length]}`} >
-      <img key={pin?.id} src={`${pin?.imgUrl}`} className="allPinImg" />
+
+  <div className='container'>
+      {pins?.map((pin,index) => (
+      <div className={`allPins ${size[index % size.length]}`} >
+        <img key={pin?.id} src={`${pin?.imgUrl}`} className="allPinImg" />
       <div className='image-overlay' onClick={() => handleOutsideClick(pin)}></div>
       <div className="editIcon">
         <FontAwesomeIcon icon={faPen} onClick={() => handelEdite(pin)} />
