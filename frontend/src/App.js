@@ -22,39 +22,39 @@ function App() {
       <Navigation />
       <Switch>
 
-      <Route path={`/pins/edit/:pinId`}>
+      <Route exact path={`/pins/edit/:pinId`}>
          <EditPinForm user={sessionUser} />
         </Route>
 
-        <Route path="/boards/new">
+        <Route exact path="/boards/new">
           <CreateBoardForm user={sessionUser}/>
         </Route>
 
-        <Route path="/pins/new">
+        <Route exact path="/pins/new">
          <CreatePinFprm user={sessionUser}/>
         </Route>
         
-        <Route path="/search">
+        <Route exact path="/search">
           <SearchPage/>
         </Route>
         
       
 
-        <Route path={`/pins/:pinId`}>
+        <Route exact path={`/pins/:pinId`}>
          <PinPage user={sessionUser} />
         </Route>
         
         
-        <Route path={`/users/:userId`}>
+        <Route exact path={`/users/:userId`}>
           <UserProfile/>
         </Route>
         
           
-        <Route path={`/boards/:boardId`}>
+        <Route exact path={`/boards/:boardId`}>
           <SgowBoardPin/>
         </Route>
         
-        <Route path="/update">
+        <Route exact path="/update">
           <UpdateProfileForm user={sessionUser} />
         </Route>
         <Route path="/home">
@@ -63,11 +63,11 @@ function App() {
         
        
         
-        <Route path="/">
+        <Route exact path="/">
           <ProfileHome></ProfileHome>
         </Route>
 
-        <Route component={NotFound} />
+        <Route exact component={NotFound} />
 
       </Switch>
     </>
