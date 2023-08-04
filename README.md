@@ -29,7 +29,9 @@
 
 <p>this component creates a visually appealing board display with pins, allowing users to interact with the pins and access the board owner's profile and this is where im displaying the pins images on the board .</p>
 
-<img width="652" alt="Screenshot 2023-08-04 at 2 47 59 PM" src="https://github.com/AsmaaEliwa/pinHeaven/assets/63536619/ba03e4c9-ac31-4b06-b7ff-2e08294a68f6">
+<img width="791" alt="Screenshot 2023-08-04 at 3 26 33 PM" src="https://github.com/AsmaaEliwa/pinHeaven/assets/63536619/d9915ef1-ce88-4674-8341-8e3d6428fead">
+
+
 
 <p>this component creates a search input where u get the search results depending  on the pin titles  .</p>
 
