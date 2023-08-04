@@ -21,7 +21,7 @@ function ProfileNavBAr({ user }) {
         <>
             <div className="profileNav">
                 <img src={logo} className="plogo" />
-                <NavLink to="/" className="home">Home</NavLink>
+                <NavLink to="/profile" className="home">Home</NavLink>
                 <NavLink to="/pins/new" className="create">Create Pin  <FontAwesomeIcon icon={faChevronDown} size="lg" /> </NavLink>
                 <SearchBar/>
                 <div className="contactgit">

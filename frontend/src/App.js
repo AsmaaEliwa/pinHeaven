@@ -63,7 +63,7 @@ function App() {
         
        
         
-        <Route exact path="/">
+        <Route exact path="/profile">
           <ProfileHome></ProfileHome>
         </Route>
 
