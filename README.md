@@ -21,4 +21,5 @@
 
 
 <h2>Code Snippets</h2>
+<img width="652" alt="Screenshot 2023-08-04 at 2 47 59 PM" src="https://github.com/AsmaaEliwa/pinHeaven/assets/63536619/ba03e4c9-ac31-4b06-b7ff-2e08294a68f6">
 
