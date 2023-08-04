@@ -85,10 +85,10 @@ return (
     <>
  <h1 className='board-titile'>{boards[boardId]?.title}</h1>
  <div className='middle'>
-<div className='firstlitter-board' onClick={redirectToProfile}>{user.username[0].toUpperCase()}</div>
+  <div className='firstlitter-board' onClick={redirectToProfile}>{user.username[0].toUpperCase()}</div>
 <div className='firstlitter-board left' onClick={addMorePins}>+</div>
 </div>
-<h2 className='n-pins'>{pins.length} Pins</h2>
+    <h2 className='n-pins'>{pins.length} Pins</h2>
     <div className='container'>
     {pins?.map((pin,index) => (
     <div className={`allPins ${size[index % size.length]}`} >
