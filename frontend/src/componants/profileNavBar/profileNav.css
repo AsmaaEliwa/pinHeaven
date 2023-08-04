@@ -1,0 +1,372 @@
+.plogo{
+    width:9%;
+    height:7rem;
+    margin-top: -2rem;
+    margin-left: -1rem;
+    /* background-color: #ffcc99; */
+    
+}
+
+.profileNav{
+    width: 100%;
+    height: 3rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    /* background-color: aqua; */
+    border-bottom: 5px bold black;
+    justify-content: space-between;
+    gap:15px;
+    display:flex;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+.home{
+    padding: 1rem;
+    border-radius: 1.5rem;
+    border-color: rgb(66, 183, 237);
+    margin-left: -1rem;
+    text-decoration: none;
+    font-size:large;
+    background-color: black;
+    color:white
+   
+}
+.create{
+    /* margin-left: 1rem; */
+    padding: .5rem;
+    border-radius: 1.5rem;
+    border: none;
+    font-size: large;
+    background-color: white;
+    color:black;
+    text-decoration: none;
+}
+
+option{
+    background-color: #ffcc99;
+}
+.user{
+    margin-right: 5rem;
+    padding: 1.2rem;
+    border-radius: 50%;
+    border:none;
+}
+.user:hover{
+    background-color: darkgray;
+}
+.contactgit{
+    padding: .7rem;
+    border-radius: 55%;
+    border:none;
+    display:flex;
+    align-items: center;
+    margin-left: 1rem;
+    font-size: xx-large;
+    
+}
+.contactgit:hover{
+    background-color: #E9E9E9;
+}
+.contactlink{
+    padding: .7rem;
+    border-radius: 55%;
+    border:none;
+    display:flex;
+    align-items: center;
+    font-size: xx-large;
+}
+.contactlink:hover{
+    background-color: #E9E9E9;
+}
+.userProfile{
+    align-items: center;
+    text-align: center;
+    padding-top: 4rem;
+}
+
+.firstlitter{
+    /* margin-top:.5rem ; */
+    margin: auto;
+    width: 4rem;
+    height: 4rem;
+    padding: 2rem;
+    border-radius: 50%;
+    background-color: #E9E9E9;
+    text-align: center;
+    font-size: 5rem;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    font-family: apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,ãƒ’ãƒ©ã‚®ãƒŽè§’ã‚´ Pro W3,Hiragino Kaku Gothic Pro,ãƒ¡ã‚¤ãƒªã‚ª,Meiryo,ï¼­ï¼³ ï¼°ã‚´ã‚·ãƒƒã‚¯,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;;
+
+}
+.nameEmail{
+    /* background-color: #ffcc99; */
+    align-items: center;
+    text-align: center;
+    margin-top: -6rem;
+}
+.addBoard{
+    /* background-color: aqua; */
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    font-size: xx-large;
+    /* padding: auto; */
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    margin-left:93% ;
+}
+.addBoard:hover{
+    background-color: #E9E9E9;
+}
+.pin_board{
+text-decoration:underline;
+color: black;
+/* margin-right: 2rem; */
+display: inline;
+padding: .5rem;
+}
+
+
+
+
+
+
+
+/*pins in home*/
+.pinscontainer {
+    margin: 0;
+    margin-right: 5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-auto-rows: 15px; 
+    margin-top: 3rem;
+  }
+  
+  .small {
+    margin: 50px;
+    width: 250px;
+    grid-row-end: span 26;
+    position: relative;
+  }
+  .medium {
+    margin: 50px;
+    width: 250px;
+    grid-row-end: span 35;
+    position: relative;
+  }
+  .large {
+    margin: 50px;
+    width: 250px;
+    grid-row-end: span 45;
+    position: relative;
+  }
+  .allPins {
+    border-radius: 2rem;
+    overflow: hidden;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+    display: flex;
+  }
+  
+  .allPinImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .image-overlay {
+    border-radius: 2rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    transition: background-color 0.3s ease;
+  }
+  
+  .allPins:hover .image-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+
+
+
+
+/*  showing pin details */
+.pinshow{
+    width:40rem;
+    height: 40rem;
+}
+.pinInfo{
+    height: 100%; 
+    padding: 2rem;
+    display:flex;
+    border-radius: 5rem;
+    /* background-color: #ffcc99; */
+
+}
+.info{
+    /* background-color: green; */
+    width: 50%;
+    font-size: large;
+}
+.pinT{
+    /* background-color: aqua; */
+    margin-top: 9rem;
+    font-size: xx-large;
+}
+.editpen{
+    /* background-color: aqua; */
+    text-align: center;
+    /* position: relative; */
+    bottom: 0;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+}
+.imageContainer {
+    position: relative;
+    display: inline-block;
+  }
+  
+
+  .allPinImg:hover{
+      background-color:rgba(0, 0, 0, 0.2) ;
+  }
+  
+  .editIcon {
+    position: absolute;
+    bottom: 5px; 
+    left: 50%;
+    transform: translateX(-50%);
+    color: black;
+    padding: 1rem;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  .editIcon:hover {
+    background-color: #E9E9E9;
+  }
+  .allpins{
+      text-align: center;
+      padding: 2rem;
+  }
+  hr{
+      margin-top: 3rem;
+  }
+ .pinCreator{
+     color: black;
+     background-color: darkgray ;
+     border-radius: 1rem;
+     display: flex;
+     flex-direction: column;
+     /* margin-top: 1rem; */
+     width: 50%;
+     height: 40%;
+     margin-top: 2rem;
+
+     justify-content: center;
+ }
+ .pinCreator:hover{
+     background-color:#E9E9E9 ;
+
+ }
+ .visituser{
+     /* background-color: #ffcc99; */
+     text-decoration: none;
+     display:flex;
+     height: 20%;
+
+ }
+ .firstlitter{
+padding: .5rem;
+background-color:darkgray ;
+border-radius: 50%;
+color: black;
+font-size: large;
+/* margin-right: -.1rem; */
+ }
+ .firstlitter:hover{
+    background-color:#E9E9E9 ;
+     
+ }
+ .follow{
+margin: auto;
+height: 4rem;
+background-color: #E9E9E9;
+width: 4rem;
+display: flex;
+flex-direction: column; 
+justify-content: center;
+text-align: center;
+align-content: center;
+border-radius: 50%;
+ }
+ .follow:hover{
+     background-color:darkgray ;
+ }
+
+
+
+
+
+/* search */
+
+
+
+
+#searchbar-container {
+    outline: none;
+    display: flex;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 30px;
+    height: 30px;
+    width: 50%;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    background-color: #efefef;
+  }
+  
+  #search-input {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 2rem;
+    background-color: #e9e9e9;
+    border: none;
+  }
+  
+  #search-input:focus {
+    border-color: transparent;
+    box-shadow: 0 0 0 2px #e9e9e9;
+  }
+  
+  #search-dropdown {
+    position: absolute;
+    top: 47px;
+    width: 90%;
+    background-color: white;
+    padding: 1rem;
+    z-index: 10;
+    border-radius: 0.5rem;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+  }
+  
+  .search-item {
+    padding: 0.5rem;
+    margin-bottom: 2px;
+  }
+  
+  .search-item:hover {
+    background-color: #e9e9e9;
+  }
+  
+  #search-button {
+    border: none;
+  }

@@ -1,0 +1,71 @@
+.update{
+    /* background-color: aquamarine; */
+    height:70vh;
+    display: flex;
+    flex-direction: column;
+    
+}
+.update_form{
+    padding: auto;
+    /* background-color: bisque; */
+    height: 50vh;
+    flex: 1;
+
+}
+.h2TAG{
+    padding-top: 3rem;
+    padding-left: 17.5rem;
+    color: #111;
+    font-weight: 600;
+    font-size: 28px;
+    font-weight: var(--font-weight-semibold);
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,ãƒ’ãƒ©ã‚®ãƒŽè§’ã‚´ Pro W3,Hiragino Kaku Gothic Pro,ãƒ¡ã‚¤ãƒªã‚ª,Meiryo,ï¼­ï¼³ ï¼°ã‚´ã‚·ãƒƒã‚¯,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+}
+.pTAG{
+    padding-left: 17.5rem;
+}
+.updateInput{
+    display: block;
+    width: 50%;
+    border-radius: 1rem;
+    border-color: #CDCDCD;  
+    margin-bottom: 3rem;
+    padding: 1rem;
+    margin-left:17.5rem ;
+    border-top: 5px;  
+    margin-top: 5px;
+    
+    
+}
+
+.updatelabel{
+    padding-left: 17.5rem;
+    display: block;
+}
+.confirmUpdate{
+    width: 10rem;
+    background-color: #EFEFEF;
+    border: none;
+    padding: 1.5rem;
+    border-radius: 2rem;
+    /* position: absolute; */
+}
+.confirmUpdate:hover{
+    background-color: #E9E9E9;
+}
+
+footer{
+    width: 100%;
+    padding: 1rem;
+    text-align: center; 
+    bottom: 0;
+    position: fixed; 
+    display:flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    box-shadow: 2px 2px 2px 5px rgba(.2, .2, .2, .2); 
+    z-index: -1;
+
+
+}

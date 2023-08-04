@@ -33,7 +33,10 @@ class User < ApplicationRecord
   validates :session_token , presence:true ,uniqueness:true
   before_validation :ensure_session_token
   validate :birth_date_cannot_be_in_the_future
-
+  has_one_attached :picture
+  has_many :pins
+  has_many :boards
+  has_many :board_pins, through: :boards
   def birth_date_cannot_be_in_the_future
     if birth_date.present? && birth_date> Date.today
       errors.add(:birth_date, "can't be in the future")

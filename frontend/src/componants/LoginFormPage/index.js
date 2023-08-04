@@ -10,14 +10,15 @@ function LoginFormPage() {
   const [credential, setCredential] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
-
+  const [loading,setLoading]=useState(false)
   if (sessionUser) return <Redirect to="/" />;
-
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
     setErrors([]);
     return dispatch(sessionActions.login({ credential, password }))
       .catch(async (res) => {
+        setLoading(false)
         let data;
         try {
           // .clone() essentially allows you to read the response body twice
@@ -25,13 +26,16 @@ function LoginFormPage() {
         } catch {
           data = await res.text(); // Will hit this case if the server is down
         }
-        if (data?.errors) setErrors(data.errors);
+        if (data?.errors)setErrors(data.errors);
         else if (data) setErrors([data]);
         else setErrors([res.statusText]);
       });
   }
   function demoLogin(){
-    return dispatch(sessionActions.login({ credential:"saif", password:"password" }))
+    setLoading(true);
+
+    return dispatch(sessionActions.login({ credential:"demo@user.io", password:"password" }))
+
   }
 
   return (
@@ -67,6 +71,7 @@ function LoginFormPage() {
       <p>OR</p>
       <button className='facbtn' onClick={demoLogin}>Continue as Demo</button>
       <button className='gmailbtn'>Continue as</button>
+      {loading&& <i className="fa-solid fa-spinner fa-spin-pulse loading"></i> }
       {/* <p className='more'>By continuing, you agree to Pinterest's Terms of Service; Opens a new tab and acknowledge you've read our Privacy Policy; Opens a new tab. Notice at collection; Opens a new tab.</p> */}
     </form>
     </div>

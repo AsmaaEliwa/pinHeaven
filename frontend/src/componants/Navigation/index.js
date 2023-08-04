@@ -1,12 +1,7 @@
-import React ,{useRef,useState}from 'react';
-import { NavLink } from 'react-router-dom';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import Profile from './profile.js';
-import "./navigation.css"
-import logoImage from './ph.png';
-import LoginFormModal from '../loginFormModel/index.js';
-import SignUpFormModal from '../signUpFormModel/index.js';
-// import { useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
 
 
 function Navigation() {
@@ -17,28 +12,25 @@ function Navigation() {
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-    
+    <>
+        {/* <Redirect to="/profile" /> */}
+
       <Profile user={sessionUser} />
+        </>
+
     );
   } else {
     sessionLinks = (
-      <div className='nav_bar' >
-        <img className='logo' src={logoImage} alt="Logo" />
-        <NavLink className="about" to="/">About</NavLink>
-        <NavLink className="business" to="/">Business</NavLink>
-        <NavLink className="blog" to="/">Blog</NavLink>
-        <LoginFormModal></LoginFormModal>
-        <SignUpFormModal></SignUpFormModal>
-      </div>
+      <>
+      <Redirect to="/home" />
+  
+   </>
     );
   }
 
   return (
     <>
-      {/* <li> */}
-        {/* <NavLink exact to="/">Home</NavLink> */}
         {sessionLinks}
-      {/* </li> */}
     </>
   );
 }

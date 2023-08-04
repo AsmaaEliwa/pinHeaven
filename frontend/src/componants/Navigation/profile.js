@@ -2,17 +2,20 @@ import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 import "./profile.css"
-
+import ProfileNavBAr from "../profileNavBar";
+import { NavLink, useHistory } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 function Profile({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef(null);
+  const history = useHistory();
   useEffect(() => {
     const handleOutsideClick = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
-          // console.log(event.target)
         setShowMenu(false);
-      }
+       }
     };
     document.addEventListener("click", handleOutsideClick);
     return () => document.removeEventListener("click", handleOutsideClick);
@@ -22,22 +25,48 @@ function Profile({ user }) {
   };
   const logout = (e) => {
     e.preventDefault();
-    dispatch(sessionActions.logout());
+    // debugger
+    dispatch(sessionActions.logout()).then(() => {
+      // debugger
+      history.push("/home")
+    });
   };
+  function redirectToProfile() {
+    return history.push(`/users/${user.id}`)
+  }
+  
   return (
-    <div ref={menuRef} className="profile">
-      <button onClick={toggleMenu} className="dropdown">
-      <i className="fa-solid fa-chevron-down "  ></i>    </button>
-      {showMenu && (
-        <ul className="profile-dropdown">
-          <li>{user.username}</li>
-          <li>{user.email}</li>
-          <li>
-            <button onClick={logout}>Log Out</button>
-          </li>
-        </ul>
-      )}
-    </div>
+    <>
+      <ProfileNavBAr user={user} />
+
+      <div ref={menuRef} className="profile">
+
+        <button onClick={toggleMenu} className="dropdown">
+        <FontAwesomeIcon icon={faChevronDown} size="lg" />  </button>
+        {showMenu && (
+
+          <div className="profile-dropdown">
+            <p> Currently in</p>
+            <div className="username" onClick={redirectToProfile}>
+              <li>{user.username}</li>
+              <li>{user.email}</li>
+            </div>
+            <li>
+              <button  className="logout">Add acount</button>
+              <button className="logout">convert to business</button>
+              <NavLink to="/update" className="settings">Settings</NavLink>
+
+              <button className="logout">Turn your home feed </button>
+              <button  className="logout">your privacy rights</button>
+              <button  className="logout">Get help</button>
+              <button onClick={logout} className="logout">Log Out</button>
+
+            </li>
+          </div>
+        )}
+      </div>
+    </>
+
   );
 }
 export default Profile;

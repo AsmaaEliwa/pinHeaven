@@ -115,3 +115,7 @@ p {
 .error{
     color:red
 }
+.loading{
+    font-weight: 100px;
+    font-size: xx-large;
+}

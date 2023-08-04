@@ -1,0 +1,70 @@
+.createBoard{
+    /* background-color: aqua; */
+    height: 100%;
+    width:100%;
+    margin-top: 10%;
+
+
+}
+.createBoardForm{
+    background-color: white;
+
+    width: 50%;
+    height: 50%;
+    margin: auto;
+    padding: 2rem;
+    border-radius: 3rem;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);   
+
+}
+.boardtitle{
+    text-align: center;
+    /* background-color: green;  */
+    margin-top: 0;
+    padding-top: 3rem;
+    padding-bottom: 1rem;
+}
+.boardName{
+    display: block;
+     /* background-color: blue;  */
+    text-align: start;
+    margin-left:.7rem ; 
+    padding: .5rem;
+}
+.boardTitle{
+    padding: 1rem;
+    border-radius: 1rem;
+    width:100%;
+    margin-bottom: 2rem;
+    padding-left: 0;
+    border-color:#EFEFEF ;
+    box-sizing: border-box;
+    padding: 1rem;
+}
+.board_inputs{
+     /* background-color: blueviolet;  */
+    padding-left: 0;
+    width: 100%;
+    margin: auto;
+
+}
+.createboardnbtn{
+    margin-left: 70%;
+    padding: 1rem;
+    border-radius: 2rem;
+    width: 25%;
+    border: none;
+    background-color: #EFEFEF;
+}
+.createboardnbtn:hover{
+    background-color:rgb(171, 168, 168) ;
+}
+.secret{
+    margin-left: 1.8rem;
+    margin-top: -1px;
+}
+.chek{
+   width: 1.3rem;
+   height: 1.3rem;
+   border-radius: 2rem;
+}

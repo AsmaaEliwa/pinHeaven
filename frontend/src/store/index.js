@@ -1,11 +1,19 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import sessionReducer from './session';
-// import session from './session';
-
+import pinReducer from './pin';
+import userReducer from './users';
+import BoardReducer from './board';
+import boardPinReducer from './boardPins';
+import searchReducer from './search';
 const rootReducer = combineReducers({
-  session:sessionReducer
-  
+  session:sessionReducer,
+  pin:pinReducer,
+  users:userReducer,
+  boards:BoardReducer,
+  boardPins:boardPinReducer,
+  search:searchReducer
+
 });
 let enhancer;
 

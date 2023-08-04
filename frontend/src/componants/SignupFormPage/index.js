@@ -12,15 +12,18 @@ function SignupFormPage() {
   const [password, setPassword] = useState("");
   const [birth_date, setBirthDate] = useState("");
   const [errors, setErrors] = useState([]);
+  const [loading,setLoading]=useState(false)
 
   if (sessionUser) return <Redirect to="/" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+    setLoading(true);
       setErrors([]);
       return dispatch(sessionActions.signup({ email, username, password ,birth_date}))
         .catch(async (res) => {
+        setLoading(false)
+
         let data;
         try {
           // .clone() essentially allows you to read the response body twice
@@ -86,6 +89,8 @@ function SignupFormPage() {
         />
       </label>
       <button type="submit" className="loginbtn">Continue</button>
+      {loading&& <i className="fa-solid fa-spinner fa-spin-pulse loading"></i> }
+
     </form>
     </div>
   );
