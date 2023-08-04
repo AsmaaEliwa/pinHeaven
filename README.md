@@ -21,6 +21,8 @@
 
 <img src="https://github.com/AsmaaEliwa/pinHeaven/assets/63536619/fef02b4d-9ba6-4fa2-9ef7-d119030b575a"/>
 
+<h2>Profile Home<h2>
+
 
 <h2>Code Snippets</h2>
 
