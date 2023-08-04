@@ -48,6 +48,7 @@ function ShowPin({ user }) {
     setShowPinInfo(false);
   };
   function handelEdite(pin) {
+    
     const user_id = user?.id;
     if (user_id) {
    

@@ -17,6 +17,7 @@ function ShowBoard() {
   const [title, setTitle] = useState("")
   const [selectedBoard, setSelectedBoard] = useState(null)
   const history = useHistory()
+  const [ensure,setEnsureDelete]=useState(false)
   const boards = useSelector((state) => {
 
     const boardIds = user.boardIds ? user.boardIds : [];
@@ -64,9 +65,16 @@ function ShowBoard() {
     e.preventDefault();
     if (Number(userId) === currentUser.id) {
       dispatch(boardActions.removeBoard({ boardId: selectedBoard.id, userId })).then(() => {
+        setEnsureDelete(false)
+        setShowBoardEdit(false)
         history.push(`/users/${currentUser.id}`)
       })
     }
+  }
+
+  function ensureDelete(e){
+    e.preventDefault()
+    setEnsureDelete(true)
   }
 
   if (!boards[0]) return null;
@@ -112,9 +120,15 @@ function ShowBoard() {
               placeholder={`Like "Places To Go" or "Recipes To Make"`}
             />
             <button type="submit" className="editboardnbtn">Done </button>
-            <button className="createboardnbtn" onClick={handelDeleteBoard}>Delete </button>
+            <button className="createboardnbtn" onClick={ensureDelete}>Delete </button>
           </form>
         </Modal>}
+        {ensure&& <Modal>
+          <div div className="are-u-sure">
+    Are you sure you want to delete! 
+    <><button onClick={handelDeleteBoard} className="sure"> Yes Delete</button></>
+          </div>
+          </Modal>}
     </div>
   );
 }

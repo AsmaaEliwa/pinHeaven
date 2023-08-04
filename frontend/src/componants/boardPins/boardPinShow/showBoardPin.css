@@ -19,6 +19,8 @@
 .n-pins{
     padding-left: 2rem;
     font-size: xx-large;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid #EFEFEF ;
 }
 .firstlitter-board{
     
@@ -71,4 +73,23 @@
   }
   .allPins-board:hover .overall {
     background-color: rgba(0, 0, 0, 0.5);
+  }
+  .z-pins{
+      font-size: large;
+margin-left: 2rem;
+padding-bottom: 2rem;
+border-bottom: 2px solid #EFEFEF ;
+  }
+  .margin-top{
+      margin-top: 5rem;
+      margin-bottom: 2rem;
+  }
+  .container {
+    margin: 0;
+    margin-right: 5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-auto-rows: 15px; 
+    /* margin-top: 3rem; */
+    height: fit-content;
   }

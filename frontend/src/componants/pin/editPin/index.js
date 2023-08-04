@@ -6,6 +6,7 @@ import "../createPin/createPin.css"
 import "./editPin.css"
 import { useParams } from "react-router-dom";
 import { Redirect } from "react-router-dom";
+import Modal from "../../context/model"
 function EditPinForm(){
     // debugger
     const {pinId}=useParams();
@@ -16,6 +17,8 @@ function EditPinForm(){
     const [title, setTitle] = useState(pin?.title);
     const [description, setDescription] = useState(pin?.description);
     const history = useHistory();
+    const [deletePin , setDeletePin]=useState(false)
+
     useEffect(()=>{
         if (!pin){
             dispatch(pinActions.fetchPin(pinId)).then((pin)=>{
@@ -40,12 +43,22 @@ function EditPinForm(){
 
               function handelDelete(e){
                   e.preventDefault()
+                  setDeletePin(true)
+              
+              }
+              function willDelete(e){
+                e.preventDefault()
                 dispatch(pinActions.removePin(pinId)).then(()=>{
                     history.push(`/users/${user.id}`)
                 })
               }
+              function handelClode(e){
+                  e.preventDefault()
+                  setDeletePin(false)
+              }
    
         return (
+            <>
             <div className='createpin'>
                 <div className='createpin_form'>
                      <h1 className="h1Title">Edit this Pin</h1>
@@ -132,6 +145,18 @@ function EditPinForm(){
 
                 </div>
             </div>
+
+{deletePin&& <Modal onClose={handelClode}>
+    <div className="are-u-sure">
+    Are you sure you want to delete! 
+    <><button onClick={willDelete} className="sure"> Yes Delete</button></>
+    </div>
+    </Modal>}
+
+
+
+            </>
+
         );
     }
     

@@ -12,7 +12,6 @@ function ProfileHome() {
     const [showPinInfo, setShowPinInfo] = useState(false)
     const [selectedPin, setSelectedPin] = useState(null)
     const size= ["small","medium","large"]
-    const randomIndex = Math.floor(Math.random() * size.length);
     useEffect(() => {
         dispatch(pinActions.fetchAllPins())
         dispatch(userAction.fetchUsers())

@@ -12,6 +12,7 @@ import ProfileHome from './componants/profileNavBar/profileHome.js';
 import SgowBoardPin from './componants/boardPins/boardPinShow/index.js';
 import SearchPage from './componants/searchShowPage/index.js';
 import PinPage from './componants/pin/showPin/pinPage.js';
+import NotFound from './componants/erorrPage/index.js';
 function App() {
   const sessionUser = useSelector(state => state.session.user);
 
@@ -65,6 +66,9 @@ function App() {
         <Route path="/">
           <ProfileHome></ProfileHome>
         </Route>
+
+        <Route component={NotFound} />
+
       </Switch>
     </>
   );

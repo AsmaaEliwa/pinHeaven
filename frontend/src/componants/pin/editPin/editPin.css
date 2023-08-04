@@ -125,3 +125,15 @@ border:none
     width:70%;
     height:7rem;
 }
+.are-u-sure{
+    padding: 5rem;
+    font-size: large;
+}
+.sure{
+    margin-top: 3rem;
+    padding: 1rem;
+    background-color: red;
+    width: 30%;
+    border:none;
+    border-radius: 1rem;
+}
