@@ -7,14 +7,14 @@
 
 <ul>Technologies Used
 
-<li>Javascript<li>
-<li>React<li>
-<li>Redux<li>
-<li>Ruby<li>
-<li>Ruby on Rails<li>
-<li>PostgreSQL<li>
-<li>AWS S3<li>
-<li>Render<li>
+<li>Javascript</li>
+<li>React</li>
+<li>Redux</li>
+<li>Ruby</li>
+<li>Ruby on Rails</li>
+<li>PostgreSQL</li>
+<li>AWS S3</li>
+<li>Render</li>
 </ul>
 
 <h2>Home Page<h2>
