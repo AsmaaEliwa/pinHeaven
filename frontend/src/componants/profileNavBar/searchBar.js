@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { clearSearchResults, fetchSearchResults } from '../../store/search';
 import { useHistory } from 'react-router-dom';
-
+import "./profileNav.css"
 function SearchBar(){
     const [searchText,setSearchText] =useState()
     const history=useHistory()
@@ -24,7 +24,7 @@ function SearchBar(){
     function handelShowingPin(id){
         return(e)=>{
             e.preventDefault();
-            history.push(`/pins/edit/${id}`);
+            history.push(`/pins/${id}`);
             dispatch(clearSearchResults());
             setSearchText("");
         }

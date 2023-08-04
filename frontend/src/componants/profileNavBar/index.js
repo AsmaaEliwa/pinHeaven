@@ -24,9 +24,6 @@ function ProfileNavBAr({ user }) {
                 <NavLink to="/" className="home">Home</NavLink>
                 <NavLink to="/pins/new" className="create">Create Pin  <FontAwesomeIcon icon={faChevronDown} size="lg" /> </NavLink>
                 <SearchBar/>
-                {/* <form id="searchForm"> */}
-                    {/* <input type="text" id="searchInput" placeholder="Search " /> */}
-                {/* </form> */}
                 <div className="contactgit">
                 <a href="https://github.com/AsmaaEliwa" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faGithub} style={{ color: 'darkgray' }} /></a> 
                 </div>

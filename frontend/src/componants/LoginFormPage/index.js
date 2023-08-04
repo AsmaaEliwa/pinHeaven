@@ -34,7 +34,7 @@ function LoginFormPage() {
   function demoLogin(){
     setLoading(true);
 
-    return dispatch(sessionActions.login({ credential:"demo@user.io", password:"password123" }))
+    return dispatch(sessionActions.login({ credential:"demo@user.io", password:"password" }))
 
   }
 

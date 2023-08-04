@@ -17,17 +17,15 @@ function ShowBoard() {
   const [title, setTitle] = useState("")
   const [selectedBoard, setSelectedBoard] = useState(null)
   const history = useHistory()
-  // console.log(currentUser.id,Number(userId))
   const boards = useSelector((state) => {
-    // debugger;
+
     const boardIds = user.boardIds ? user.boardIds : [];
     return boardIds.map((id) => {
       return state.boards[id];
     });
-    // return state.session.user.boardIds
+
 
   });
-  console.log(boards)
   useEffect(() => {
     dispatch(boardActions.fetchBoards(userId));
     dispatch(boardPinsActions.fetchBoardPins(userId))
@@ -39,7 +37,7 @@ function ShowBoard() {
     return state.pin
   })
 
-  // console.log(pins)
+
 
   function handelBoardPin(e, board) {
     e.preventDefault()
@@ -47,7 +45,6 @@ function ShowBoard() {
   }
 
   function handelEdite(e, board) {
-    // debugger
     e.preventDefault()
     setTitle(board.title)
     setShowBoardEdit(true)
@@ -59,7 +56,6 @@ function ShowBoard() {
   function handelEditSubmit(e) {
     e.preventDefault()
     const boardId = selectedBoard.id
-    console.log(userId, currentUser)
     if (Number(userId) === currentUser.id) {
       dispatch(boardActions.updateBoard({ boardId, title })).then(() => { setShowBoardEdit(false) })
     }

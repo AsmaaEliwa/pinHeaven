@@ -122,21 +122,21 @@ require 'open-uri'
 
 
 
-  # food_pin5 = Pin.new({title: "mix", description: "looks yummy ", user_id: demo1.id})
-  # food_pin5.image.attach(io: URI.open("https://pinheaven-seeds.s3.us-east-2.amazonaws.com/a24524c60d6ea16adf8cf6aad6b45e77.jpg"), filename: "mix.jpg")
-  # food_pin5.save!
+  food_pin5 = Pin.new({title: "mix", description: "looks yummy ", user_id: demo.id})
+  food_pin5.image.attach(io: URI.open("https://pinheaven-seeds.s3.us-east-2.amazonaws.com/a24524c60d6ea16adf8cf6aad6b45e77.jpg"), filename: "mix.jpg")
+  food_pin5.save!
 
-  # food_pin6 = Pin.new({title: "shawrma", description: "looks yummy ", user_id: demo1.id})
-  # food_pin6.image.attach(io: URI.open("https://pinheaven-seeds.s3.us-east-2.amazonaws.com/563b5552b9e03515784e94ec3beda3e8.jpg"), filename: "shawrma.jpg")
-  # food_pin6.save!
+  food_pin6 = Pin.new({title: "shawrma", description: "looks yummy ", user_id: demo.id})
+  food_pin6.image.attach(io: URI.open("https://pinheaven-seeds.s3.us-east-2.amazonaws.com/563b5552b9e03515784e94ec3beda3e8.jpg"), filename: "shawrma.jpg")
+  food_pin6.save!
 
-  # food_pin7 = Pin.new({title: "panckake", description: "looks yummy ", user_id: demo2.id})
-  # food_pin7.image.attach(io: URI.open("https://pinheaven-seeds.s3.us-east-2.amazonaws.com/307fea1119f75ef7af78473c12249f66.jpg"), filename: "panckake.jpg")
-  # food_pin7.save!
+  food_pin7 = Pin.new({title: "panckake", description: "looks yummy ", user_id: demo1.id})
+  food_pin7.image.attach(io: URI.open("https://pinheaven-seeds.s3.us-east-2.amazonaws.com/307fea1119f75ef7af78473c12249f66.jpg"), filename: "panckake.jpg")
+  food_pin7.save!
 
-  # food_pin8 = Pin.new({title: "burger", description: "looks yummy ", user_id: demo2.id})
-  # food_pin8.image.attach(io: URI.open("https://pinheaven-seeds.s3.us-east-2.amazonaws.com/01a8b20022d3ac8d1c0ad960e7b67466.jpg"), filename: "burger.jpg")
-  # food_pin8.save!
+  food_pin8 = Pin.new({title: "burger", description: "looks yummy ", user_id: demo2.id})
+  food_pin8.image.attach(io: URI.open("https://pinheaven-seeds.s3.us-east-2.amazonaws.com/01a8b20022d3ac8d1c0ad960e7b67466.jpg"), filename: "burger.jpg")
+  food_pin8.save!
 
 
 
@@ -161,13 +161,13 @@ require 'open-uri'
 
 
 
-  # decor_pin4 = Pin.new({title: "nice table", description: "love this corner decor ", user_id: demo1.id})
-  # decor_pin4.image.attach(io: URI.open("https://pinheaven-seeds.s3.us-east-2.amazonaws.com/89100997481fba2d67d20db1177b80c3.jpg"), filename: "table.jpg")
-  # decor_pin4.save!
+  decor_pin4 = Pin.new({title: "nice table", description: "love this corner decor ", user_id: demo1.id})
+  decor_pin4.image.attach(io: URI.open("https://pinheaven-seeds.s3.us-east-2.amazonaws.com/89100997481fba2d67d20db1177b80c3.jpg"), filename: "table.jpg")
+  decor_pin4.save!
 
-  # decor_pin5 = Pin.new({title: "nice decor", description: "love this decor ", user_id: demo1.id})
-  # decor_pin5.image.attach(io: URI.open("https://pinheaven-seeds.s3.us-east-2.amazonaws.com/86566817e878e2fa23f21872c31c4dd2.jpg"), filename: "nice.jpg")
-  # decor_pin5.save!
+  decor_pin5 = Pin.new({title: "nice decor", description: "love this decor ", user_id: demo2.id})
+  decor_pin5.image.attach(io: URI.open("https://pinheaven-seeds.s3.us-east-2.amazonaws.com/86566817e878e2fa23f21872c31c4dd2.jpg"), filename: "nice.jpg")
+  decor_pin5.save!
 
 
 

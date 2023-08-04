@@ -78,10 +78,10 @@ const get_boards = (boards) => {
   };
   
   export const fetchBoards = (userId) => async (dispatch) => {
-    debugger
+
     const response = await csrfFetch(`/api/boards?user_id=${userId}`);
     const data = await response.json();
-    debugger
+
     dispatch(get_boards(data.boards));
    return data.boards
   };

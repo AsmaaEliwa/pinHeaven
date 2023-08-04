@@ -30,7 +30,7 @@ function ShowPin({ user }) {
   
     return holder;
   });
-  // console.log(pinsInBoard)
+
 
   useEffect(() => {
 
@@ -66,8 +66,8 @@ if(pinsInBoard.length===0) return null
 
         <img key={pin?.id} src={`${pin?.imgUrl}`}className="pinimg " />
         <div className="image-overlay"></div>
-        <div className="editIcon-pin"></div>
-        <FontAwesomeIcon icon={faPen} fade onClick={() => handelEdite(pin)} /> 
+        <div className="editIcon-pin"  onClick={() => handelEdite(pin)} >
+        <FontAwesomeIcon icon={faPen} fade onClick={() => handelEdite(pin)} /> </div>
          </div> 
         </div>
          

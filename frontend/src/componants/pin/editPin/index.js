@@ -7,6 +7,7 @@ import "./editPin.css"
 import { useParams } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 function EditPinForm(){
+    // debugger
     const {pinId}=useParams();
     const pin=useSelector(state=> state.pin[pinId] )
     const user=useSelector(state=> state.session.user)
@@ -26,15 +27,17 @@ function EditPinForm(){
 
     
       
-            const handleSubmit = async (e) => {
-                e.preventDefault();
-          
+            function  handleSubmit (){
+                // e.preventDefault();
+                  debugger
                 dispatch(pinActions.updatePin({...pin ,title,description})).then(()=>{
                     history.push(`/users/${user.id}`)
                 });
     
               };
-              function handelDelete(){
+
+              function handelDelete(e){
+                  e.preventDefault()
                 dispatch(pinActions.removePin(pinId)).then(()=>{
                     history.push(`/users/${user.id}`)
                 })
@@ -45,7 +48,7 @@ function EditPinForm(){
                 <div className='createpin_form'>
                      <h1 className="h1Title">Edit this Pin</h1>
 
-                <form className="editform"  onSubmit={handleSubmit}>   
+                <form className="editform" >   
                 <div className="pinedit">
 
                 <div className="flex">
@@ -117,7 +120,7 @@ function EditPinForm(){
                     </div>
 
                     <div className="editbtn">
-                    <button type="submit" className="editpinnbtn">Save </button>
+                    <button type="submit" className="editpinnbtn" onClick={handleSubmit}>Save </button>
                     </div>
                     <div className="editbtn">
                     <button  className="deletepinnbtn" onClick={handelDelete} >Delete </button>
