@@ -67,7 +67,7 @@ function App() {
           <ProfileHome></ProfileHome>
         </Route>
 
-        <Route exact component={NotFound} />
+        {/* <Route exact component={NotFound} /> */}
 
       </Switch>
     </>
