@@ -16,4 +16,5 @@
 <li>Render<li>
 
 <h2>Home Page<h2>
+![ezgif com-video-to-gif](https://github.com/AsmaaEliwa/pinHeaven/assets/63536619/fef02b4d-9ba6-4fa2-9ef7-d119030b575a)
 
