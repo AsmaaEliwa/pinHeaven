@@ -39,17 +39,26 @@ export const fetchBoardPins = (userId) => async (dispatch) => {
     // debugger;
     dispatch(get_board_pins(data));
   };
-  
  
-  export const createBoardPin = (boardPin) => async (dispatch) => {
-    const response = await csrfFetch('/api/board_pins', {
-      method: 'POST',
-      body: JSON.stringify(boardPin)
   
-    });
-    const data = await response.json();
-    dispatch(set_board_pin(data)); // Store the new pin in the pinReducer
+  export const createBoardPin = (boardPin) => async (dispatch) => {
+    try {
+      const response = await csrfFetch('/api/board_pins', {
+        method: 'POST',
+        body: JSON.stringify(boardPin),
+      });
+      if (!response.ok) {
+        const errorMessage = await response.text();
+        console.error('Error creating boardPin:', errorMessage);
+      } else {
+        const data = await response.json();
+        dispatch(set_board_pin(data)); // Store the new pin in the pinReducer
+      }
+    } catch (error) {
+      console.error('Error creating boardPin:', error);
+    }
   };
+  
 
   export const fetchBoardPin = (id) => async (dispatch) => {
     const response = await csrfFetch(`/api/board_pins/${id}`);
@@ -59,7 +68,8 @@ export const fetchBoardPins = (userId) => async (dispatch) => {
     return data.board_pin;
   };
 
-  export const updatePin = (board_pin) => async (dispatch) => {
+  export const updateBoardPins = (board_pin) => async (dispatch) => {
+    debugger
     const { board_id, pin_id } = board_pin;
     const response = await csrfFetch(`/api/board_pins/${board_pin.id}`, {
       method: 'PATCH',
@@ -69,15 +79,65 @@ export const fetchBoardPins = (userId) => async (dispatch) => {
     });
     const data = await response.json();
     dispatch(set_board_pin(data.board_pin));
-    // return response;
   };
-  export const removePin = (id) => async (dispatch) => {
-    const response = await csrfFetch(`/api/board_pins/${id}`, {
-      method: "DELETE"
+  export const updateBoardPin =
+  (prevBoardId, pinId, updatedData) => async (dispatch) => {
+    debugger
+    try {
+      const response = await csrfFetch(
+        `/api/board_pins/${prevBoardId}/${pinId}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updatedData),
+        }
+      );
+
+      if (!response.ok) {
+        const errorMessage = await response.text();
+        console.error("Error updating BoardPin:", errorMessage);
+        throw new Error("Failed to update BoardPin");
+      }
+
+      const data = await response.json();
+      dispatch(set_board_pin(data.boardPin));
+    } catch (error) {
+      console.error("Error updating BoardPin:", error);
+    }
+  };
+
+  // export const removeBoardPin = (boardPin) => async (dispatch, getState) => {
+    
+  //   const {boardId, pinId}= boardPin
+  //   const response = await csrfFetch(`/api/board_pins`, {
+  //     method: "DELETE",
+  //   });
+  // debugger
+  //   const user = getState().session.user;
+  
+  //   if (response.ok) {
+  //     dispatch(remove_board_pin(boardId, pinId));
+  //     dispatch(fetchBoardPins(user.id));
+  //   }
+  
+  //   return response;
+  // };
+  export const removePinFromBoard = (boardId, pinId) => async (dispatch) => {
+    const response = await csrfFetch(`/api/board_pins`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ board_id: boardId, pin_id: pinId }),
     });
   
-    dispatch(remove_board_pin(id));
-    return response;
+    if (!response.ok) {
+      const errorMessage = await response.text();
+      console.error("Error removing pin from board:", errorMessage);
+      throw new Error("Failed to remove pin from board");
+    }
   };
   
   const boardPinReducer = (state = {}, action) => {

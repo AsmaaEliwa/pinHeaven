@@ -138,11 +138,13 @@ padding: .5rem;
 /*pins in home*/
 .pinscontainer {
     margin: 0;
-    margin-right: 5rem;
+    /* margin-right: 5rem; */
+    /* background-color: #ffcc99; */
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-auto-rows: 15px; 
-    margin-top: 3rem;
+    /* margin-top: 3rem; */
+    padding-right: 4rem;
   }
   
   .small {

@@ -20,9 +20,11 @@ function Profile({ user }) {
     document.addEventListener("click", handleOutsideClick);
     return () => document.removeEventListener("click", handleOutsideClick);
   }, []);
+
   const toggleMenu = () => {
     setShowMenu((prevShowMenu) => !prevShowMenu);
   };
+
   const logout = (e) => {
     e.preventDefault();
     // debugger
@@ -31,8 +33,12 @@ function Profile({ user }) {
       history.push("/home")
     });
   };
-  function redirectToProfile() {
+  function redirectToProfile(e) {
+    e.preventDefault()
     return history.push(`/users/${user.id}`)
+  }
+  function redirectToEditProfile() {
+    return history.push("/update")
   }
   
   return (
@@ -41,27 +47,26 @@ function Profile({ user }) {
 
       <div ref={menuRef} className="profile">
 
-        <button onClick={toggleMenu} className="dropdown">
+        <button onClick={toggleMenu} className="dropdown" >
         <FontAwesomeIcon icon={faChevronDown} size="lg" />  </button>
         {showMenu && (
 
           <div className="profile-dropdown">
             <p> Currently in</p>
+            {/* <div className="username" onClick={redirectToProfile}> */}
             <div className="username" onClick={redirectToProfile}>
-              <li>{user.username}</li>
-              <li>{user.email}</li>
-            </div>
-            <li>
-              <button  className="logout">Add acount</button>
-              <button className="logout">convert to business</button>
-              <NavLink to="/update" className="settings">Settings</NavLink>
-
-              <button className="logout">Turn your home feed </button>
-              <button  className="logout">your privacy rights</button>
-              <button  className="logout">Get help</button>
-              <button onClick={logout} className="logout">Log Out</button>
-
-            </li>
+  <li>{user.username}</li>
+  <li>{user.email}</li>
+</div>
+<li>
+  <button className="logout not-allow" onClick={(e) => e.stopPropagation()}>Add account</button>
+  <button className="logout not-allow" onClick={(e) => e.stopPropagation()}>Convert to business</button>
+  <div className="settings" onClick={redirectToEditProfile}>Settings</div>
+  <button className="logout not-allow" onClick={(e) => e.stopPropagation()}>Turn your home feed</button>
+  <button className="logout not-allow" onClick={(e) => e.stopPropagation()}>Your privacy rights</button>
+  <button className="logout not-allow" onClick={(e) => e.stopPropagation()}>Get help</button>
+  <button onClick={logout} className="logout">Log Out</button>
+</li>
           </div>
         )}
       </div>

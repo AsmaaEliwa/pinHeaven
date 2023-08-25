@@ -8,7 +8,7 @@ import * as boardActions from "../../../store/board"
 import * as boardPinActions from "../../../store/boardPins"
 import "./boardPin.css"
 import { useHistory } from 'react-router-dom';
-function CreatePinFprm({user}) {
+function CreatePinForm({user}) {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const [title, setTitle] = useState("");
@@ -72,16 +72,13 @@ function CreatePinFprm({user}) {
 
   
 function handelChange(e){
-  console.log(e.target.value)
-  debugger
-
+  // console.log(e.target.value)
     e.preventDefault()
     SetfetchBoardPin(true)
-  
     setSelectedBoard( parseInt(e.target.value, 10));
   }
 
-if (!boardsData[0])  return null
+// if (!boardsData[0])  return null
 
     return (
         <div className='createpin'>
@@ -146,4 +143,4 @@ if (!boardsData[0])  return null
 }
 
 
-export default CreatePinFprm;
+export default CreatePinForm;

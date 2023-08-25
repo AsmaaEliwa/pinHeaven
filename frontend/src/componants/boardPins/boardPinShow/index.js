@@ -16,8 +16,9 @@ function SgowBoardPin(){
     const dispatch=useDispatch()
     const history=useHistory()
     const size= ["small","medium","large"]
-
-    const user=useSelector(state=> state.session.user)
+    const user=useSelector(state=>state.session.user)
+    const userBoards=user.boardIds
+    const isCurrenUser = userBoards.includes(Number(boardId))
     const [showPinInfo, setShowPinInfo] = useState(false);
     const [selectedPin, setSelectedPin] = useState(null)
     useEffect(()=>{
@@ -97,9 +98,12 @@ return (
       <div className={`allPins ${size[index % size.length]}`} >
         <img key={pin?.id} src={`${pin?.imgUrl}`} className="allPinImg" />
       <div className='image-overlay' onClick={() => handleOutsideClick(pin)}></div>
-      <div className="editIcon">
-        <FontAwesomeIcon icon={faPen} onClick={() => handelEdite(pin)} />
-      </div>
+      {isCurrenUser&&
+         <div className="editIcon">
+         <FontAwesomeIcon icon={faPen} onClick={() => handelEdite(pin)} />
+       </div>
+      }
+   
   </div>
 ))}
     </div>

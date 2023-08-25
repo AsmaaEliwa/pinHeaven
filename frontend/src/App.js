@@ -5,7 +5,7 @@ import Navigation from './componants/Navigation/index.js';
 import UserProfile from './componants/profileNavBar/userProfile.js';
 import UpdateProfileForm from './componants/updateProfile/index.js';
 import Home from './componants/Home/index.js';
-import CreatePinFprm from './componants/pin/createPin/index.js';
+import CreatePinForm from './componants/pin/createPin/index.js';
 import EditPinForm from './componants/pin/editPin/index';
 import CreateBoardForm from './componants/board/creatBoard/index.js';
 import ProfileHome from './componants/profileNavBar/profileHome.js';
@@ -31,7 +31,7 @@ function App() {
         </Route>
 
         <Route exact path="/pins/new">
-         <CreatePinFprm user={sessionUser}/>
+         <CreatePinForm user={sessionUser}/>
         </Route>
         
         <Route exact path="/search">

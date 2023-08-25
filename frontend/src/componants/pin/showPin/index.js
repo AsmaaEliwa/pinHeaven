@@ -7,12 +7,16 @@ import EditPinForm from "../editPin";
 import { useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
+import { useParams } from 'react-router-dom';
 function ShowPin({ user }) {
   const menuRef = useRef(null);
+  const currentUser=useSelector(state=>state.session.user)
+  const {userId}=useParams()
   const dispatch = useDispatch();
   const [showPinInfo, setShowPinInfo] = useState(false);
   const [selectedPin, setSelectedPin] = useState(null)
   const history = useHistory()
+  const iscurrentUser=currentUser.id===Number(userId )
   const pins = useSelector((state) => {
     const pinIds = user.pinIds ? user.pinIds : [];
     return pinIds.map((id) => {
@@ -68,7 +72,11 @@ if(pinsInBoard.length===0) return null
         <img key={pin?.id} src={`${pin?.imgUrl}`}className="pinimg " />
         <div className="image-overlay"></div>
         <div className="editIcon-pin"  onClick={() => handelEdite(pin)} >
-        <FontAwesomeIcon icon={faPen} fade onClick={() => handelEdite(pin)} /> </div>
+          {iscurrentUser&&
+        <FontAwesomeIcon icon={faPen} fade onClick={() => handelEdite(pin)} /> 
+          
+          }
+          </div>
          </div> 
         </div>
          

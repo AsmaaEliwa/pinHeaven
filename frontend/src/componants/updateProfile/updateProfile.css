@@ -69,3 +69,12 @@ footer{
 
 
 }
+.demo-no-edit{
+    /* background-color: #CDCDCD; */
+    padding: 3rem;
+    font-size: xx-large;
+    text-align: center;
+    width: 70%;
+    margin: auto;
+    
+}

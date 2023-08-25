@@ -35,6 +35,7 @@ function UpdateProfileForm({ user }) {
                 else setErrors([res.statusText]);
             });
     };
+    if(sessionUser.id===1)return (<div className="demo-no-edit">You can not edit Demo User!</div>)
 
     return (
         <div className="update">
