@@ -39,6 +39,7 @@ function CreatePinForm({user}) {
             if (image) {
               formData.append("pin[image]", image);
             }
+            debugger
         dispatch(pinActions.createPin(formData)).then((res)=>{
          const pinId=Object.values(res)[0].id
          if(fetch){

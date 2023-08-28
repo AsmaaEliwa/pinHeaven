@@ -54,7 +54,7 @@ function ShowPin({ user }) {
   function handelEdite(pin) {
     
     const user_id = user?.id;
-    if (user_id) {
+    if (user_id ) {
    
       history.push(`/pins/edit/${pin.id}`);
     }
@@ -72,7 +72,7 @@ if(pinsInBoard.length===0) return null
         <img key={pin?.id} src={`${pin?.imgUrl}`}className="pinimg " />
         <div className="image-overlay"></div>
         <div className="editIcon-pin"  onClick={() => handelEdite(pin)} >
-          {iscurrentUser&&
+          {iscurrentUser &&
         <FontAwesomeIcon icon={faPen} fade onClick={() => handelEdite(pin)} /> 
           
           }

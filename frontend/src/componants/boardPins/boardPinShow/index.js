@@ -24,6 +24,7 @@ function SgowBoardPin(){
     useEffect(()=>{
         dispatch(boardPinActions.fetchBoardPins(user.id))
         dispatch(pinActions.fetchPins(user.id))
+        dispatch(pinActions.fetchAllPins())
         dispatch(boardActions.fetchBoards(user.id))
 
     },[user.id])
@@ -53,7 +54,8 @@ function SgowBoardPin(){
   };
   function handelEdite(pin) {
     const user_id = user?.id; 
-    if (user_id) {
+    // &&user_id=== pin.userId
+    if (user_id ) {
     history.push(`/pins/edit/${pin.id}`);
     }
   }
@@ -82,6 +84,7 @@ if (!pinIds) return  (
 </>
 
 )
+debugger
 if (!pins) return (<div className='n-pins'> 0 pins </div>)
 if (!boards) return null
 return (

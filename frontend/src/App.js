@@ -61,8 +61,10 @@ function App() {
           <Home />
         </Route>
         
-       
-        
+        {/* <Route path="/">
+        <ProfileHome></ProfileHome>
+        </Route>
+         */}
         <Route exact path="/profile">
           <ProfileHome></ProfileHome>
         </Route>

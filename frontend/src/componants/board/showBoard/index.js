@@ -31,6 +31,7 @@ function ShowBoard() {
     dispatch(boardActions.fetchBoards(userId));
     dispatch(boardPinsActions.fetchBoardPins(userId))
   }, [userId]);
+  
   const boardPins = useSelector(state => {
     return state.boardPins
   })

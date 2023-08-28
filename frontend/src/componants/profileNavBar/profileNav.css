@@ -187,6 +187,7 @@ padding: .5rem;
     height: 100%;
     background-color: rgba(0, 0, 0, 0);
     transition: background-color 0.3s ease;
+    padding: 1rem;
   }
   
   .allPins:hover .image-overlay {
@@ -194,7 +195,9 @@ padding: .5rem;
   }
 
 
-
+  .image-overlay:hover .hidden{
+display: block;
+  } 
 
 
 /*  showing pin details */
@@ -371,4 +374,39 @@ border-radius: 50%;
   
   #search-button {
     border: none;
+  }
+  .save-select{
+    background-color: transparent;
+    padding: 1rem;
+    border: none;
+    color:white;
+    font-size: large;
+
+  }
+  .save-btn{
+    /* padding: -.3rem; */
+    color:white;
+    background-color: red;
+    border-radius: 45%;
+    width: 30%;
+    /* height: 2.7rem; */
+    border: none;
+    font-size: medium;
+    
+  }
+  .save-btn:hover{
+    background-color: #a21d28; 
+  
+  }
+  .hidden{
+    display: none;
+  }
+  .save-select:focus {
+    outline: none; /* Remove the focus outline (border) */
+    /* Add any other styles you want for the focused state here */
+  }
+  .space{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 2rem;
   }

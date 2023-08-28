@@ -53,15 +53,7 @@ class Api::BoardPinsController < ApplicationController
       end
     end
 
-    # def destroy 
-    #        @board_pins=BoardPin.find_by(id: params[:id])
-    #     if @board_pins&.destroy
-    #         render json: {messages: "success"}
-    #     else
-    #         render json: { errors: ["board_pins not found"] }
-    #     end
-    # end
-   
+  
 
       def destroy
         if params[:board_id].present? && params[:pin_id].present?

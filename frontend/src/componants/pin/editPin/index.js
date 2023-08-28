@@ -28,10 +28,11 @@ function EditPinForm(){
     const isInBoard=pinsInBoard.includes(Number(pinId))
     const boardId = boardIds.find((id) => {
       const boardPinsForId = boardPins[id];
-      if (boardPinsForId.includes(Number(pinId))) {
+      if (boardPinsForId?.includes(Number(pinId))) {
         return id;
       }
     });
+
     
     console.log('boardId:', boardId);
     
@@ -46,7 +47,8 @@ function EditPinForm(){
         dispatch(boardActions.fetchBoards(user.id))
 
     },[pinId])
-
+    if(!pin)return null
+    const pinCreator=pin.userId===user.id
     console.log(isInBoard)
     // function  handleSubmit(e){
     //     e.preventDefault();
@@ -91,10 +93,24 @@ function EditPinForm(){
               
               }
               function willDelete(e){
-                e.preventDefault()
-                dispatch(pinActions.removePin(pinId)).then(()=>{
-                    history.push(`/users/${user.id}`)
-                })
+                e.preventDefault();
+    if (pinCreator) {
+      dispatch(pinActions.removePin(pinId))
+        .then(() => {
+          history.push(`/users/${user.id}`);
+        })
+        .catch((error) => {
+        //   setError(error.message);
+        });
+    } else {
+      dispatch(boardPinActions.removeBoardPin({ boardId, pinId }))
+        .then(() => {
+          history.push(`/users/${user.id}`);
+        })
+        .catch((error) => {
+        //   setError(error.message);
+        });
+    }
               }
               function handelClode(e){
                   e.preventDefault()

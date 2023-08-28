@@ -25,10 +25,11 @@ const get_board_pin = (board_pin) => {
 };
 
 
-const remove_board_pin = (id) => {
+const remove_board_pin =( boardId,pinId) => {
   return {
     type: REMOVE_BOARD_PIN,
-    id
+    boardId,
+    pinId,
   };
 };
 
@@ -80,6 +81,8 @@ export const fetchBoardPins = (userId) => async (dispatch) => {
     const data = await response.json();
     dispatch(set_board_pin(data.board_pin));
   };
+
+
   export const updateBoardPin =
   (prevBoardId, pinId, updatedData) => async (dispatch) => {
     debugger
@@ -108,22 +111,21 @@ export const fetchBoardPins = (userId) => async (dispatch) => {
     }
   };
 
-  // export const removeBoardPin = (boardPin) => async (dispatch, getState) => {
-    
-  //   const {boardId, pinId}= boardPin
-  //   const response = await csrfFetch(`/api/board_pins`, {
-  //     method: "DELETE",
-  //   });
-  // debugger
-  //   const user = getState().session.user;
+  export const removeBoardPin = (boardPin) => async (dispatch, getState) => {
+    const { boardId, pinId } = boardPin;
+    const response = await csrfFetch(`/api/board_pins/${boardId}/${pinId}`, {
+      method: "DELETE",
+    });
   
-  //   if (response.ok) {
-  //     dispatch(remove_board_pin(boardId, pinId));
-  //     dispatch(fetchBoardPins(user.id));
-  //   }
+    const user = getState().session.user;
   
-  //   return response;
-  // };
+    if (response.ok) {
+      dispatch(remove_board_pin(boardId, pinId));
+      dispatch(fetchBoardPins(user.id));
+    }
+  
+    return response;
+  };
   export const removePinFromBoard = (boardId, pinId) => async (dispatch) => {
     const response = await csrfFetch(`/api/board_pins`, {
       method: "DELETE",
@@ -141,20 +143,25 @@ export const fetchBoardPins = (userId) => async (dispatch) => {
   };
   
   const boardPinReducer = (state = {}, action) => {
-    const newState = { ...state }
     switch (action.type) {
       case SET_BOARD_PIN:
-        return { ...state, ...action.board_pin };
+        return { ...state, [action.board_pin.id]: action.board_pin };
       case REMOVE_BOARD_PIN:
-        delete newState[action.id]
-        return newState;
-        case GET_BOARD_PIN:
-          return { ...state, [action.board_pin.id]: action.board_pin };
-          case GET_BOARD_PINS:
-            return { ...state, ...action.board_pins };
+        const { boardId, pinId } = action;
+        const updatedState = { ...state }
+        if (updatedState[boardId]) {
+          updatedState[boardId] = updatedState[boardId].filter((id) => id !== pinId);
+        }
+        return updatedState;
+      case GET_BOARD_PIN:
+        return { ...state, [action.board_pin.id]: action.board_pin };
+      case GET_BOARD_PINS:
+        return { ...state, ...action.board_pins };
       default:
         return state;
     }
   };
+  
+
   
   export default boardPinReducer;
