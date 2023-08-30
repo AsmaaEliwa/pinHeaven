@@ -132,7 +132,7 @@ function handelChange(e){
             
                 <div className="btn">
                 <select className="selectBoard" onChange={handelChange}>
-                  <option >All Pins</option>
+                  <option >Select Board</option>
                   { boardsData.map(board=>  <option  key={board.id} value={board.id}>{board.title}</option> )}
                 </select>
                 <button type="submit" className="createpinnbtn">Save </button>

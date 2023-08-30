@@ -71,7 +71,6 @@ function EditPinForm(){
     //   };
             function  handleSubmit(e){
                 e.preventDefault();
-                debugger
                 const boardPin={board_id:selectedBoard,pin_id:pinId}
                 if(fetch){
                     if (isInBoard){
@@ -134,8 +133,8 @@ function EditPinForm(){
                 <div className="flex">
                   <label className="editLabel"> Board
                     </label>
-                       <select className='editSelect' value="Decorations" onChange={handelSelectBoard}>
-                           <option>All Pins</option>
+                       <select className='editSelect'  onChange={handelSelectBoard}>
+                           <option> Select Board</option>
                            { boards.map(board=> <option  key={board.id} value={board.id}>{board.title}</option> )}
                        </select> 
                      </div>                   

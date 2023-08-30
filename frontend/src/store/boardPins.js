@@ -43,6 +43,7 @@ export const fetchBoardPins = (userId) => async (dispatch) => {
  
   
   export const createBoardPin = (boardPin) => async (dispatch) => {
+    debugger
     try {
       const response = await csrfFetch('/api/board_pins', {
         method: 'POST',

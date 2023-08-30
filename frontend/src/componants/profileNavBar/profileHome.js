@@ -83,7 +83,22 @@ function ProfileHome() {
             // dispatch(pinActions.createPin(formData))
             //   .then((res) => {
             //     const pinId = Object.values(res)[0].id;
-                dispatch(boardPinActions.createBoardPin({ pinId:pin.id, boardId: selectedBoard }));
+            if(Object.keys(boards).length===0){
+              const formData = new FormData();
+              formData.append("board[title]","All Pins" );
+              formData.append("board[user_id]", user.id);
+             
+              dispatch(boardActions.createBoard(formData))
+              .then((createdBoard) => {
+                debugger
+                const createdBoardId = createdBoard.id;
+                dispatch(boardPinActions.createBoardPin({ pinId: pin.id, boardId: createdBoardId }));
+              });
+
+            }else{
+              dispatch(boardPinActions.createBoardPin({ pinId:pin.id, boardId: selectedBoard }));
+
+            }
                 history.push(`/users/${user.id}`);
               // });
           // })

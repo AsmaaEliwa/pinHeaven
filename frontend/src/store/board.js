@@ -47,7 +47,7 @@ const get_boards = (boards) => {
     const updatedUser = { ...sessionUser, boardIds: [...sessionUser.boardIds, data.board.id] };
     dispatch(set_board(data.board)); 
     dispatch(userActions.setCurrentUser(updatedUser)); 
-    return response;
+    return data.board;
   };
 
 
