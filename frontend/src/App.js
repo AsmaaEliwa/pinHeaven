@@ -21,57 +21,70 @@ function App() {
 
       <Navigation />
       <Switch>
+  <Route exact path={`/pins/edit/:pinId`}>
+    <EditPinForm user={sessionUser} />
+  </Route>
 
-      <Route exact path={`/pins/edit/:pinId`}>
-         <EditPinForm user={sessionUser} />
-        </Route>
+  <Route exact path="/boards/new">
+    <CreateBoardForm user={sessionUser} />
+  </Route>
 
-        <Route exact path="/boards/new">
-          <CreateBoardForm user={sessionUser}/>
-        </Route>
+  <Route exact path="/pins/new">
+    <CreatePinForm user={sessionUser} />
+  </Route>
 
-        <Route exact path="/pins/new">
-         <CreatePinForm user={sessionUser}/>
-        </Route>
-        
-        <Route exact path="/search">
-          <SearchPage/>
-        </Route>
-        
-      
+  <Route exact path="/search">
+    <SearchPage />
+  </Route>
 
-        <Route exact path={`/pins/:pinId`}>
-         <PinPage user={sessionUser} />
-        </Route>
-        
-        
-        <Route exact path={`/users/:userId`}>
-          <UserProfile/>
-        </Route>
-        
-          
-        <Route exact path={`/boards/:boardId`}>
-          <SgowBoardPin/>
-        </Route>
-        
-        <Route exact path="/update">
-          <UpdateProfileForm user={sessionUser} />
-        </Route>
-        <Route path="/home">
-          <Home />
-        </Route>
-        
-        {/* <Route path="/">
-        <ProfileHome></ProfileHome>
-        </Route>
-         */}
-        <Route exact path="/profile">
-          <ProfileHome></ProfileHome>
-        </Route>
+  <Route exact path={`/pins/:pinId`}>
+    <PinPage user={sessionUser} />
+  </Route>
 
-        {/* <Route exact component={NotFound} /> */}
+  {/* <Route exact path={`/users/:userId`}>
+    <UserProfile />
+  </Route> */}
+  <Route exact path="/users/:userId">
+  {({ match }) => {
+    // Check if userId is a valid integer (you can adjust this condition)
+    if (/^\d+$/.test(match.params.userId)) {
+      return <UserProfile />;
+    } else {
+      return <NotFound />;
+    }
+  }}
+</Route>
 
-      </Switch>
+  <Route exact path={`/boards/:boardId`}>
+    <SgowBoardPin />
+  </Route>
+
+  <Route exact path="/update">
+    <UpdateProfileForm user={sessionUser} />
+  </Route>
+
+  <Route exact path="/home">
+    <Home />
+  </Route>
+
+  {sessionUser && (
+    <Route exact path="/">
+      <ProfileHome />
+    </Route>
+  )}
+
+  <Route exact path="/profile">
+    <ProfileHome />
+  </Route>
+
+  {/* Catch-all route for 404 */}
+
+  {/* <Route path="/users/:userId*">
+  <NotFound />
+</Route> */}
+  <Route component={NotFound} />
+</Switch>
+
     </>
   );
 }

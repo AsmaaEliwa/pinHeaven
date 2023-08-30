@@ -377,7 +377,7 @@ border-radius: 50%;
   }
   .save-select{
     background-color: transparent;
-    padding: 1rem;
+    padding: .5rem;
     border: none;
     color:white;
     font-size: large;

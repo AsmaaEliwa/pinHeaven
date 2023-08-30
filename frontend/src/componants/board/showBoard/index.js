@@ -126,7 +126,7 @@ function ShowBoard() {
             <button className="createboardnbtn" onClick={ensureDelete}>Delete </button>
           </form>
         </Modal>}
-        {ensure&& <Modal>
+        {ensure&& <Modal onClose={()=>setEnsureDelete(false)}>
           <div div className="are-u-sure">
     Are you sure you want to delete! 
     <><button onClick={handelDeleteBoard} className="sure"> Yes Delete</button></>

@@ -10,19 +10,22 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons"; // Import the faPlus icon
 import ShowBoard from '../board/showBoard';
 import SgowBoardPin from '../boardPins/boardPinShow';
-// import * as userAction from "../../store/users"
-
+import * as pinActions from "../../store/pin"
+import NotFound from '../erorrPage';
 function UserProfile() {
     // debugger
-    const { userId } = useParams();
+    const { userId } = useParams() || { userId: null };
     const dispatch = useDispatch();
     const user = useSelector((state) => state.users[userId]);
     const history=useHistory()
     useEffect(() => {
       dispatch(userActions.fetchUser(userId));
+      dispatch(pinActions.fetchAllPins())
 
     }, [userId]);
-    if (!user) return null;
+    if (!userId || !user) {
+        return <NotFound />;
+    }
     function handelCreateBoard(){
         const user_id = user?.id; 
         if (user_id) {
@@ -30,6 +33,7 @@ function UserProfile() {
         }
     }
     // debugger
+   
 
     return (
         <div className="userProfile">
@@ -38,8 +42,7 @@ function UserProfile() {
             <h1>{user?.username}</h1>
             <p>{user?.email}</p>
             </div>
-            <h3 className="pin_board" > Created </h3>
-            <h3 className="pin_board"  > saved </h3>
+           
             {/* <div className='follow'> follow </div> */}
 
             <div className='addBoard' onClick={handelCreateBoard}><FontAwesomeIcon icon={faPlus} beat /></div>

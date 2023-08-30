@@ -3,9 +3,13 @@ class Api::UsersController < ApplicationController
   before_action :require_logged_in, only: [:update]
 
   wrap_parameters include: User.attribute_names + ['password']
-  def show 
-    @user=User.find(params[:id]) 
-    render :show
+  def show
+    begin
+      @user = User.find(params[:id])
+      render :show
+    rescue ActiveRecord::RecordNotFound
+      render json: { errors: "User not found" }, status: :not_found
+    end
   end
 def index
   @users=User.all
