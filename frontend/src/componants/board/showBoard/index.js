@@ -18,7 +18,7 @@ function ShowBoard() {
   const [selectedBoard, setSelectedBoard] = useState(null)
   const history = useHistory()
   const [ensure,setEnsureDelete]=useState(false)
-  const isCurrenUser = currentUser.id===Number(userId)
+  const isCurrenUser = currentUser?.id===Number(userId)
   const boards = useSelector((state) => {
   const boardIds = user.boardIds ? user.boardIds : [];
     return boardIds.map((id) => {

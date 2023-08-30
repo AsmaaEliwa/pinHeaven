@@ -16,7 +16,7 @@ function ShowPin({ user }) {
   const [showPinInfo, setShowPinInfo] = useState(false);
   const [selectedPin, setSelectedPin] = useState(null)
   const history = useHistory()
-  const iscurrentUser=currentUser.id===Number(userId )
+  const iscurrentUser=currentUser?.id===Number(userId )
   debugger
   const pins = useSelector((state) => {
     const pinIds = user.pinIds ? user.pinIds : [];
@@ -62,6 +62,7 @@ function ShowPin({ user }) {
   }
  
 if(pinsInBoard.length===0) return null
+
   return (
     <div className="conainer" >
       {pins?.map((pin) => {
