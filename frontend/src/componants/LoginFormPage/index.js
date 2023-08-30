@@ -11,7 +11,7 @@ function LoginFormPage() {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
   const [loading,setLoading]=useState(false)
-  if (sessionUser) return <Redirect to="/" />;
+  // if (sessionUser) return <Redirect to="/" />;
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
