@@ -18,7 +18,6 @@ function SgowBoardPin(){
     const size= ["small","medium","large"]
     const user=useSelector(state=>state.session.user)
     const userBoards=useSelector(state=>state.boards)
-    debugger
     const [showPinInfo, setShowPinInfo] = useState(false);
     const [selectedPin, setSelectedPin] = useState(null)
     useEffect(()=>{
@@ -85,7 +84,7 @@ if (!pinIds) return  (
 
 )
 const isCurrenUser = Object.keys(userBoards).includes(boardId)
-
+debugger
 if (!pins) return (<div className='n-pins'> 0 pins </div>)
 if (!boards) return null
 return (

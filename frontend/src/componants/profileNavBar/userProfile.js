@@ -14,7 +14,7 @@ import * as pinActions from "../../store/pin"
 import NotFound from '../erorrPage';
 function UserProfile() {
     // debugger
-    const { userId } = useParams() || { userId: null };
+    const { userId } = useParams();
     const dispatch = useDispatch();
     const user = useSelector((state) => state.users[userId]);
     const history=useHistory()
@@ -23,9 +23,7 @@ function UserProfile() {
       dispatch(pinActions.fetchAllPins())
 
     }, [userId]);
-    if (!userId || !user) {
-        return <NotFound />;
-    }
+    if (!user||!userId) return <NotFound/>;
     function handelCreateBoard(){
         const user_id = user?.id; 
         if (user_id) {

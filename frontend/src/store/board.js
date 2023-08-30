@@ -107,7 +107,7 @@ const get_boards = (boards) => {
         case GET_BOARD:
           return { ...state, [action.board.id]: action.board };
           case GET_BOARDS:
-            return { ...state, ...action.boards };
+            return { ...action.boards };
       default:
         return state;
     }

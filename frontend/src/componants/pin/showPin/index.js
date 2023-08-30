@@ -17,6 +17,7 @@ function ShowPin({ user }) {
   const [selectedPin, setSelectedPin] = useState(null)
   const history = useHistory()
   const iscurrentUser=currentUser.id===Number(userId )
+  debugger
   const pins = useSelector((state) => {
     const pinIds = user.pinIds ? user.pinIds : [];
     return pinIds.map((id) => {
@@ -71,12 +72,14 @@ if(pinsInBoard.length===0) return null
 
         <img key={pin?.id} src={`${pin?.imgUrl}`}className="pinimg " />
         <div className="image-overlay"></div>
+        {iscurrentUser &&
+
         <div className="editIcon-pin"  onClick={() => handelEdite(pin)} >
-          {iscurrentUser &&
         <FontAwesomeIcon icon={faPen} fade onClick={() => handelEdite(pin)} /> 
           
-          }
           </div>
+          }
+
          </div> 
         </div>
          
