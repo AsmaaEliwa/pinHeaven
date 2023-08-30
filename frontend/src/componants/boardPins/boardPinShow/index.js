@@ -13,6 +13,7 @@ import "./showBoardPin.css"
 import * as boardActions from "../../../store/board"
 function SgowBoardPin(){
     const {boardId}= useParams()
+    const board=useSelector(state=>state.boards[boardId])
     const dispatch=useDispatch()
     const history=useHistory()
     const size= ["small","medium","large"]
@@ -24,9 +25,10 @@ function SgowBoardPin(){
         dispatch(boardPinActions.fetchBoardPins(user.id))
         dispatch(pinActions.fetchPins(user.id))
         dispatch(pinActions.fetchAllPins())
-        dispatch(boardActions.fetchBoards(user.id))
+        // dispatch(boardActions.fetchBoards(user.id))
+        dispatch(boardActions.fetchBoard(boardId))
 
-    },[user.id])
+    },[user.id,boardId])
     const pinIds= useSelector(state=> {
 
       return state.boardPins[Number(boardId)]
@@ -68,11 +70,12 @@ history.push(`/users/${user.id}`)
 
 }
 
+if(!board)return null
 
 if (!pinIds) return  (
 <>
 
-<h1 className='board-titile'>{boards[boardId]?.title}</h1>
+<h1 className='board-titile'>{board?.title}</h1>
 <div className='middle margin-top'>
  <div className='firstlitter-board' onClick={redirectToProfile}>{user.username[0].toUpperCase()}</div>
  <div className='firstlitter-board left' onClick={addMorePins}>+</div>
@@ -84,11 +87,12 @@ if (!pinIds) return  (
 
 )
 const isCurrenUser = Object.keys(userBoards).includes(boardId)
-if (!pins) return (<div className='n-pins'> 0 pins </div>)
+// if (!pins) return (<div className='n-pins'> 0 pins </div>)
 if (!boards) return null
+debugger
 return (
     <>
-  <h1 className='board-titile'>{boards[boardId]?.title}</h1>
+  <h1 className='board-titile'>{board?.title}</h1>
 <div className='middle'>
   <div className='firstlitter-board' onClick={redirectToProfile}>{user.username[0].toUpperCase()}</div>
   <div className='firstlitter-board left' onClick={addMorePins}>+</div>
@@ -100,7 +104,7 @@ return (
       <div className={`allPins ${size[index % size.length]}`} >
         <img key={pin?.id} src={`${pin?.imgUrl}`} className="allPinImg" />
       <div className='image-overlay' onClick={() => handleOutsideClick(pin)}></div>
-      {isCurrenUser&&
+      {pin?.userId===user.id&&
          <div className="editIcon">
          <FontAwesomeIcon icon={faPen} onClick={() => handelEdite(pin)} />
        </div>
