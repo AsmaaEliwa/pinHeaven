@@ -7,37 +7,82 @@ import "./editPin.css"
 import { useParams } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import Modal from "../../context/model"
+import * as boardActions from "../../../store/board"
+import * as boardPinActions from "../../../store/boardPins"
 function EditPinForm(){
     // debugger
     const {pinId}=useParams();
     const pin=useSelector(state=> state.pin[pinId] )
     const user=useSelector(state=> state.session.user)
-    // console.log(pin) 
     const dispatch = useDispatch();
     const [title, setTitle] = useState(pin?.title);
     const [description, setDescription] = useState(pin?.description);
     const history = useHistory();
     const [deletePin , setDeletePin]=useState(false)
+    const boards=useSelector(state=>Object.values(state.boards))
+    const [selectedBoard,setSelectedBoard]=useState()
+    const [fetch,setfetch]=useState(false)
+    const boardPins=useSelector(state=>state.boardPins)
+    const boardIds=Object.keys(boardPins)
+    const pinsInBoard= Object.values(boardPins).flat()
+    const isInBoard=pinsInBoard.includes(Number(pinId))
+    const boardId = boardIds.find((id) => {
+      const boardPinsForId = boardPins[id];
+      if (boardPinsForId?.includes(Number(pinId))) {
+        return id;
+      }
+    });
 
+    
+    console.log('boardId:', boardId);
+    
     useEffect(()=>{
         if (!pin){
             dispatch(pinActions.fetchPin(pinId)).then((pin)=>{
-                setDescription(pin.description);
-                setTitle(pin.title);
+            setDescription(pin.description);
+            dispatch(boardPinActions.fetchBoardPins(user.id))
+            setTitle(pin.title);
             })
         }
-    },[pinId])
+        dispatch(boardActions.fetchBoards(user.id))
 
-    
+    },[pinId])
+    if(!pin)return null
+    const pinCreator=pin.userId===user.id
+    console.log(isInBoard)
+    // function  handleSubmit(e){
+    //     e.preventDefault();
+    //     // debugger
+    //     const boardPin={board_id:selectedBoard,pin_id:pinId}
+    //     if(fetch){
+    //         if (isInBoard){
+    //         dispatch(boardPinActions.updateBoardPin(boardId,pinId,
+    //             {board_id:selectedBoard ,pin_id: pin.id,}))
+    //         }else{
+    //             dispatch(boardPinActions.createBoardPin(boardPin))                    }
+
+
+    //     }
+    //     dispatch(pinActions.updatePin({...pin ,title,description})).then(()=>{
+    //         history.push(`/users/${user.id}`)
+    //     });
       
+
+    //   };
             function  handleSubmit(e){
                 e.preventDefault();
-              console.log("cliked")
+                const boardPin={board_id:selectedBoard,pin_id:pinId}
+                if(fetch){
+                    if (isInBoard){
+                        dispatch(boardPinActions.updateBoardPin(boardId,pinId,{board_id:selectedBoard ,pin_id: pin.id,}))          
+                    }
+                    else {dispatch(boardPinActions.createBoardPin(boardPin))}
 
-                  debugger
+                }
                 dispatch(pinActions.updatePin({...pin ,title,description})).then(()=>{
                     history.push(`/users/${user.id}`)
                 });
+              
     
               };
 
@@ -47,14 +92,33 @@ function EditPinForm(){
               
               }
               function willDelete(e){
-                e.preventDefault()
-                dispatch(pinActions.removePin(pinId)).then(()=>{
-                    history.push(`/users/${user.id}`)
-                })
+                e.preventDefault();
+    if (pinCreator) {
+      dispatch(pinActions.removePin(pinId))
+        .then(() => {
+          history.push(`/users/${user.id}`);
+        })
+        .catch((error) => {
+        //   setError(error.message);
+        });
+    } else {
+      dispatch(boardPinActions.removeBoardPin({ boardId, pinId }))
+        .then(() => {
+          history.push(`/users/${user.id}`);
+        })
+        .catch((error) => {
+        //   setError(error.message);
+        });
+    }
               }
               function handelClode(e){
                   e.preventDefault()
                   setDeletePin(false)
+              }
+              function handelSelectBoard(e){
+                  e.preventDefault()
+                  setSelectedBoard( parseInt(e.target.value, 10));
+                  setfetch(true)
               }
    
         return (
@@ -69,10 +133,9 @@ function EditPinForm(){
                 <div className="flex">
                   <label className="editLabel"> Board
                     </label>
-                       <select className='editSelect' value="Decorations">
-                           <option  value=""selected disabled > Decorations</option>
-                           <option></option>
-                           <option></option>
+                       <select className='editSelect'  onChange={handelSelectBoard}>
+                           <option> Select Board</option>
+                           { boards.map(board=> <option  key={board.id} value={board.id}>{board.title}</option> )}
                        </select> 
                      </div>                   
 
@@ -80,7 +143,7 @@ function EditPinForm(){
                      <div className="flex">
                   <label className="editLabel"> Section
                     </label>
-                       <select className='editSelect' value="Decorations">
+                       <select className='editSelect not-allow' value="Decorations">
                            <option  value=""selected disabled > Decorations</option>
                            <option></option>
                            <option></option>

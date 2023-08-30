@@ -16,13 +16,15 @@ function SgowBoardPin(){
     const dispatch=useDispatch()
     const history=useHistory()
     const size= ["small","medium","large"]
-
-    const user=useSelector(state=> state.session.user)
+    const user=useSelector(state=>state.session.user)
+    const userBoards=useSelector(state=>state.boards)
+    debugger
     const [showPinInfo, setShowPinInfo] = useState(false);
     const [selectedPin, setSelectedPin] = useState(null)
     useEffect(()=>{
         dispatch(boardPinActions.fetchBoardPins(user.id))
         dispatch(pinActions.fetchPins(user.id))
+        dispatch(pinActions.fetchAllPins())
         dispatch(boardActions.fetchBoards(user.id))
 
     },[user.id])
@@ -52,7 +54,8 @@ function SgowBoardPin(){
   };
   function handelEdite(pin) {
     const user_id = user?.id; 
-    if (user_id) {
+    // &&user_id=== pin.userId
+    if (user_id ) {
     history.push(`/pins/edit/${pin.id}`);
     }
   }
@@ -81,6 +84,8 @@ if (!pinIds) return  (
 </>
 
 )
+const isCurrenUser = Object.keys(userBoards).includes(boardId)
+
 if (!pins) return (<div className='n-pins'> 0 pins </div>)
 if (!boards) return null
 return (
@@ -97,9 +102,12 @@ return (
       <div className={`allPins ${size[index % size.length]}`} >
         <img key={pin?.id} src={`${pin?.imgUrl}`} className="allPinImg" />
       <div className='image-overlay' onClick={() => handleOutsideClick(pin)}></div>
-      <div className="editIcon">
-        <FontAwesomeIcon icon={faPen} onClick={() => handelEdite(pin)} />
-      </div>
+      {isCurrenUser&&
+         <div className="editIcon">
+         <FontAwesomeIcon icon={faPen} onClick={() => handelEdite(pin)} />
+       </div>
+      }
+   
   </div>
 ))}
     </div>

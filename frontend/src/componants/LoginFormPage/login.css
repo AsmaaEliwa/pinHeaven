@@ -1,6 +1,6 @@
 
 .logologin{
-    width: 25%;
+    width: 30%;
     height: 25%;
     /* margin-top: 100px; */
     position: absolute;
@@ -58,16 +58,23 @@ h1 {
 .password:hover{
     border-color:#92C2FF ;
 }
+.email:hover{
+    border-color:#92C2FF ;
+
+}
 .loginbtn{
-    width: 55%;
+    width: 65%;
+    height: 3rem;
     margin: auto;
     display: block;
-    padding: .7rem;
     border-radius: 20px;
     background-color: #E60022;
     color: white;
     margin-top: 1rem;
-    border-color: white;
+    /* border-color: white; */
+    border: none;
+    font-size: large;
+
 
 
 
@@ -78,8 +85,8 @@ h1 {
 }
 p {
     display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
+    /* margin-block-start: .5em; */
+    /* margin-block-end: .5em; */
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     
@@ -87,13 +94,16 @@ p {
 .facbtn{
     background-color: #1976F2;
     margin-top: 1rem;
-    border-color: white;
+    height: 3rem;
+    color:white;
+    border: none;
     width: 55%;
     margin: auto;
     display: block;
     padding: .7rem;
     border-radius: 20px;
     margin-bottom: 1rem;
+    font-size: large;
 }
 .gmailbtn{
     margin-top: 1rem;

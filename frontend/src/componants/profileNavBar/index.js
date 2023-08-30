@@ -12,8 +12,11 @@ function ProfileNavBAr({ user }) {
     const history = useHistory();
     const [showUser, setShowUser] = useState(false)
 
-    function toggelUserProfile() {
-        setShowUser(prevuse => !prevuse)
+    function toggelUserProfile(e) {
+        // setShowUser(prevuse => !prevuse)
+        e.preventDefault();
+        history.push(`/users/${user.id}`)
+
     }
 
     
@@ -32,12 +35,12 @@ function ProfileNavBAr({ user }) {
                 </div>
                 <button className="user" onClick={toggelUserProfile}>{user.username[0].toUpperCase()}</button>
             </div>
-              {showUser &&
+              {/* {showUser &&
                 <>
                          { history.push(`/users/${user.id}`)}
 
                 </>
-              }
+              } */}
         </>
     )
 

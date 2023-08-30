@@ -45,8 +45,8 @@ function CreateBoardForm({user}) {
                         required
                         placeholder={`Like "Places To Go" or "Recipes To Make"`}
                     />
-                    <input type="checkbox"  className="chek"/>Keep this board secret<br/>
-                    <p className="secret">So only you and collaborators can see it. Learn more; Opens a new tab</p>
+                    {/* <input type="checkbox"  className="chek"/>Keep this board secret<br/>
+                    <p className="secret">So only you and collaborators can see it. Learn more; Opens a new tab</p> */}
               
                 <button type="submit" className="createboardnbtn">Create </button>
                 

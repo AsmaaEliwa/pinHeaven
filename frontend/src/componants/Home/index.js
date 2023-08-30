@@ -1,7 +1,7 @@
 import logoImage from './ph.png';
 import LoginFormModal from '../loginFormModel/index.js';
 import SignUpFormModal from '../signUpFormModel/index.js';
-import { NavLink } from 'react-router-dom';
+import { NavLink,Link } from 'react-router-dom';
 import AnimationPage from '../animation';
 import "./navigation.css"
 import {useEffect} from "react"
@@ -20,9 +20,9 @@ function Home(){
       <>
         <div className='nav_bar' >
         <img className='logo' src={logoImage} alt="Logo" />
-        <NavLink className="about" to="/home">About</NavLink>
-        <NavLink className="business" to="/home">Business</NavLink>
-        <NavLink className="blog" to="/home">Blog</NavLink>
+        <a className="about" href="https://www.linkedin.com/in/asmaa-eliwa-38a38621a/" target="_blank">Linkedin</a>
+        <a className="business" href="https://github.com/AsmaaEliwa" target="_blank">Github</a>
+        <a className="blog" href="https://asmaaeliwa.github.io/" target="_blank">Portfolio</a>
         <LoginFormModal></LoginFormModal>
         <SignUpFormModal></SignUpFormModal>
       </div>

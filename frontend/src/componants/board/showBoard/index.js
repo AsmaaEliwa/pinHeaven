@@ -18,9 +18,9 @@ function ShowBoard() {
   const [selectedBoard, setSelectedBoard] = useState(null)
   const history = useHistory()
   const [ensure,setEnsureDelete]=useState(false)
+  const isCurrenUser = currentUser.id===Number(userId)
   const boards = useSelector((state) => {
-
-    const boardIds = user.boardIds ? user.boardIds : [];
+  const boardIds = user.boardIds ? user.boardIds : [];
     return boardIds.map((id) => {
       return state.boards[id];
     });
@@ -31,6 +31,7 @@ function ShowBoard() {
     dispatch(boardActions.fetchBoards(userId));
     dispatch(boardPinsActions.fetchBoardPins(userId))
   }, [userId]);
+  
   const boardPins = useSelector(state => {
     return state.boardPins
   })
@@ -90,17 +91,19 @@ function ShowBoard() {
               {firstPinId && <img className="imgBoard" src={`${pins[firstPinId]?.imgUrl}`} />}
               {firstPinId && <div className="btnimg"></div>}
               {secondPinId && <img className="img2Board" src={`${pins[secondPinId]?.imgUrl}`} />}
-
-              <div className="boardEdit">
-                <FontAwesomeIcon
-                  icon={faPen}
-                  onClick={(e) => {
-                    setSelectedBoard(board);
-                    e.stopPropagation();
-                    handelEdite(e, board);
-                  }}
-                />
-              </div>
+              {isCurrenUser &&
+               <div className="boardEdit">
+               <FontAwesomeIcon
+                 icon={faPen}
+                 onClick={(e) => {
+                   setSelectedBoard(board);
+                   e.stopPropagation();
+                   handelEdite(e, board);
+                 }}
+               />
+             </div>
+              }
+             
             </div>
           );
         })}
@@ -123,7 +126,7 @@ function ShowBoard() {
             <button className="createboardnbtn" onClick={ensureDelete}>Delete </button>
           </form>
         </Modal>}
-        {ensure&& <Modal>
+        {ensure&& <Modal onClose={()=>setEnsureDelete(false)}>
           <div div className="are-u-sure">
     Are you sure you want to delete! 
     <><button onClick={handelDeleteBoard} className="sure"> Yes Delete</button></>

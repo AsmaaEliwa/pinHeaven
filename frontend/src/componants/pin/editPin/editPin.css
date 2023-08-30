@@ -137,3 +137,7 @@ border:none
     border:none;
     border-radius: 1rem;
 }
+.not-allow{
+    cursor: not-allowed;
+
+}

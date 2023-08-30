@@ -46,6 +46,7 @@ export const fetchAllPins=()=> async (dispatch)=>{
 
 
 export const createPin = (formData) => async (dispatch,getState) => {
+  debugger
   const response = await csrfFetch('/api/pins', {
     method: 'POST',
     body: formData

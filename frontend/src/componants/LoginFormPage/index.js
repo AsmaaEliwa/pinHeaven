@@ -11,7 +11,7 @@ function LoginFormPage() {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
   const [loading,setLoading]=useState(false)
-  if (sessionUser) return <Redirect to="/" />;
+  // if (sessionUser) return <Redirect to="/" />;
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
@@ -65,12 +65,11 @@ function LoginFormPage() {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <Link className='forget_pass'>Forgot your password?</Link>
+        <p className='forget_pass'>Forgot your password?</p>
       </label>
-      <button type="submit" className='loginbtn'>Log In</button>
+      <button type="submit" className='loginbtn'>Log in</button>
       <p>OR</p>
       <button className='facbtn' onClick={demoLogin}>Continue as Demo</button>
-      <button className='gmailbtn'>Continue as</button>
       {loading&& <i className="fa-solid fa-spinner fa-spin-pulse loading"></i> }
       {/* <p className='more'>By continuing, you agree to Pinterest's Terms of Service; Opens a new tab and acknowledge you've read our Privacy Policy; Opens a new tab. Notice at collection; Opens a new tab.</p> */}
     </form>

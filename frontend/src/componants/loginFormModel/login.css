@@ -1,11 +1,13 @@
 .log_in{
     padding: 12px;
+    width: 5rem;
     margin-right: 9px;
     background-color: #E60022;
     text-decoration: none;
     border-radius: 30px;
     color: white;
     border: none;
+    font-size: medium;
   }
   .log_in:hover {
     background-color: #a21d28; 
