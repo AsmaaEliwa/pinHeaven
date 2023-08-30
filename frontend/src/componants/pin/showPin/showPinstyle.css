@@ -154,7 +154,7 @@ width: 50%;
   } 
   .allpins-prof {
     width: 300px; /* Set a fixed width for each pin */
-    height: 350px; /* Set a fixed height for each pin */
+    height: 100%; /* Set a fixed height for each pin */
     overflow: hidden; 
     position: relative;
     transition: background-color 0.3s ease;
