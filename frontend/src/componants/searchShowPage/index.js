@@ -33,7 +33,6 @@ function SearchPage(){
 
         return users[userId] || null;
     };
-    console.log(searchresults)
 return (
     <>
     <div className='pinscontainer'>

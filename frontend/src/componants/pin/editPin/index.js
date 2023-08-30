@@ -34,7 +34,6 @@ function EditPinForm(){
     });
 
     
-    console.log('boardId:', boardId);
     
     useEffect(()=>{
         if (!pin){

@@ -43,7 +43,7 @@ export const fetchBoardPins = (userId) => async (dispatch) => {
  
   
   export const createBoardPin = (boardPin) => async (dispatch) => {
-    debugger
+    
     try {
       const response = await csrfFetch('/api/board_pins', {
         method: 'POST',
@@ -71,7 +71,7 @@ export const fetchBoardPins = (userId) => async (dispatch) => {
   };
 
   export const updateBoardPins = (board_pin) => async (dispatch) => {
-    debugger
+    
     const { board_id, pin_id } = board_pin;
     const response = await csrfFetch(`/api/board_pins/${board_pin.id}`, {
       method: 'PATCH',

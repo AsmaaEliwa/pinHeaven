@@ -84,7 +84,6 @@ if (!pinIds) return  (
 
 )
 const isCurrenUser = Object.keys(userBoards).includes(boardId)
-debugger
 if (!pins) return (<div className='n-pins'> 0 pins </div>)
 if (!boards) return null
 return (

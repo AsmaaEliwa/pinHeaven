@@ -90,7 +90,7 @@ function ProfileHome() {
              
               dispatch(boardActions.createBoard(formData))
               .then((createdBoard) => {
-                debugger
+                
                 const createdBoardId = createdBoard.id;
                 dispatch(boardPinActions.createBoardPin({ pinId: pin.id, boardId: createdBoardId }));
               });

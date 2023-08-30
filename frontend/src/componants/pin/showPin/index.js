@@ -17,7 +17,6 @@ function ShowPin({ user }) {
   const [selectedPin, setSelectedPin] = useState(null)
   const history = useHistory()
   const iscurrentUser=currentUser?.id===Number(userId )
-  debugger
   const pins = useSelector((state) => {
     const pinIds = user.pinIds ? user.pinIds : [];
     return pinIds.map((id) => {
